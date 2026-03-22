@@ -126,20 +126,7 @@ a:hover {
     display: block;
     background-size: calc(var(--d) / sin(var(--angle))) 100%;
     animation: drift-forever 20s linear infinite reverse;
-    background-image: repeating-linear-gradient(
-        var(--angle),
-        rgb(85, 205, 252),
-        rgb(179, 157, 233),
-        rgb(247, 168, 184),
-        rgb(246, 216, 221),
-        rgb(255, 255, 255) calc(var(--d) * 0.45),
-        rgb(255, 255, 255),
-        rgb(255, 255, 255) calc(var(--d) * 0.55),
-        rgb(246, 216, 221),
-        rgb(247, 168, 184),
-        rgb(179, 157, 233),
-        rgb(85, 205, 252) var(--d)
-    );
+    background-image: repeating-linear-gradient(var(--angle), rgb(85, 205, 252), rgb(179, 157, 233), rgb(247, 168, 184), rgb(246, 216, 221), rgb(255, 255, 255) calc(var(--d) * 0.45), rgb(255, 255, 255), rgb(255, 255, 255) calc(var(--d) * 0.55), rgb(246, 216, 221), rgb(247, 168, 184), rgb(179, 157, 233), rgb(85, 205, 252) var(--d));
 }
 
 @keyframes drift-forever {
