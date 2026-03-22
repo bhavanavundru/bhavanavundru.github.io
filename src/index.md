@@ -10,7 +10,7 @@ title: My Portfolio
             <p class="hero-subtitle">Everything in it's right place.</p>
         </div>
         <div class="intro-image">
-            <img src="/images/image1.png" alt="Portfolio Image" class="hero-image">
+            <img src="/Bhavcodes/images/image1.png" alt="Portfolio Image" class="hero-image">
         </div>
     </div>
 </section>
