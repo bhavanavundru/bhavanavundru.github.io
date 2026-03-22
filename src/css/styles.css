@@ -112,22 +112,7 @@ a:hover {
     padding-right: 0;
     padding-bottom: 4rem;
     overflow: visible;
-}
-
-#intro::before {
-    content: '';
-    position: absolute;
-    top: 2rem;
-    right: 0;
-    width: 300px;
-    height: 9px;
-    background: linear-gradient(to right, transparent, #f5f1ed);
-    z-index: 3;
-    pointer-events: none;
-}
-
-#intro {
-    --angle: 45deg;
+    --angle: 120deg;
     --d: 80px;
 }
 
@@ -143,17 +128,17 @@ a:hover {
     animation: drift-forever 20s linear infinite reverse;
     background-image: repeating-linear-gradient(
         var(--angle),
-        #e6c431,
-        #cc74d4,
-        #ff6b6b,
-        #8299c9,
-        #9d25e2 calc(var(--d) * 0.45),
-        #9d25e2,
-        #9d25e2 calc(var(--d) * 0.55),
-        #8299c9,
-        #ff6b6b,
-        #cc74d4,
-        #e6c431 var(--d)
+        rgb(85, 205, 252),
+        rgb(179, 157, 233),
+        rgb(247, 168, 184),
+        rgb(246, 216, 221),
+        rgb(255, 255, 255) calc(var(--d) * 0.45),
+        rgb(255, 255, 255),
+        rgb(255, 255, 255) calc(var(--d) * 0.55),
+        rgb(246, 216, 221),
+        rgb(247, 168, 184),
+        rgb(179, 157, 233),
+        rgb(85, 205, 252) var(--d)
     );
 }
 
@@ -210,16 +195,16 @@ a:hover {
 .hero-image,
 .hero-image:hover {
     display: block;
-    width: 900px;
-    max-width: 900px;
+    width: 560px;
+    max-width: 560px;
     height: auto;
     margin: 0;
     padding: 0;
-    mask-image: linear-gradient(to left, black 30%, transparent 80%),
-                linear-gradient(to bottom, black 50%, transparent 95%);
+    mask-image: linear-gradient(to left, black 55%, transparent 95%),
+                linear-gradient(to bottom, black 75%, transparent 100%);
     mask-composite: intersect;
-    -webkit-mask-image: linear-gradient(to left, black 30%, transparent 80%),
-                        linear-gradient(to bottom, black 50%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to left, black 55%, transparent 95%),
+                        linear-gradient(to bottom, black 75%, transparent 100%);
     -webkit-mask-composite: source-in;
 }
 
