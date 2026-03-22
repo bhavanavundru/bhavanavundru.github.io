@@ -198,33 +198,28 @@ a:hover {
 
 .intro-image {
     position: absolute;
-    right: 0;       /* true viewport edge in #intro */
+    right: 0;
     top: 1.8rem;
-    width: 420px;   /* little wider with no buffer */
+    width: 580px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
     z-index: 2;
 }
 
-#intro {
-    overflow: visible;
-}
-
-
 .hero-image,
 .hero-image:hover {
     display: block;
-    width: 400px;
-    max-width: 400px;
+    width: 560px;
+    max-width: 560px;
     height: auto;
     margin: 0;
     padding: 0;
-    mask-image: linear-gradient(to left, black 60%, transparent 100%),
-                linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to left, black 30%, transparent 80%),
+                linear-gradient(to bottom, black 50%, transparent 95%);
     mask-composite: intersect;
-    -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%),
-                        linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 30%, transparent 80%),
+                        linear-gradient(to bottom, black 50%, transparent 95%);
     -webkit-mask-composite: source-in;
 }
 
