@@ -112,8 +112,8 @@ a:hover {
     padding-right: 0;
     padding-bottom: 4rem;
     overflow: visible;
-    --angle: 120deg;
-    --d: 80px;
+    --angle: 160deg;
+    --d: 200px;
 }
 
 #intro::after {
