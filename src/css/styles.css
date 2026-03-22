@@ -112,8 +112,6 @@ a:hover {
     padding-right: 0;
     padding-bottom: 4rem;
     overflow: visible;
-    --angle: 160deg;
-    --d: 200px;
 }
 
 #intro::after {
@@ -123,56 +121,16 @@ a:hover {
     left: -2rem;
     width: calc(100vw + 2rem);
     height: 9px;
-    display: block;
-    background-size: calc(var(--d) / sin(var(--angle))) 100%;
-    animation: drift-forever 20s linear infinite reverse;
-    background-image: repeating-linear-gradient(var(--angle), rgb(85, 205, 252), rgb(179, 157, 233), rgb(247, 168, 184), rgb(246, 216, 221), rgb(255, 255, 255) calc(var(--d) * 0.45), rgb(255, 255, 255), rgb(255, 255, 255) calc(var(--d) * 0.55), rgb(246, 216, 221), rgb(247, 168, 184), rgb(179, 157, 233), rgb(85, 205, 252) var(--d));
-}
-
-@keyframes drift-forever {
-    to {
-        background-position: calc(var(--d) / sin(var(--angle))) 0;
-}
-}
-
-.hero-title {
-    font-size: 3.5rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    animation: fadeInUp 0.8s ease-out;
-    max-width: none;
-    white-space: pre-line;
-}
-
-.hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--secondary-color);
-    font-style: italic;
-    margin-bottom: 3rem;
-}
-
-.intro-content {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 2rem;
-    width: 100%;
-    position: static; /* allow .intro-image to float relative to #intro */
-}
-
-.intro-text {
-    flex: 1 1 auto;
-    max-width: 700px;
-    min-width: 0;
-    padding: 2rem;
-    padding-right: 4rem;
+    background: linear-gradient(90deg, #e6c431, #cc74d4, #ff6b6b, #8299c9, #9d25e2);
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
 }
 
 .intro-image {
     position: absolute;
     right: 0;
     top: 1.8rem;
-    width: 580px;
+    width: 420px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
@@ -182,17 +140,11 @@ a:hover {
 .hero-image,
 .hero-image:hover {
     display: block;
-    width: 560px;
-    max-width: 560px;
+    width: 400px;
+    max-width: 400px;
     height: auto;
     margin: 0;
     padding: 0;
-    mask-image: linear-gradient(to left, black 55%, transparent 95%),
-                linear-gradient(to bottom, black 75%, transparent 100%);
-    mask-composite: intersect;
-    -webkit-mask-image: linear-gradient(to left, black 55%, transparent 95%),
-                        linear-gradient(to bottom, black 75%, transparent 100%);
-    -webkit-mask-composite: source-in;
 }
 
 /* Works Grid */
