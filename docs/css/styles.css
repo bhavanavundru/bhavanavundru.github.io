@@ -114,23 +114,6 @@ a:hover {
     overflow: visible;
 }
 
-#intro::before {
-    content: '';
-    position: absolute;
-    top: 2rem;
-    right: 0;
-    width: 300px;
-    height: 9px;
-    background: linear-gradient(to right, transparent, #f5f1ed);
-    z-index: 3;
-    pointer-events: none;
-}
-
-#intro {
-    --angle: 45deg;
-    --d: 80px;
-}
-
 #intro::after {
     content: '';
     position: absolute;
@@ -138,69 +121,16 @@ a:hover {
     left: -2rem;
     width: calc(100vw + 2rem);
     height: 9px;
-    display: block;
-    background-size: calc(var(--d) / sin(var(--angle))) 100%;
-    animation: drift-forever 20s linear infinite reverse;
-    background-image: repeating-linear-gradient(
-        var(--angle),
-        #e6c431,
-        #cc74d4,
-        #ff6b6b,
-        #8299c9,
-        #9d25e2 calc(var(--d) * 0.45),
-        #9d25e2,
-        #9d25e2 calc(var(--d) * 0.55),
-        #8299c9,
-        #ff6b6b,
-        #cc74d4,
-        #e6c431 var(--d)
-    );
-}
-
-@keyframes drift-forever {
-    to {
-        background-position: calc(var(--d) / sin(var(--angle))) 0;
-    }
-}
-
-.hero-title {
-    font-size: 3.5rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    animation: fadeInUp 0.8s ease-out;
-    max-width: none;
-    white-space: pre-line;
-}
-
-.hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--secondary-color);
-    font-style: italic;
-    margin-bottom: 3rem;
-}
-
-.intro-content {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 2rem;
-    width: 100%;
-    position: static; /* allow .intro-image to float relative to #intro */
-}
-
-.intro-text {
-    flex: 1 1 auto;
-    max-width: 700px;
-    min-width: 0;
-    padding: 2rem;
-    padding-right: 4rem;
+    background: linear-gradient(90deg, #e6c431, #cc74d4, #ff6b6b, #8299c9, #9d25e2);
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
 }
 
 .intro-image {
     position: absolute;
     right: 0;
     top: 1.8rem;
-    width: 580px;
+    width: 420px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
@@ -210,17 +140,11 @@ a:hover {
 .hero-image,
 .hero-image:hover {
     display: block;
-    width: 900px;
-    max-width: 900px;
+    width: 400px;
+    max-width: 400px;
     height: auto;
     margin: 0;
     padding: 0;
-    mask-image: linear-gradient(to left, black 30%, transparent 80%),
-                linear-gradient(to bottom, black 50%, transparent 95%);
-    mask-composite: intersect;
-    -webkit-mask-image: linear-gradient(to left, black 30%, transparent 80%),
-                        linear-gradient(to bottom, black 50%, transparent 95%);
-    -webkit-mask-composite: source-in;
 }
 
 /* Works Grid */
