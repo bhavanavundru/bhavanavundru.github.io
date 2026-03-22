@@ -109,7 +109,7 @@ a:hover {
     left: -2rem;
     width: calc(100vw + 2rem);
     height: 9px;
-    background: linear-gradient(90deg, #e6c431, #cc74d4, #ff6b6b, #8299c9, #9d25e2);
+    background: linear-gradient(90deg, #e6c431, #cc74d4, #ff6b6b, #8299c9, #9d25e2, transparent);
     background-size: 200% 100%;
     animation: gradientShift 3s ease-in-out infinite;
 }
