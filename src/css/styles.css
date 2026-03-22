@@ -210,8 +210,8 @@ a:hover {
 .hero-image,
 .hero-image:hover {
     display: block;
-    width: 560px;
-    max-width: 560px;
+    width: 900px;
+    max-width: 900px;
     height: auto;
     margin: 0;
     padding: 0;
