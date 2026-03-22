@@ -126,6 +126,11 @@ a:hover {
     pointer-events: none;
 }
 
+#intro {
+    --angle: 45deg;
+    --d: 80px;
+}
+
 #intro::after {
     content: '';
     position: absolute;
@@ -133,9 +138,29 @@ a:hover {
     left: -2rem;
     width: calc(100vw + 2rem);
     height: 9px;
-    background: linear-gradient(90deg, #e6c431, #cc74d4, #ff6b6b, #8299c9, #9d25e2, #9d25e200);
-    background-size: 200% 100%;
-    animation: gradientShift 3s ease-in-out infinite;
+    display: block;
+    background-size: calc(var(--d) / sin(var(--angle))) 100%;
+    animation: drift-forever 20s linear infinite reverse;
+    background-image: repeating-linear-gradient(
+        var(--angle),
+        #e6c431,
+        #cc74d4,
+        #ff6b6b,
+        #8299c9,
+        #9d25e2 calc(var(--d) * 0.45),
+        #9d25e2,
+        #9d25e2 calc(var(--d) * 0.55),
+        #8299c9,
+        #ff6b6b,
+        #cc74d4,
+        #e6c431 var(--d)
+    );
+}
+
+@keyframes drift-forever {
+    to {
+        background-position: calc(var(--d) / sin(var(--angle))) 0;
+    }
 }
 
 .hero-title {
