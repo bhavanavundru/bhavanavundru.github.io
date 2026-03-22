@@ -1,0 +1,21 @@
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 4rem;
+}
+
+h1{
+    font-family: 'playfair display', serif;
+    color: #1a1a1a;
+    font-size: 3rem;
+}
+.legacy {
+   font-family: 'Playfair Display', serif; /* Or any font you prefer */
+   font-style: italic;
+   letter-spacing: 0.05em; /* Optional: adds a bit of drama */
+}
+.bug {
+    color: red;
+    font-style: italic;
+    letter-spacing: 0.05em;
+}
