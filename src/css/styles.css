@@ -511,13 +511,3 @@ a:hover {
         padding: 2rem 0;
     }
 }
-.gradient-fade {
-    position: fixed;
-    top: 2rem;
-    right: 0;
-    width: 300px;
-    height: 9px;
-    background: linear-gradient(to right, transparent, #f5f1ed);
-    z-index: 999;
-    pointer-events: none;
-}

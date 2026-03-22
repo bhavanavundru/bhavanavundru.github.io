@@ -15,10 +15,6 @@ title: My Portfolio
     </div>
 </section>
 
-<section id="intro" class="section animate-on-scroll">
-    <div class="gradient-fade"></div>  <!-- add this -->
-    <div class="intro-content">
-
 <section id="about" class="section animate-on-scroll">
     <h2>About the Author</h2>
     <p>I'm a creative developer specializing in CSS, animation, accessibility, and interactive digital experiences. This is my digital garden — a place for ideas to grow and evolve.</p>
