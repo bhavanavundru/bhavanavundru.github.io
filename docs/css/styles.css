@@ -29,6 +29,18 @@ body {
     overflow-x: hidden;
 }
 
+body::after {
+    content: '';
+    position: fixed;
+    top: 2rem;
+    right: 0;
+    width: 300px;
+    height: 9px;
+    background: linear-gradient(to right, transparent, #f5f1ed);
+    z-index: 999;
+    pointer-events: none;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
@@ -102,6 +114,23 @@ a:hover {
     overflow: visible;
 }
 
+#intro::before {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    width: 300px;
+    height: 9px;
+    background: linear-gradient(to right, transparent, #f5f1ed);
+    z-index: 3;
+    pointer-events: none;
+}
+
+#intro {
+    --angle: 45deg;
+    --d: 80px;
+}
+
 #intro::after {
     content: '';
     position: absolute;
@@ -109,9 +138,29 @@ a:hover {
     left: -2rem;
     width: calc(100vw + 2rem);
     height: 9px;
-    background: linear-gradient(90deg, #e6c431, #cc74d4, #ff6b6b, #8299c9, #9d25e2, transparent);
-    background-size: 200% 100%;
-    animation: gradientShift 3s ease-in-out infinite;
+    display: block;
+    background-size: calc(var(--d) / sin(var(--angle))) 100%;
+    animation: drift-forever 20s linear infinite reverse;
+    background-image: repeating-linear-gradient(
+        var(--angle),
+        #e6c431,
+        #cc74d4,
+        #ff6b6b,
+        #8299c9,
+        #9d25e2 calc(var(--d) * 0.45),
+        #9d25e2,
+        #9d25e2 calc(var(--d) * 0.55),
+        #8299c9,
+        #ff6b6b,
+        #cc74d4,
+        #e6c431 var(--d)
+    );
+}
+
+@keyframes drift-forever {
+    to {
+        background-position: calc(var(--d) / sin(var(--angle))) 0;
+    }
 }
 
 .hero-title {
@@ -149,33 +198,28 @@ a:hover {
 
 .intro-image {
     position: absolute;
-    right: 0;       /* true viewport edge in #intro */
+    right: 0;
     top: 1.8rem;
-    width: 420px;   /* little wider with no buffer */
+    width: 580px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
     z-index: 2;
 }
 
-#intro {
-    overflow: visible;
-}
-
-
 .hero-image,
 .hero-image:hover {
     display: block;
-    width: 400px;
-    max-width: 400px;
+    width: 900px;
+    max-width: 900px;
     height: auto;
     margin: 0;
     padding: 0;
-    mask-image: linear-gradient(to left, black 60%, transparent 100%),
-                linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to left, black 30%, transparent 80%),
+                linear-gradient(to bottom, black 50%, transparent 95%);
     mask-composite: intersect;
-    -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%),
-                        linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 30%, transparent 80%),
+                        linear-gradient(to bottom, black 50%, transparent 95%);
     -webkit-mask-composite: source-in;
 }
 
