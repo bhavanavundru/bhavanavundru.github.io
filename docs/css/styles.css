@@ -108,12 +108,13 @@ a:hover {
     content: '';
     position: absolute;
     top: 2rem;
-    left: -2rem;
-    width: calc(100vw + 2rem);
+    left: 0;
+    width: 100vw;
     height: 9px;
     background: linear-gradient(90deg, #e6c431, #cc74d4, #ff6b6b, #8299c9, #9d25e2);
     background-size: 200% 100%;
     animation: gradientShift 3s ease-in-out infinite;
+    overflow: hidden;
 }
 
 .intro-image {
