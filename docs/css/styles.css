@@ -111,7 +111,7 @@ a:hover {
     left: 0;
     width: 100vw;
     height: 9px;
-    background: linear-gradient(90deg, #e6c431, #cc74d4, #ff6b6b, #8299c9, #9d25e2);
+    background: linear-gradient(90deg, #e6c431, #cc74d4, #ff6b6b, #bcccf0, #daa2fa);
     background-size: 200% 100%;
     animation: gradientShift 3s ease-in-out infinite;
     overflow: hidden;
@@ -159,7 +159,7 @@ a:hover {
 
 .work-item:hover {
     border: 2px solid;
-    border-image: linear-gradient(135deg, #ff0000, #ff6b6b, #ffa500, #8b6f47) 1;
+    border-image: linear-gradient(135deg, #dc97df, #10c7ff, #ffa500, #d29bec) 1;
     background: rgba(255, 0, 0, 0.02);
 }
 
