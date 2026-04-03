@@ -429,3 +429,48 @@ a:hover {
         padding: 2rem 0;
     }
 }
+
+/* Marquee */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.6rem 0;
+    margin-bottom: 2rem;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 18s linear infinite;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--secondary-color);
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* About heading animation */
+.about-heading {
+    overflow: hidden;
+}
+
+.about-heading::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: var(--accent-color);
+    animation: lineExpand 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-timeline: view();
+    animation-range: entry 0% entry 50%;
+}
+
+@keyframes lineExpand {
+    to { width: 100%; }
+}
