@@ -443,7 +443,7 @@ a:hover {
 .marquee-track {
     display: flex;
     width: max-content;
-    animation: marquee 18s linear infinite;
+    animation: marquee 2s linear infinite;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
