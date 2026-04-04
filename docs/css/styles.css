@@ -443,7 +443,7 @@ a:hover {
 .marquee-track {
     display: flex;
     width: max-content;
-    animation: marquee 2s linear infinite;
+    animation: marquee 18s linear infinite;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -468,7 +468,7 @@ a:hover {
     background: var(--accent-color);
     animation: lineExpand 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     animation-timeline: view();
-    animation-range: entry 0% entry 50%;
+    animation-range: entry 0% entry 0%;
 }
 
 @keyframes lineExpand {
