@@ -3,14 +3,19 @@ layout: base.html
 title: My Portfolio
 ---
 
-<section id="intro" class="section animate-on-scroll">
+<section id="intro" class="section centered-intro">
     <div class="intro-content">
         <div class="intro-text">
-            <h1 class="hero-title"><span class="word-animate">CHAOS IN CODE?</span><br>NO <span class="bug word-animate">BUG</span> <span class="word-animate">SURVIVES SCRUTINY</span></h1>
-<p class="hero-subtitle animate-fade">Everything in it's right place.</p>
+            <h1 class="hero-title">CHAOS IN CODE?<br>NO <span class="bug">BUG</span> SURVIVES SCRUTINY</h1>
+            <div class="about-dev-line">
+                <span class="about-dev-ghost">About the Dev</span>
+                <span class="about-dev-text">About the Dev</span>
+            </div>
+        </div>
+    </div>
 </section>
-<section id="about" class="section animate-on-scroll">
-    <h2 class="about-heading slide-in-right">About the Dev</h2>
+<section id="about" class="section about-section">
+    <h2 class="about-heading">About the Dev</h2>
     <div class="marquee-container">
     <div class="marquee-track">
         <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ · BUILD · SHIP · ITERATE · ✦ · &nbsp;</span>

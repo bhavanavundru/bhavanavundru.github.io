@@ -21,8 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                // Optional: stop observing after animation
+                if (entry.target.classList.contains('about-section')) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.add('animate-in');
+                }
                 observer.unobserve(entry.target);
             }
         });
@@ -31,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: '0px 0px -100px 0px'
     });
     
-    // Observe all elements with animate-on-scroll class
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    // Observe all elements with animate-on-scroll class and about-section
+    document.querySelectorAll('.animate-on-scroll, .about-section').forEach(el => {
         observer.observe(el);
     });
     
