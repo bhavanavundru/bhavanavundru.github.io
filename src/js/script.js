@@ -1,5 +1,10 @@
 // Remove no-js class on page load
 document.addEventListener('DOMContentLoaded', () => {
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0,0);
+
     document.body.classList.remove('no-js');
     
     // Update year in footer

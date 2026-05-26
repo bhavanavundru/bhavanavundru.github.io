@@ -9,9 +9,8 @@ title: My Portfolio
             <h1 class="hero-title"><span class="word-animate">CHAOS IN CODE?</span><br>NO <span class="bug word-animate">BUG</span> <span class="word-animate">SURVIVES SCRUTINY</span></h1>
 <p class="hero-subtitle animate-fade">Everything in it's right place.</p>
 </section>
-<h2>This webpage is my portfolio to </h2>
 <section id="about" class="section animate-on-scroll">
-    <h2 class="about-heading">About the Author</h2>
+    <h2 class="about-heading slide-in-right">About the Dev</h2>
     <div class="marquee-container">
     <div class="marquee-track">
         <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ · BUILD · SHIP · ITERATE · ✦ · &nbsp;</span>
