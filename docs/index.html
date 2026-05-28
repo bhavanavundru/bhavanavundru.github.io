@@ -5,66 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bhavcodes</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="js/script.js" type="module"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="js/script.js" type="module" defer></script>
 </head>
 <body class="no-js">
     <main class="main">
+
+        <!-- ═══════════════════════════════════════
+             HERO SECTION
+        ═══════════════════════════════════════ -->
         <section id="intro" class="section centered-intro">
-    <div class="intro-content">
-        <div class="intro-text">
-            <h1 class="hero-title">CHAOS IN CODE?<br>NO <span class="bug">BUG</span> SURVIVES SCRUTINY</h1>
-            <div class="about-dev-line">
-                <span class="about-dev-ghost">About the Dev</span>
-                <span class="about-dev-text">About the Dev</span>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h1 class="hero-title">CHAOS IN CODE?<br>NO <span class="bug">BUG</span> SURVIVES SCRUTINY</h1>
+                    <p class="hero-subtitle">Everything in it's right place</p>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
-<section id="about" class="section about-section">
-    <h2 class="about-heading">About the Dev</h2>
-    <div class="marquee-container">
-    <div class="marquee-track">
-        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ · BUILD · SHIP · ITERATE · ✦ · &nbsp;</span>
-        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ · BUILD · SHIP · ITERATE · ✦ · &nbsp;</span>
-    </div>
-</div>
-    <p>Hi, I’m **Bhavana Vundru** — or **Bhav** — a Hyderabad-based **Software Engineer** with a strong focus on **Swift and iOS development**. This is my personal site and portfolio, a digital garden where I showcase the projects, ideas, prototypes, and product experiences I’ve built and explored. With 3+ years of experience in mobile development, I’ve worked on designing, shipping, and owning production-level features using **Swift, SwiftUI, UIKit, Xcode, and Apple’s iOS ecosystem**. My work is rooted in clean architecture, scalable code, thoughtful UI/UX, performance, testing, and modern engineering best practices. I enjoy solving complex technical problems, making clear technical tradeoffs, collaborating across teams, and continuously learning new technologies, tools, and systems — including using AI thoughtfully to improve engineering workflows.
-</p>
-    <div class="contact-info">
-        <h3>Availability</h3>
-        <p>I'm taking on freelance projects on a case-by-case basis. Reach out and touch faith.</p>
-        <h3>Contact</h3>
-        <p>Email: <a href="mailto:yo@example.com">yo@example.com</a></p>
-    </div>
-</section>
-<section id="works" class="section animate-on-scroll">
-    <h2>Selected Works</h2>
-    <div class="works-grid">
-        <div class="work-item">
-            <div class="work-image-placeholder">01</div>
-            <h3>Project One</h3>
-            <p>A stunning interactive experience for a major brand.</p>
-        </div>
-        <div class="work-item">
-            <div class="work-image-placeholder">02</div>
-            <h3>Project Two</h3>
-            <p>Cutting-edge design system with accessible components.</p>
-        </div>
-        <div class="work-item">
-            <div class="work-image-placeholder">03</div>
-            <h3>Project Three</h3>
-            <p>Innovative animation framework for web applications.</p>
-        </div>
-    </div>
-</section>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             ABOUT SECTION
+        ═══════════════════════════════════════ -->
+        <section id="about" class="section about-section">
+
+            <!-- Big heading with slide animation (like henry.codes) -->
+            <div class="about-heading-wrap">
+                <h2 class="about-heading">About the Dev</h2>
+                <div class="about-rule"></div>
+            </div>
+
+            <!-- Marquee strip (seamless infinite loop) -->
+            <div class="marquee-container" aria-hidden="true">
+                <div class="marquee-track">
+                    <!-- Duplicate the inner content so the loop is truly seamless -->
+                    <div class="marquee-inner">
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                    </div>
+                    <!-- Exact duplicate for seamless loop -->
+                    <div class="marquee-inner" aria-hidden="true">
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About body: centered -->
+            <div class="about-body">
+                <p>Hi, I'm Bhavana Vundru or Bhav; I'm a Software Engineer && iOS app developer && designer-ish person from Hyderabad, India. I spend most of my time crafting mobile applications, transforming rough ideas, chaotic prototypes, and "this should totally be an app" thoughts into refined, production-ready experiences. This is my personal digital garden, part portfolio, part playground; a space for prototypes, product experiences I've created, rough drafts, scattered notes, and unfinished thoughts; where small ideas are planted, nurtured, and given room to grow into something meaningful.</p>
+                <p>love,<br>bhav (from online)</p>
+
+                <div class="contact-info">
+                    <h3>Availability</h3>
+                    <p>I'm taking on freelance projects on a case-by-case basis. Reach out and touch faith.</p>
+                    <h3>Contact</h3>
+                    <p>Email: <a href="mailto:yo@example.com">yo@example.com</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             WORKS SECTION
+        ═══════════════════════════════════════ -->
+        <section id="works" class="section animate-on-scroll">
+            <h2>Selected Works</h2>
+            <div class="works-grid">
+                <div class="work-item">
+                    <div class="work-image-placeholder">01</div>
+                    <h3>Project One</h3>
+                    <p>A stunning interactive experience for a major brand.</p>
+                </div>
+                <div class="work-item">
+                    <div class="work-image-placeholder">02</div>
+                    <h3>Project Two</h3>
+                    <p>Cutting-edge design system with accessible components.</p>
+                </div>
+                <div class="work-item">
+                    <div class="work-image-placeholder">03</div>
+                    <h3>Project Three</h3>
+                    <p>Innovative animation framework for web applications.</p>
+                </div>
+            </div>
+        </section>
 
     </main>
-    
+
     <footer class="footer">
-        <p>© <span id="year"></span> nope </p>
+        <p>© <span id="year"></span> nope</p>
     </footer>
-    
-    <div class="grid-overlay"></div>
+
+    <div class="grid-overlay">
+        <div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div>
+    </div>
+
+    <script>
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Remove no-js
+        document.body.classList.remove('no-js');
+
+        // Animate on scroll (works + any future sections)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('animate-in');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // About heading slide animation on scroll
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('visible');
+            });
+        }, { threshold: 0.15 });
+        const aboutSection = document.querySelector('.about-section');
+        if (aboutSection) aboutObserver.observe(aboutSection);
+    </script>
 </body>
 </html>
