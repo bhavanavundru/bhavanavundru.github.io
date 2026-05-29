@@ -50,6 +50,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Initialize Swiper carousel for Selected Works
+    if (window.Swiper && document.querySelector('.works-swiper')) {
+        new Swiper('.works-swiper', {
+            slidesPerView: 1.05,
+            spaceBetween: 20,
+            centeredSlides: true,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                720: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 24,
+                },
+                1080: {
+                    slidesPerView: 2.2,
+                    spaceBetween: 32,
+                },
+            },
+        });
+    }
 });
 
 // Optional: Add character animation delay for staggered effect

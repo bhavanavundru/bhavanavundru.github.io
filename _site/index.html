@@ -4,70 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bhavcodes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Splitting.js for text animations -->
-    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" defer></script>
+    <script src="js/script.js" type="module" defer></script>
 </head>
 <body class="no-js">
     <main class="main">
+
+        <!-- ═══════════════════════════════════════
+             HERO SECTION
+        ═══════════════════════════════════════ -->
         <section id="intro" class="section centered-intro">
-    <div class="intro-content">
-        <div class="intro-text">
-            <h1 class="hero-title">CHAOS IN CODE?<br>NO <span class="bug">BUG</span> SURVIVES SCRUTINY</h1>
-            <div class="about-dev-line">
-                <span class="about-dev-ghost">About the Dev</span>
-                <span class="about-dev-text">About the Dev</span>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h1 class="hero-title">The Art of Making Software Feel Human</h1>
+                    <p class="hero-subtitle">Everything in it's right place</p>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
-<section id="about" class="section about-section">
-    <h2 class="about-heading">About the Dev</h2>
-    <div class="marquee-container">
-    <div class="marquee-track">
-        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ · BUILD · SHIP · ITERATE · ✦ · &nbsp;</span>
-        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ · BUILD · SHIP · ITERATE · ✦ · &nbsp;</span>
-    </div>
-</div>
-    <p>I'm a creative developer specializing in CSS, animation, accessibility, and interactive digital experiences. This is my digital garden — a place for ideas to grow and evolve.</p>
-    <div class="contact-info">
-        <h3>Availability</h3>
-        <p>I'm taking on freelance projects on a case-by-case basis. Reach out and touch faith.</p>
-        <h3>Contact</h3>
-        <p>Email: <a href="mailto:yo@example.com">yo@example.com</a></p>
-    </div>
-</section>
-<section id="works" class="section animate-on-scroll">
-    <h2>Selected Works</h2>
-    <div class="works-grid">
-        <div class="work-item">
-            <div class="work-image-placeholder">01</div>
-            <h3>Project One</h3>
-            <p>A stunning interactive experience for a major brand.</p>
-        </div>
-        <div class="work-item">
-            <div class="work-image-placeholder">02</div>
-            <h3>Project Two</h3>
-            <p>Cutting-edge design system with accessible components.</p>
-        </div>
-        <div class="work-item">
-            <div class="work-image-placeholder">03</div>
-            <h3>Project Three</h3>
-            <p>Innovative animation framework for web applications.</p>
-        </div>
-    </div>
-</section>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             ABOUT SECTION
+        ═══════════════════════════════════════ -->
+        <section id="about" class="section about-section">
+
+            <!-- Big heading with slide animation (like henry.codes) -->
+            <div class="about-heading-wrap">
+                <h2 class="about-heading">About the Dev</h2>
+                <div class="about-rule"></div>
+            </div>
+
+            <!-- Marquee strip (seamless infinite loop) -->
+            <div class="marquee-container" aria-hidden="true">
+                <div class="marquee-track">
+                    <!-- Duplicate the inner content so the loop is truly seamless -->
+                    <div class="marquee-inner">
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                    </div>
+                    <!-- Exact duplicate for seamless loop -->
+                    <div class="marquee-inner" aria-hidden="true">
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · 17.3850° N, 78.4867° E (HYDERABAD) · ✦ ·&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About body: centered -->
+            <div class="about-body">
+                <p>Hi I'm Bhavana Vundru or Bhav for short; I'm a Software Engineer && iOS developer with a weakness for good design and a habit of turning "what if this were an app" into actual; working things. I'm based in Hyderabad and I spend most of my time crafting mobile experiences that feel considered rather than cobbled together. This is my corner of the internet: part portfolio, part scratchpad; a place where prototypes, scattered notes, and unfinished thoughts all get to exist alongside the stuff I'm proud of.</p>
+                <div class="contact-info">
+                    <h3>Availability</h3>
+                    <p>I'm taking on freelance projects on a case-by-case basis. Reach out and touch faith.</p>
+                    <h3>Contact</h3>
+                    <p>Email: <a href="mailto:yo@example.com">yo@example.com</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             WORKS SECTION
+        ═══════════════════════════════════════ -->
+        <section id="works" class="section animate-on-scroll">
+            <h2>Selected Works</h2>
+            <div class="swiper works-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide work-item">
+                        <div class="work-image-placeholder">01</div>
+                        <h3>Project One</h3>
+                        <p>A stunning interactive experience for a major brand.</p>
+                    </div>
+                    <div class="swiper-slide work-item">
+                        <div class="work-image-placeholder">02</div>
+                        <h3>Project Two</h3>
+                        <p>Cutting-edge design system with accessible components.</p>
+                    </div>
+                    <div class="swiper-slide work-item">
+                        <div class="work-image-placeholder">03</div>
+                        <h3>Project Three</h3>
+                        <p>Innovative animation framework for web applications.</p>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev" aria-label="Previous slide"></div>
+                <div class="swiper-button-next" aria-label="Next slide"></div>
+            </div>
+        </section>
 
     </main>
-    
+
     <footer class="footer">
-        <p>© <span id="year"></span> nope </p>
+        <p>© <span id="year"></span> nope</p>
     </footer>
-    
-    <!-- Grid overlay for visual structure -->
-    <div class="grid-overlay"></div>
-    
-    <script src="/js/script.js" type="module"></script>
+
+    <script>
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Remove no-js
+        document.body.classList.remove('no-js');
+
+        // Animate on scroll (works + any future sections)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('animate-in');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // About heading slide animation on scroll
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('visible');
+            });
+        }, { threshold: 0.15 });
+        const aboutSection = document.querySelector('.about-section');
+        if (aboutSection) aboutObserver.observe(aboutSection);
+    </script>
 </body>
 </html>

@@ -6,11 +6,8 @@ title: My Portfolio
 <section id="intro" class="section centered-intro">
     <div class="intro-content">
         <div class="intro-text">
-            <h1 class="hero-title">CHAOS IN CODE?<br>NO <span class="bug">BUG</span> SURVIVES SCRUTINY</h1>
-            <div class="about-dev-line">
-                <span class="about-dev-ghost">About the Dev</span>
-                <span class="about-dev-text">About the Dev</span>
-            </div>
+            <h1 class="hero-title">The Art of Making Software Feel Human</h1>
+            <p class="hero-subtitle">Everything in its right place</p>
         </div>
     </div>
 </section>
@@ -33,21 +30,41 @@ title: My Portfolio
 
 <section id="works" class="section animate-on-scroll">
     <h2>Selected Works</h2>
-    <div class="works-grid">
-        <div class="work-item">
-            <div class="work-image-placeholder">01</div>
-            <h3>Project One</h3>
-            <p>A stunning interactive experience for a major brand.</p>
+    <div class="swiper works-swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide work-item">
+                <div class="work-image-placeholder">01</div>
+                <h3>Project One</h3>
+                <p>A stunning interactive experience for a major brand.</p>
+            </div>
+            <div class="swiper-slide work-item">
+                <div class="work-image-placeholder">02</div>
+                <h3>Project Two</h3>
+                <p>Cutting-edge design system with accessible components.</p>
+            </div>
+            <div class="swiper-slide work-item">
+                <div class="work-image-placeholder">03</div>
+                <h3>Project Three</h3>
+                <p>Innovative animation framework for web applications.</p>
+            </div>
+            <div class="swiper-slide work-item">
+                <div class="work-image-placeholder">04</div>
+                <h3>Project Four</h3>
+                <p>A responsive commerce prototype that blends motion and utility.</p>
+            </div>
+            <div class="swiper-slide work-item">
+                <div class="work-image-placeholder">05</div>
+                <h3>Project Five</h3>
+                <p>A polished onboarding flow built for mobile-first habits.</p>
+            </div>
+            <div class="swiper-slide work-item">
+                <div class="work-image-placeholder">06</div>
+                <h3>Project Six</h3>
+                <p>A brand activation experience built around storytelling and performance.</p>
+            </div>
         </div>
-        <div class="work-item">
-            <div class="work-image-placeholder">02</div>
-            <h3>Project Two</h3>
-            <p>Cutting-edge design system with accessible components.</p>
-        </div>
-        <div class="work-item">
-            <div class="work-image-placeholder">03</div>
-            <h3>Project Three</h3>
-            <p>Innovative animation framework for web applications.</p>
-        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev" aria-label="Previous slide"></div>
+        <div class="swiper-button-next" aria-label="Next slide"></div>
     </div>
 </section>
