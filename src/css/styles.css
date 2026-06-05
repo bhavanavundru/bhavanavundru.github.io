@@ -6,7 +6,7 @@
     --secondary-color: #9a9a9a;
     --border-color: rgba(255,255,255,0.06);
     --transition: all 0.12s ease;
-    --mono-family: 'Munaka', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+    --mono-family: 'Cera CY Regular', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
 }
 
 @font-face {
