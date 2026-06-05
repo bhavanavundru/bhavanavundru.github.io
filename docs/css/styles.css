@@ -142,7 +142,7 @@ a:hover { opacity: 0.7; }
 }
 
 .hero-title {
-    font-size: clamp(2.2rem, 7vw, 5.5rem);
+    font-size: clamp(2.8rem, 9vw, 7rem);
     line-height: 1.1;
     margin: 1rem auto 1.2rem;
     font-weight: 700;
@@ -222,7 +222,7 @@ a:hover { opacity: 0.7; }
     overflow: hidden;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
-    padding: 0.55rem 0;
+    padding: 0.75rem 0;
     margin: 1.5rem 0 2.5rem 0;
 }
 
@@ -237,13 +237,14 @@ a:hover { opacity: 0.7; }
     display: flex;
     width: max-content;
     will-change: transform;
-    animation: marquee-scroll 22s linear infinite;
+    animation: marquee-scroll 32s linear infinite;
 }
 
 .marquee-inner {
     display: inline-flex;
     white-space: nowrap;
-    font-size: 0.72rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--secondary-color);

@@ -539,7 +539,7 @@ a:hover {
     overflow: hidden;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
-    padding: 0.6rem 0;
+    padding: 0.75rem 0;
     margin-bottom: 1.25rem;
 }
 
@@ -547,8 +547,9 @@ a:hover {
     display: inline-flex;
     width: max-content;
     will-change: transform;
-    animation: marquee 16s linear infinite;
-    font-size: 0.75rem;
+    animation: marquee 32s linear infinite;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--secondary-color);
