@@ -53,20 +53,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize Swiper carousel for Selected Works
+    // Initialize Swiper carousel for Selected Works with a smooth infinite loop
     if (window.Swiper && document.querySelector('.works-swiper')) {
         new Swiper('.works-swiper', {
-            slidesPerView: 1.05,
-            spaceBetween: 20,
+            slidesPerView: 1.15,
+            spaceBetween: 24,
             centeredSlides: true,
             loop: true,
+            loopedSlides: 6,
+            loopAdditionalSlides: 6,
+            loopFillGroupWithBlank: false,
+            slidesPerGroup: 1,
+            speed: 850,
+            grabCursor: true,
+            watchSlidesProgress: true,
+            slideToClickedSlide: true,
             autoplay: {
-                delay: 3500,
+                delay: 2600,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: true,
             },
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
+                dynamicBullets: true,
             },
             navigation: {
                 nextEl: '.swiper-button-next',
@@ -74,12 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             breakpoints: {
                 720: {
-                    slidesPerView: 1.5,
-                    spaceBetween: 24,
+                    slidesPerView: 1.8,
+                    spaceBetween: 28,
                 },
                 1080: {
-                    slidesPerView: 2.2,
-                    spaceBetween: 32,
+                    slidesPerView: 2.4,
+                    spaceBetween: 34,
                 },
             },
         });

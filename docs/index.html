@@ -8,14 +8,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://db.onlinewebfonts.com/c/a1ab9bebae84d82fbcfe930c4643de7a?family=Cera+CY+Regular" rel="stylesheet">
-    <!-- ADD THIS TO YOUR HTML <head> FOR ICONS: -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" defer></script>
     <script src="js/script.js" type="module" defer></script>
 </head>
 <body class="no-js">
+
+    <!-- ── Floating nav (top-left logo + top-right links, no bar) ── -->
+    <nav class="site-nav">
+        <div class="nav-logo">BH<br>AV</div>
+        <div class="nav-links">
+            <a href="#works">My Works</a>
+            <a href="#about">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ── Right-side SCROLL indicator ── -->
+    <div class="scroll-indicator">
+        <span class="scroll-label">SCROLL</span>
+        <div class="scroll-line"></div>
+    </div>
+
     <main class="main">
 
         <!-- ═══════════════════════════════════════
@@ -24,6 +37,7 @@
         <section id="intro" class="section centered-intro">
             <div class="intro-content">
                 <div class="intro-text">
+                    <p class="hero-eyebrow">I AM</p>
                     <h1 class="hero-title">BHAVANA</h1>
                     <p class="hero-subtitle">A Junior Developer</p>
                 </div>
@@ -35,40 +49,68 @@
         ═══════════════════════════════════════ -->
         <section id="about" class="section about-section">
 
-            <!-- Big heading with slide animation (like henry.codes) -->
             <div class="about-heading-wrap">
+                <div class="about-rule about-rule--top"></div>
                 <h2 class="about-heading">About the Dev</h2>
-                <div class="about-rule"></div>
+                <div class="about-rule about-rule--bottom"></div>
             </div>
 
-            <!-- Marquee strip (seamless infinite loop) -->
             <div class="marquee-container" aria-hidden="true">
                 <div class="marquee-track">
-                    <!-- Duplicate the inner content so the loop is truly seamless -->
                     <div class="marquee-inner">
-                        <span>BUILD · SHIP · ITERATE · ✦ · 40.7586° N, 73.9961° W (HYDERABAD) · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                        <span>BUILD · SHIP · ITERATE · ✦ · 40.7586° N, 73.9961° W (HYDERABAD) · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                        <span>BUILD · SHIP · ITERATE · ✦ · 40.7586° N, 73.9961° W (HYDERABAD) · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                        <span>BUILD · SHIP · ITERATE · ✦ · 40.7586° N, 73.9961° W (HYDERABAD) · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
                     </div>
-                    <!-- Exact duplicate for seamless loop -->
                     <div class="marquee-inner" aria-hidden="true">
-                        <span>BUILD · SHIP · ITERATE · ✦ · 40.7586° N, 73.9961° W (HYDERABAD) · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                        <span>BUILD · SHIP · ITERATE · ✦ · 40.7586° N, 73.9961° W (HYDERABAD) · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                        <span>BUILD · SHIP · ITERATE · ✦ · 40.7586° N, 73.9961° W (HYDERABAD) · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                        <span>BUILD · SHIP · ITERATE · ✦ · 40.7586° N, 73.9961° W (HYDERABAD) · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
+                        <span>BUILD · SHIP · ITERATE · ✦ · HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
                     </div>
                 </div>
             </div>
 
-            <!-- About body: centered -->
+            <!-- Two-column layout: text left, card right -->
             <div class="about-body">
-                <p>Hi I'm Bhavana Vundru or Bhav for short; I'm a Software Engineer && Developer with a habit of turning "what if this were an app" into actual; working things. I'm based in Hyderabad and I spend most of my time crafting mobile experiences that feel considered rather than cobbled together. This is my corner of the internet: part portfolio, part scratchpad; a place where prototypes, scattered notes, and unfinished thoughts all get to exist alongside the stuff I'm proud of.</p>
-                <div class="contact-info">
-                    <h3>Availability</h3>
-                    <p>I'm taking on freelance projects on a case-by-case basis.</p>
-                    <h3>Contact</h3>
-                    <p>Email: <a href="mailto:yo@example.com">yo@example.com</a></p>
+                <div class="about-text">
+                    <p>Hi, I'm Bhavana Vundru, or Bhav for short. I'm a student &amp;&amp; aspiring Systems Engineer based in Hyderabad, with a growing interest in building reliable, scalable, and well-structured software systems.</p>
+
+                    <p>I enjoy exploring how software works beyond the surface; from application development and system design to problem-solving, optimization, and clean architecture. I'm still learning, experimenting, and figuring things out, but I like turning ideas into functional projects that help me understand engineering better.</p>
+
+                    <p>This is my corner of the internet: part portfolio, part scratchpad; a place where projects, prototypes, technical notes, and unfinished ideas live alongside the work I'm proud of.</p>
+                </div>
+
+                <!-- Right card: find me links -->
+                <div class="about-card">
+                    <p class="about-card-label">Find me on</p>
+                    <ul class="find-me-list">
+                        <li>
+                            <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                                <i class="fa fa-arrow-right link-arrow"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank" rel="noopener">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span>LinkedIn</span>
+                                <i class="fa fa-arrow-right link-arrow"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:yo@example.com">
+                                <i class="fa fa-envelope"></i>
+                                <span>Email</span>
+                                <i class="fa fa-arrow-right link-arrow"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="about-card-divider"></div>
+                    <p class="about-card-label">Availability</p>
+                    <p class="about-card-status">Open to freelance &amp; collab</p>
                 </div>
             </div>
         </section>
@@ -77,75 +119,95 @@
              WORKS SECTION
         ═══════════════════════════════════════ -->
         <section id="works" class="section animate-on-scroll">
-            <h2>Selected Works</h2>
-            <div class="swiper works-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide work-item">
+            <h2>My work / Future Projects</h2>
+            <div class="works-carousel">
+                <button class="work-nav work-prev" aria-label="Previous project">&#8249;</button>
+                <div class="works-scroll-track" id="worksTrack">
+                    <div class="work-item">
                         <div class="work-image-placeholder">01</div>
                         <h3>Project One</h3>
                         <p>A stunning interactive experience for a major brand.</p>
                     </div>
-                    <div class="swiper-slide work-item">
+                    <div class="work-item">
                         <div class="work-image-placeholder">02</div>
                         <h3>Project Two</h3>
                         <p>Cutting-edge design system with accessible components.</p>
                     </div>
-                    <div class="swiper-slide work-item">
+                    <div class="work-item">
                         <div class="work-image-placeholder">03</div>
                         <h3>Project Three</h3>
                         <p>Innovative animation framework for web applications.</p>
                     </div>
-                    <div class="swiper-slide work-item">
+                    <div class="work-item">
                         <div class="work-image-placeholder">04</div>
                         <h3>Project Four</h3>
                         <p>A responsive commerce prototype that blends motion and utility.</p>
                     </div>
-                    <div class="swiper-slide work-item">
+                    <div class="work-item">
                         <div class="work-image-placeholder">05</div>
                         <h3>Project Five</h3>
                         <p>A polished onboarding flow built for mobile-first habits.</p>
                     </div>
-                    <div class="swiper-slide work-item">
+                    <div class="work-item">
                         <div class="work-image-placeholder">06</div>
                         <h3>Project Six</h3>
                         <p>A brand activation experience built around storytelling and performance.</p>
                     </div>
                 </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev" aria-label="Previous slide"></div>
-                <div class="swiper-button-next" aria-label="Next slide"></div>
+                <button class="work-nav work-next" aria-label="Next project">&#8250;</button>
             </div>
         </section>
 
     </main>
 
     <footer class="footer">
-        <p>© <span id="year"> </span>   made with love in Hyderabad</p>
+        <p>© <span id="year"></span> made with love in Hyderabad</p>
     </footer>
 
     <script>
-        // Year
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Remove no-js
         document.body.classList.remove('no-js');
 
-        // Animate on scroll (works + any future sections)
+        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) e.target.classList.add('animate-in');
-            });
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate-in'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-        // About heading slide animation on scroll
+        // About heading slide
         const aboutObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) e.target.classList.add('visible');
-            });
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.15 });
         const aboutSection = document.querySelector('.about-section');
         if (aboutSection) aboutObserver.observe(aboutSection);
+
+        // Works drag-to-scroll
+        const track = document.getElementById('worksTrack');
+        const cardWidth = () => track.querySelector('.work-item').offsetWidth + 24;
+
+        document.querySelector('.work-prev').addEventListener('click', () => {
+            track.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+        });
+        document.querySelector('.work-next').addEventListener('click', () => {
+            track.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+        });
+
+        // Mouse drag
+        let isDown = false, startX, scrollLeft;
+        track.addEventListener('mousedown', e => {
+            isDown = true; track.style.cursor = 'grabbing';
+            startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
+        });
+        track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
+        track.addEventListener('mouseup',    () => { isDown = false; track.style.cursor = 'grab'; });
+        track.addEventListener('mousemove',  e => {
+            if (!isDown) return; e.preventDefault();
+            track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX) * 1.4;
+        });
+        track.addEventListener('wheel', e => {
+            e.preventDefault();
+            track.scrollBy({ left: e.deltaY * 2, behavior: 'smooth' });
+        }, { passive: false });
     </script>
 </body>
 </html>

@@ -51,20 +51,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize Swiper carousel for Selected Works
+    // Arrow navigation for the works track
+    const worksTrack = document.getElementById('worksTrack');
+    const prevWork = document.querySelector('.work-prev');
+    const nextWork = document.querySelector('.work-next');
+    if (worksTrack && prevWork && nextWork) {
+        const items = worksTrack.querySelectorAll('.work-item');
+        const gap = parseFloat(getComputedStyle(worksTrack).gap) || 24;
+        const step = items[0] ? Math.round(items[0].getBoundingClientRect().width + gap) : worksTrack.clientWidth;
+
+        const scrollToStep = (direction) => {
+            const maxScroll = worksTrack.scrollWidth - worksTrack.clientWidth;
+            if (direction === 'next') {
+                if (worksTrack.scrollLeft >= maxScroll - 1) {
+                    worksTrack.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    worksTrack.scrollBy({ left: step, behavior: 'smooth' });
+                }
+            } else {
+                if (worksTrack.scrollLeft <= 1) {
+                    worksTrack.scrollTo({ left: maxScroll, behavior: 'smooth' });
+                } else {
+                    worksTrack.scrollBy({ left: -step, behavior: 'smooth' });
+                }
+            }
+        };
+
+        prevWork.addEventListener('click', () => scrollToStep('prev'));
+        nextWork.addEventListener('click', () => scrollToStep('next'));
+    }
+
+    // Initialize Swiper carousel for Selected Works with a smooth infinite loop
     if (window.Swiper && document.querySelector('.works-swiper')) {
         new Swiper('.works-swiper', {
-            slidesPerView: 1.05,
-            spaceBetween: 20,
+            slidesPerView: 1.15,
+            spaceBetween: 24,
             centeredSlides: true,
             loop: true,
+            loopedSlides: 6,
+            loopAdditionalSlides: 6,
+            loopFillGroupWithBlank: false,
+            slidesPerGroup: 1,
+            speed: 850,
+            grabCursor: true,
+            watchSlidesProgress: true,
+            slideToClickedSlide: true,
             autoplay: {
-                delay: 3500,
+                delay: 2600,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: true,
             },
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
+                dynamicBullets: true,
             },
             navigation: {
                 nextEl: '.swiper-button-next',
@@ -72,12 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             breakpoints: {
                 720: {
-                    slidesPerView: 1.5,
-                    spaceBetween: 24,
+                    slidesPerView: 1.8,
+                    spaceBetween: 28,
                 },
                 1080: {
-                    slidesPerView: 2.2,
-                    spaceBetween: 32,
+                    slidesPerView: 2.4,
+                    spaceBetween: 34,
                 },
             },
         });

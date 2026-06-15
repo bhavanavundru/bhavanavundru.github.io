@@ -92,10 +92,7 @@ a:hover { opacity: 0.7; }
    HERO SECTION
 ═══════════════════════════════════════════════ */
 #intro {
-    background-image: url('../images/space.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #000000;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -289,15 +286,18 @@ a:hover { opacity: 0.7; }
     max-width: 1200px;
     margin: 2rem auto 0;
     padding: 0 1rem;
+    overflow: hidden;
 }
 
 .works-swiper .swiper-wrapper {
     padding-bottom: 1.5rem;
+    transition-timing-function: cubic-bezier(0.22, 0.8, 0.2, 1);
 }
 
 .swiper-slide {
     width: auto;
     max-width: 360px;
+    transition: transform 0.6s cubic-bezier(0.22, 0.8, 0.2, 1), opacity 0.45s ease;
 }
 
 .work-item {
@@ -316,6 +316,9 @@ a:hover { opacity: 0.7; }
 .work-item:hover {
     border-color: transparent;
     background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.06));
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    z-index: 6;
 }
 
 .work-image-placeholder {
@@ -333,7 +336,26 @@ a:hover { opacity: 0.7; }
 
 .swiper-button-prev,
 .swiper-button-next {
-    color: var(--text-color);
+    color: #ffffff;
+    background: none;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem;
+    box-shadow: none;
+    transition: color 0.18s ease, transform 0.18s ease, filter 0.18s ease;
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    transform: translateY(-2px) scale(1.02);
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 1.2rem;
 }
 
 .swiper-pagination-bullet {
