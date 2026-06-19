@@ -14,14 +14,7 @@
 </head>
 <body class="no-js">
 
-    <!-- ── Floating nav (top-left logo + top-right links, no bar) ── -->
-    <nav class="site-nav">
-        <div class="nav-logo">BH<br>AV</div>
-        <div class="nav-links">
-            <a href="#works">My Works</a>
-            <a href="#about">Contact</a>
-        </div>
-    </nav>
+
 
     <!-- ── Right-side SCROLL indicator ── -->
     <div class="scroll-indicator">
@@ -37,9 +30,13 @@
         <section id="intro" class="section centered-intro">
             <div class="intro-content">
                 <div class="intro-text">
-                    <p class="hero-eyebrow">I AM</p>
-                    <h1 class="hero-title">BHAVANA</h1>
-                    <p class="hero-subtitle">A Junior Developer</p>
+                    <div class="hero-title-wrap">
+                        <p class="hero-eyebrow">I AM</p>
+                        <h1 class="hero-title">BHAVANA</h1>
+                        <div class="hero-sub-row">
+                            <p class="hero-subtitle">A Junior Developer</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -49,10 +46,16 @@
         ═══════════════════════════════════════ -->
         <section id="about" class="section about-section">
 
-            <div class="about-heading-wrap">
-                <div class="about-rule about-rule--top"></div>
-                <h2 class="about-heading">About the Dev</h2>
-                <div class="about-rule about-rule--bottom"></div>
+            <!-- scroll-animated heading band -->
+            <div class="about-title-scroll" id="aboutTitleScroll">
+                <div class="about-scroll-track" id="aboutScrollTrack">
+                    <span class="about-scroll-side" aria-hidden="true">ABOUT THE DEV</span>
+                    <span class="about-scroll-side" aria-hidden="true">ABOUT THE DEV</span>
+                    <span class="about-scroll-side" aria-hidden="true">ABOUT THE DEV</span>
+                    <h1 class="about-scroll-text" id="aboutScrollText">ABOUT THE DEV</h1>
+                    <span class="about-scroll-side" aria-hidden="true">ABOUT THE DEV</span>
+                    <span class="about-scroll-side" aria-hidden="true">ABOUT THE DEV</span>
+                </div>
             </div>
 
             <div class="marquee-container" aria-hidden="true">
@@ -72,17 +75,13 @@
                 </div>
             </div>
 
-            <!-- Two-column layout: text left, card right -->
             <div class="about-body">
                 <div class="about-text">
                     <p>Hi, I'm Bhavana Vundru, or Bhav for short. I'm a student &amp;&amp; aspiring Systems Engineer based in Hyderabad, with a growing interest in building reliable, scalable, and well-structured software systems.</p>
-
                     <p>I enjoy exploring how software works beyond the surface; from application development and system design to problem-solving, optimization, and clean architecture. I'm still learning, experimenting, and figuring things out, but I like turning ideas into functional projects that help me understand engineering better.</p>
-
                     <p>This is my corner of the internet: part portfolio, part scratchpad; a place where projects, prototypes, technical notes, and unfinished ideas live alongside the work I'm proud of.</p>
                 </div>
 
-                <!-- Right card: find me links -->
                 <div class="about-card">
                     <p class="about-card-label">Find me on</p>
                     <ul class="find-me-list">
@@ -113,6 +112,7 @@
                     <p class="about-card-status">Open to freelance &amp; collab</p>
                 </div>
             </div>
+
         </section>
 
         <!-- ═══════════════════════════════════════
@@ -203,6 +203,54 @@
         track.addEventListener('mousemove',  e => {
             if (!isDown) return; e.preventDefault();
             track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX) * 1.4;
+        });
+        track.addEventListener('wheel', e => {
+            e.preventDefault();
+            track.scrollBy({ left: e.deltaY * 2, behavior: 'smooth' });
+        }, { passive: false });
+
+        // ── About scroll-text: slide in from right, section-scoped, with lerp glide ──
+        const scrollTrack = document.getElementById("aboutScrollTrack");
+        const aboutSec    = document.getElementById("about");
+
+        function clamp(val, min, max) { return Math.min(Math.max(val, min), max); }
+        function lerp(a, b, t) { return a + (b - a) * t; }
+
+        let currentX = window.innerWidth * 0.70;   // start off-screen right in px
+        let targetX  = window.innerWidth * 0.70;
+
+        function getTargetX() {
+            const rect      = aboutSec.getBoundingClientRect();
+            const viewH     = window.innerHeight;
+            const secH      = aboutSec.offsetHeight;
+            const total     = viewH + secH;
+            const travelled = viewH - rect.top;
+            const progress  = clamp(travelled / total, 0, 1);
+            const slideP    = clamp(progress / 0.45, 0, 1);
+            // end: white title left edge at viewport left edge
+            // white title's offsetLeft within track gives us how far left to pull
+            const whiteEl   = document.getElementById('aboutScrollText');
+            const endPx     = -(whiteEl.offsetLeft);
+            // start: endPx + 900px to the right (roughly 60vw worth of travel)
+            const startPx   = endPx + window.innerWidth * 0.70;
+            const px        = startPx + slideP * (endPx - startPx);
+            return px; // px value, not vw
+        }
+
+        function animateText() {
+            targetX  = getTargetX();
+            currentX = lerp(currentX, targetX, 0.08);
+            if (Math.abs(currentX - targetX) < 0.5) currentX = targetX;
+            // move only the inner track — borders stay put
+            scrollTrack.style.transform = `translateX(${currentX}px)`;
+            requestAnimationFrame(animateText);
+        }
+
+        animateText();
+
+        window.addEventListener("resize", () => {
+            targetX  = getTargetX();
+            currentX = targetX;
         });
     </script>
 </body>

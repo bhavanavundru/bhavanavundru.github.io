@@ -51,6 +51,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Fade the scroll indicator as the user scrolls down
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        const fadeThreshold = 200;
+        const updateScrollIndicator = () => {
+            const opacity = Math.max(0, 1 - window.scrollY / fadeThreshold);
+            scrollIndicator.style.opacity = opacity.toString();
+            scrollIndicator.style.transform = `translateY(${Math.min(window.scrollY / 10, 18)}px)`;
+
+            if (window.scrollY >= fadeThreshold) {
+                scrollIndicator.classList.add('hidden');
+            } else {
+                scrollIndicator.classList.remove('hidden');
+            }
+        };
+
+        updateScrollIndicator();
+        window.addEventListener('scroll', updateScrollIndicator, { passive: true });
+    }
+
     // Arrow navigation for the works track
     const worksTrack = document.getElementById('worksTrack');
     const prevWork = document.querySelector('.work-prev');
