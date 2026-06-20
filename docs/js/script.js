@@ -151,3 +151,66 @@ document.addEventListener('DOMContentLoaded', () => {
         char.style.animationDelay = `${index * 0.02}s`;
     });
 });
+// ── Availability toggle owner-only via console ──
+(() => {
+    const AVAIL_KEY = 'bhav_availability';
+
+    const getAvailabilityElements = () => ({
+        dot: document.getElementById('availDot'),
+        status: document.getElementById('availStatus')
+    });
+
+    const getSavedAvailability = () => {
+        const saved = localStorage.getItem(AVAIL_KEY);
+        return saved === null ? true : saved === 'true';
+    };
+
+    const renderAvailability = (available) => {
+        const { dot, status } = getAvailabilityElements();
+
+        if (!dot || !status) {
+            console.warn('Availability elements not found. Check #availDot and #availStatus in your HTML.');
+            return;
+        }
+
+        dot.classList.toggle('unavailable', !available);
+        dot.setAttribute('aria-label', available ? 'Available' : 'Unavailable');
+
+        status.textContent = available
+            ? 'Open to freelance & collab'
+            : 'Currently not available';
+    };
+
+    const setAvailability = (value) => {
+        let available;
+
+        if (typeof value === 'boolean') {
+            available = value;
+        } else if (typeof value === 'string') {
+            available = value.toLowerCase() === 'true';
+        } else {
+            // Calling setAvail() with no value toggles current state
+            available = !getSavedAvailability();
+        }
+
+        localStorage.setItem(AVAIL_KEY, available ? 'true' : 'false');
+        renderAvailability(available);
+
+        console.log(`Availability set to: ${available ? 'Available' : 'Unavailable'}`);
+        return available;
+    };
+
+    // Expose to DevTools console
+    window.setAvail = setAvailability;
+
+    // Load saved state after page is ready
+    const initAvailability = () => {
+        renderAvailability(getSavedAvailability());
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAvailability);
+    } else {
+        initAvailability();
+    }
+})();
