@@ -567,7 +567,15 @@ a:hover { opacity: 0.7; }
 
     animation: unavailable-pulse 1.8s ease-in-out infinite;
 }
+.live-dot.is-loading {
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: none;
+    animation: none;
+}
 
+.about-card-status.is-loading {
+    color: rgba(255, 255, 255, 0.35);
+}
 @keyframes live-pulse {
     0% {
         box-shadow:

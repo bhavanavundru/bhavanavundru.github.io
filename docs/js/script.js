@@ -54,6 +54,10 @@ function renderAvailability(available) {
         return;
     }
 
+    // Remove loading state once Firebase gives us the real value
+    dot.classList.remove("is-loading");
+    status.classList.remove("is-loading");
+
     dot.classList.toggle("unavailable", !available);
     dot.setAttribute("aria-label", available ? "Available" : "Unavailable");
 
@@ -61,7 +65,6 @@ function renderAvailability(available) {
         ? "Open to freelance & collab"
         : "Currently not available";
 }
-
 function startAvailabilityListener() {
     if (availabilityListenerStarted) return;
     availabilityListenerStarted = true;
