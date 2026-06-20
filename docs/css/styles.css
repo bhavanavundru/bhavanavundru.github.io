@@ -31,18 +31,7 @@ html { scroll-behavior: smooth; }
 body {
     font-family: var(--mono-family);
     background-color: #0c0c0c;
-    /* Soft circular glow — top-left, like the reference */
-    background-image:
-        radial-gradient(
-            ellipse 80% 70% at 20% 10%,
-            rgba(90,90,90,0.55) 0%,
-            rgba(50,50,50,0.3)  30%,
-            rgba(20,20,20,0.1)  60%,
-            transparent         100%
-        );
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+    /* grey gradient removed */
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
@@ -59,7 +48,7 @@ body::after {
 }
 
 /* ═══════════════════════════════════════════════
-   Floating Navigation (no bar — just positioned text)
+   Floating Navigation
 ═══════════════════════════════════════════════ */
 .site-nav {
     position: fixed;
@@ -70,7 +59,7 @@ body::after {
     align-items: flex-start;
     padding: 0 2rem;
     z-index: 100;
-    pointer-events: none; /* let clicks pass through the gap */
+    pointer-events: none;
 }
 
 .nav-logo {
@@ -104,12 +93,12 @@ body::after {
 /* ── Right SCROLL indicator ── */
 .scroll-indicator {
     position: fixed;
-    right: 1.8rem;
+    right: 2rem;
     bottom: 2.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.75rem;
     z-index: 100;
     opacity: 1;
     transition: opacity 0.35s ease, transform 0.35s ease;
@@ -121,16 +110,17 @@ body::after {
 }
 .scroll-label {
     font-family: 'Oswald', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    color: rgba(255,255,255,0.4);
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    color: rgba(255,255,255,0.55);
     writing-mode: vertical-rl;
     text-orientation: mixed;
 }
 .scroll-line {
-    width: 1px;
-    height: 60px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+    border-radius: 2px;
 }
 
 /* ═══════════════════════════════════════════════
@@ -149,7 +139,7 @@ a:hover { opacity: 0.7; }
    Layout
 ═══════════════════════════════════════════════ */
 .main { width: 100%; max-width: none; }
-.section { padding: 4rem 2rem; background-color: transparent; }
+.section { padding: 4rem clamp(1rem, 4vw, 3rem); background-color: transparent; }
 
 /* ═══════════════════════════════════════════════
    HERO
@@ -160,7 +150,7 @@ a:hover { opacity: 0.7; }
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10vh 1.5rem 4rem;
+    padding: 10vh clamp(1rem, 4vw, 3rem) 4rem;
     position: relative;
     overflow: hidden;
 }
@@ -186,10 +176,10 @@ a:hover { opacity: 0.7; }
 .hero-eyebrow {
     position: absolute;
     top: -1.1rem;
-    left: 8%;
+    left: -0.1em;
     transform: none;
     font-family: 'Oswald', sans-serif;
-    font-size: 0.9rem;
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.55);
@@ -210,13 +200,12 @@ a:hover { opacity: 0.7; }
 }
 
 .hero-title {
-    font-size: clamp(3.5rem, 12vw, 9rem);
+    font-size: clamp(3rem, 12vw, 9rem);
     line-height: 0.95;
     margin: 0;
     font-weight: 700;
     letter-spacing: -0.01em;
     text-transform: uppercase;
-    /* subtle 3D-ish shadow like the reference */
     text-shadow:
         0 2px 0 rgba(0,0,0,0.4),
         0 6px 20px rgba(0,0,0,0.35),
@@ -225,7 +214,7 @@ a:hover { opacity: 0.7; }
 
 .hero-subtitle {
     font-family: 'Oswald', sans-serif;
-    font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+    font-size: clamp(0.75rem, 1.6vw, 1.2rem);
     color: rgba(255,255,255,0.6);
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -259,7 +248,7 @@ a:hover { opacity: 0.7; }
     margin: 0;
     white-space: nowrap;
     font-family: 'Oswald', sans-serif;
-    font-size: clamp(3.5rem, 8vw, 8rem);
+    font-size: clamp(2.5rem, 7vw, 8rem);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.03em;
@@ -271,7 +260,7 @@ a:hover { opacity: 0.7; }
 /* left and right faded duplicates */
 .about-scroll-side {
     font-family: 'Oswald', sans-serif;
-    font-size: clamp(3.5rem, 8vw, 8rem);
+    font-size: clamp(2.5rem, 7vw, 8rem);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.03em;
@@ -324,16 +313,16 @@ a:hover { opacity: 0.7; }
 .about-body {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 clamp(1rem, 4vw, 3rem);
     display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 4rem;
+    grid-template-columns: 1fr 300px;
+    gap: clamp(2rem, 4vw, 4rem);
     align-items: start;
 }
 
 .about-text p {
     font-family: 'Oswald', sans-serif;
-    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    font-size: clamp(0.95rem, 1.3vw, 1.15rem);
     line-height: 2;
     color: rgba(255,255,255,0.78);
     margin-bottom: 1.6rem;
@@ -367,27 +356,59 @@ a:hover { opacity: 0.7; }
     margin-bottom: 0;
 }
 
-.find-me-list li a {
+.glass-list li a {
     display: flex;
     align-items: center;
     gap: 0.85rem;
     padding: 0.75rem 1rem;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.06);
-    background: rgba(255,255,255,0.02);
-    color: rgba(255,255,255,0.8);
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.14);
+    /* liquid glass core */
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.10) 0%,
+        rgba(255,255,255,0.04) 50%,
+        rgba(255,255,255,0.07) 100%
+    );
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    color: rgba(255,255,255,0.85);
     font-family: 'Oswald', sans-serif;
     font-size: 0.95rem;
     letter-spacing: 0.05em;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.14);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.2s ease, box-shadow 0.25s ease;
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.15);
 }
-.find-me-list li a:hover {
-    background: rgba(255,255,255,0.07);
-    border-color: rgba(255,255,255,0.18);
+/* glossy shine strip across the top */
+.glass-list li a::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.09), transparent);
+    border-radius: 14px 14px 0 0;
+    pointer-events: none;
+}
+.glass-list li a:hover {
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.16) 0%,
+        rgba(255,255,255,0.07) 50%,
+        rgba(255,255,255,0.12) 100%
+    );
+    border-color: rgba(255,255,255,0.28);
     color: #fff;
     opacity: 1;
+    box-shadow:
+        0 4px 16px rgba(0,0,0,0.4),
+        0 0 0 1px rgba(255,255,255,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.22);
 }
 .find-me-list li a i:first-child {
     font-size: 1rem;
@@ -424,7 +445,7 @@ a:hover { opacity: 0.7; }
    WORKS SECTION
 ═══════════════════════════════════════════════ */
 #works { background-color: transparent; overflow: hidden; }
-#works h2 { font-size: clamp(1.8rem, 4vw, 3.5rem); margin-bottom: 1.8rem; padding-left: 2rem; }
+#works h2 { font-size: clamp(1.5rem, 4vw, 3.5rem); margin-bottom: 1.8rem; padding-left: 2rem; }
 
 .works-carousel {
     display: grid;
@@ -448,7 +469,7 @@ a:hover { opacity: 0.7; }
 .works-scroll-track:active { cursor: grabbing; }
 
 .work-nav {
-    width: 48px; height: 48px;
+    width: 44px; height: 44px;
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 999px;
     background: rgba(255,255,255,0.04);
@@ -461,28 +482,32 @@ a:hover { opacity: 0.7; }
 .work-nav:hover { background: rgba(255,255,255,0.09); transform: scale(1.05); }
 
 .work-item {
-    flex: 0 0 320px;
-    min-width: 320px;
+    flex: 0 0 clamp(240px, 30vw, 320px);
+    min-width: clamp(240px, 30vw, 320px);
     scroll-snap-align: start;
     border: 1px solid var(--border-color);
-    padding: 2rem;
+    padding: clamp(1.25rem, 2vw, 2rem);
     background: rgba(255,255,255,0.03);
     border-radius: 18px;
-    min-height: 320px;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: border-color 0.2s ease, background 0.2s ease, transform 0.3s ease;
 }
 .work-item:hover {
-    border-color: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.35);
     background: rgba(255,255,255,0.06);
     transform: translateY(-5px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    box-shadow:
+        0 12px 32px rgba(0,0,0,0.4),
+        0 0 0 1px rgba(255,255,255,0.12),
+        0 0 18px rgba(255,255,255,0.08),
+        0 0 40px rgba(255,255,255,0.04);
 }
 
 .work-image-placeholder {
-    width: 100%; height: 200px;
+    width: 100%; height: clamp(140px, 15vw, 200px);
     background: rgba(255,255,255,0.04);
     display: flex; align-items: center; justify-content: center;
     font-size: 2.5rem; font-weight: 700;
@@ -500,6 +525,35 @@ a:hover { opacity: 0.7; }
 }
 .animate-on-scroll.animate-in { opacity: 1; transform: translateY(0); }
 
+
+/* ── Marquee location icon ── */
+.marquee-icon {
+    font-size: 0.75rem;
+    vertical-align: middle;
+    margin-right: 0.2em;
+    color: var(--text-secondary);
+}
+
+/* ── Live status dot ── */
+.availability-dot-row {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem 0 0.75rem 0;
+}
+.live-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(34,197,94,0.8);
+    animation: live-pulse 2s ease-in-out infinite;
+}
+@keyframes live-pulse {
+    0%, 100% { box-shadow: 0 0 4px rgba(34,197,94,0.7); }
+    50%       { box-shadow: 0 0 12px rgba(34,197,94,1), 0 0 22px rgba(34,197,94,0.4); }
+}
+
 /* ═══════════════════════════════════════════════
    Footer
 ═══════════════════════════════════════════════ */
@@ -513,25 +567,34 @@ a:hover { opacity: 0.7; }
 /* ═══════════════════════════════════════════════
    Responsive
 ═══════════════════════════════════════════════ */
+
+/* Tablet */
 @media (max-width: 900px) {
     .about-body {
         grid-template-columns: 1fr;
         gap: 2.5rem;
     }
     .about-card { position: static; }
+    .about-scroll-text,
+    .about-scroll-side { font-size: clamp(2.2rem, 8vw, 5rem); }
 }
 
+/* Large mobile / small tablet */
 @media (max-width: 768px) {
     .hero-title { font-size: clamp(2.5rem, 14vw, 5rem); }
-    .about-scroll-text { font-size: clamp(1.8rem, 6vw, 3rem); }
     .about-body { padding: 0 1.25rem; }
-    .work-item { flex: 0 0 280px; min-width: 280px; }
-    .scroll-indicator { display: none; }
+    .scroll-indicator { right: 1rem; bottom: 1.5rem; }
+    .scroll-line { height: 60px; }
+    #works h2 { padding-left: 1rem; }
 }
 
+/* Mobile */
 @media (max-width: 480px) {
-    .hero-title { font-size: clamp(2rem, 15vw, 3.5rem); }
+    .hero-title { font-size: clamp(2.2rem, 15vw, 3.5rem); }
     .section { padding: 3rem 1rem; }
-    .work-item { flex: 0 0 260px; min-width: 260px; }
+    .about-scroll-text,
+    .about-scroll-side { font-size: clamp(1.8rem, 10vw, 3rem); }
+    .scroll-indicator { display: none; }
     .nav-links { gap: 1.2rem; }
+    .work-nav { width: 36px; height: 36px; font-size: 1.2rem; }
 }
