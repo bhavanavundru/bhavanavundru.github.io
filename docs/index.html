@@ -34,7 +34,7 @@
                         <p class="hero-eyebrow">I AM</p>
                         <h1 class="hero-title">BHAVANA</h1>
                         <div class="hero-sub-row">
-                            <p class="hero-subtitle">A Software Developer</p>
+                            <p class="hero-subtitle">A Junior Developer</p>
                         </div>
                     </div>
                 </div>
@@ -77,9 +77,9 @@
 
             <div class="about-body">
                 <div class="about-text">
-                    <p>Hi, I'm Bhavana Vundru, or Bhav for short. I'm a student &amp;&amp; aspiring Software Engineer based in Hyderabad, with a growing interest in building reliable, and well-structured software systems.</p>
+                    <p>Hi, I'm Bhavana Vundru, or Bhav for short. I'm a student &amp;&amp; aspiring Systems Engineer currently based in Hyderabad. I'm really into building apps that feel more like places.</p>
                     <p>I enjoy exploring how software works beyond the surface; I'm still learning, experimenting, and figuring things out, but I like turning ideas into functional projects that help me understand engineering better.</p>
-                    <p>This is my corner of the internet: part portfolio, part scratchpad; a place where projects, prototypes, and unfinished ideas live alongside the work I'm proud of.</p>
+                    <p>This is my corner of the internet: part portfolio, part scratchpad; a place where projects, prototypes, technical notes, and unfinished ideas live alongside the work I'm proud of.</p>
                 </div>
 
                 <div class="about-card">
@@ -116,11 +116,10 @@
                     </ul>
                     <div class="about-card-divider"></div>
                     <p class="about-card-label">
-    Availability
-    <span class="live-dot is-loading" id="availDot" aria-label="Checking availability"></span>
-</p>
-
-<p class="about-card-status is-loading" id="availStatus">Checking availability...</p>
+                        Availability
+                        <span class="live-dot is-loading" id="availDot" aria-label="Checking availability"></span>
+                    </p>
+                    <p class="about-card-status is-loading" id="availStatus">Checking availability...</p>
                 </div>
             </div>
 
@@ -223,11 +222,12 @@
         // ── About scroll-text: slide in from right, section-scoped, with lerp glide ──
         const scrollTrack = document.getElementById("aboutScrollTrack");
         const aboutSec    = document.getElementById("about");
+        const whiteEl     = document.getElementById("aboutScrollText");
 
         function clamp(val, min, max) { return Math.min(Math.max(val, min), max); }
         function lerp(a, b, t) { return a + (b - a) * t; }
 
-        let currentX = window.innerWidth * 0.70;   // start off-screen right in px
+        let currentX = window.innerWidth * 0.70;
         let targetX  = window.innerWidth * 0.70;
 
         function getTargetX() {
@@ -238,21 +238,17 @@
             const travelled = viewH - rect.top;
             const progress  = clamp(travelled / total, 0, 1);
             const slideP    = clamp(progress / 0.45, 0, 1);
-            // end: white title left edge at viewport left edge
-            // white title's offsetLeft within track gives us how far left to pull
-            const whiteEl   = document.getElementById('aboutScrollText');
-            const endPx     = -(whiteEl.offsetLeft);
-            // start: endPx + 900px to the right (roughly 60vw worth of travel)
+            // Measure live so late font loads don't cause stale values.
+            // Clamp endPx to 0: white title stops exactly at left edge, never past it.
+            const endPx     = Math.min(-whiteEl.offsetLeft, 0);
             const startPx   = endPx + window.innerWidth * 0.70;
-            const px        = startPx + slideP * (endPx - startPx);
-            return px; // px value, not vw
+            return startPx + slideP * (endPx - startPx);
         }
 
         function animateText() {
             targetX  = getTargetX();
             currentX = lerp(currentX, targetX, 0.08);
             if (Math.abs(currentX - targetX) < 0.5) currentX = targetX;
-            // move only the inner track — borders stay put
             scrollTrack.style.transform = `translateX(${currentX}px)`;
             requestAnimationFrame(animateText);
         }
@@ -260,11 +256,33 @@
         animateText();
 
         window.addEventListener("resize", () => {
-            // recalculate immediately on resize so startPx uses updated innerWidth
             currentX = getTargetX();
             targetX  = currentX;
             scrollTrack.style.transform = `translateX(${currentX}px)`;
-        });
+        }, { passive: true });
+
+        // ── Availability toggle (owner-only via console: setAvail(true/false)) ──
+        const AVAIL_KEY = 'bhav_availability';
+        const dot    = document.getElementById('availDot');
+        const status = document.getElementById('availStatus');
+
+        function setAvailability(available) {
+            localStorage.setItem(AVAIL_KEY, available ? 'true' : 'false');
+            dot.classList.remove('is-loading', 'unavailable');
+            status.classList.remove('is-loading');
+            if (available) {
+                dot.setAttribute('aria-label', 'Available');
+                status.textContent = 'Open to freelance & collab';
+            } else {
+                dot.classList.add('unavailable');
+                dot.setAttribute('aria-label', 'Unavailable');
+                status.textContent = 'Currently not available';
+            }
+        }
+
+        const saved = localStorage.getItem(AVAIL_KEY);
+        setAvailability(saved === null ? true : saved === 'true');
+        window.setAvail = (v) => setAvailability(v);
     </script>
 </body>
 </html>
