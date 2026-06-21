@@ -46,6 +46,23 @@ function getAvailabilityElements() {
     };
 }
 
+function renderAvailabilityLoading() {
+    const { dot, status } = getAvailabilityElements();
+
+    if (!dot || !status) {
+        console.warn("Availability elements not found. Check #availDot and #availStatus in your HTML.");
+        return;
+    }
+
+    dot.classList.add("is-loading");
+    dot.classList.remove("unavailable");
+
+    status.classList.add("is-loading");
+
+    dot.setAttribute("aria-label", "Checking availability");
+    status.textContent = "Checking availability...";
+}
+
 function renderAvailability(available) {
     const { dot, status } = getAvailabilityElements();
 
@@ -65,9 +82,12 @@ function renderAvailability(available) {
         ? "Open to freelance & collab"
         : "Currently not available";
 }
+
 function startAvailabilityListener() {
     if (availabilityListenerStarted) return;
     availabilityListenerStarted = true;
+
+    renderAvailabilityLoading();
 
     onSnapshot(
         availabilityRef,
@@ -90,49 +110,6 @@ function startAvailabilityListener() {
         }
     );
 }
-
-// Owner-only login from DevTools console
-window.ownerLogin = async function (email, password) {
-    try {
-        await signInWithEmailAndPassword(auth, email, password);
-        console.log("Logged in. Now run await setAvail(true) or await setAvail(false).");
-    } catch (error) {
-        console.error("Login failed:", error);
-    }
-};
-
-// Owner-only logout from DevTools console
-window.ownerLogout = async function () {
-    try {
-        await signOut(auth);
-        console.log("Logged out.");
-    } catch (error) {
-        console.error("Logout failed:", error);
-    }
-};
-
-// Owner-only status changer from DevTools console
-window.setAvail = async function (available) {
-    if (typeof available !== "boolean") {
-        console.error("Use await setAvail(true) or await setAvail(false).");
-        return;
-    }
-
-    try {
-        await setDoc(
-            availabilityRef,
-            { available },
-            { merge: true }
-        );
-
-        // Update your screen instantly
-        renderAvailability(available);
-
-        console.log(`Availability set to: ${available ? "Available" : "Unavailable"}`);
-    } catch (error) {
-        console.error("Could not update availability. Are you logged in as the owner?", error);
-    }
-};
 
 /* ═══════════════════════════════════════════════
    Main page scripts
