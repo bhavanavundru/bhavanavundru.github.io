@@ -213,8 +213,8 @@ a:hover { opacity: 0.7; }
 /* ── Scroll heading band ── */
 .about-title-scroll {
     overflow: hidden;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-top: 3px solid rgba(255,255,255,0.08);
+    border-bottom: 2px solid rgba(255,255,255,0.08);
     padding: 1rem 0;
     width: 100%;
     margin-left: 0;
@@ -264,7 +264,7 @@ a:hover { opacity: 0.7; }
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     padding: 0.75rem 0;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     background-color: rgba(255,255,255,0.02);
 }
 .marquee-track {
@@ -298,10 +298,11 @@ a:hover { opacity: 0.7; }
 }
 
 /* ── Two-column about layout ── */
+/* TASK 4: Push about text further left — removed auto margins, use padding-left only */
 .about-body {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 clamp(1rem, 4vw, 3rem);
+    margin: 0 0 0 clamp(1rem, 4vw, 3rem);
+    padding: 0 clamp(1rem, 4vw, 3rem) 0 0;
     display: grid;
     grid-template-columns: minmax(0, 520px) 320px;
     justify-content: space-between;
@@ -310,7 +311,7 @@ a:hover { opacity: 0.7; }
 }
 
 .about-text {
-    margin-left: 0;
+    margin-left: 5rem;
     max-width: 520px;
     margin-top: 3rem;
 }
@@ -325,14 +326,15 @@ a:hover { opacity: 0.7; }
 .about-text p:last-child { margin-bottom: 0; }
 
 /* ── Right card ── */
+/* TASK 3: Remove sticky so the card stays visually stable while scrolling */
 .about-card {
     background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 3px solid rgba(255,255,255,0.08);
     border-radius: 16px;
     padding: 2rem 1.75rem;
-    position: sticky;
-    top: 6rem;
+    position: static;
     margin-left: 1.5rem;
+    margin-top: 3rem;
 }
 
 .about-card-label {
@@ -450,14 +452,15 @@ a:hover { opacity: 0.7; }
     background: #ef4444;
     animation: unavailable-pulse 1.8s ease-in-out infinite;
 }
+/* TASK 2: Grey/neutral loading state — no colour, no pulse */
 .live-dot.is-loading {
-    background: rgba(0,0,0,0.32);
+    background: rgba(255,255,255,0.25);
     box-shadow: none;
     animation: none;
 }
 
 .about-card-status.is-loading {
-    color: rgba(0,0,0,0.42);
+    color: rgba(255,255,255,0.35);
 }
 
 @keyframes live-pulse {
@@ -475,7 +478,8 @@ a:hover { opacity: 0.7; }
    WORKS SECTION
 ═══════════════════════════════════════════════ */
 #works { background-color: transparent; overflow: hidden; }
-#works h2 { font-size: clamp(1.5rem, 4vw, 3.5rem); margin-bottom: 1.8rem; padding-left: 2rem; }
+/* TASK 1: Push works section slightly right */
+#works h2 { font-size: clamp(1.5rem, 4vw, 3.5rem); margin-bottom: 1.8rem; padding-left: clamp(2rem, 7vw, 5rem); }
 
 .works-carousel {
     display: grid;
@@ -592,7 +596,7 @@ a:hover { opacity: 0.7; }
 /* Large mobile */
 @media (max-width: 768px) {
     .hero-title { font-size: clamp(2.5rem, 14vw, 5rem); }
-    .about-body { padding: 0 1.25rem; }
+    .about-body { padding: 0 1.25rem; margin-left: 0; }
     .scroll-indicator { right: 1rem; bottom: 1.5rem; }
     .scroll-line { height: 60px; }
     #works h2 { padding-left: 1rem; }

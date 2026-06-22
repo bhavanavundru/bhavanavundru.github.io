@@ -82,6 +82,10 @@ function renderAvailability(available) {
         ? "Open to freelance & collab"
         : "Currently not available";
 }
+// Owner-only console toggle — setAvail(true) / setAvail(false)
+window.setAvail = async (available) => {
+    await setDoc(availabilityRef, { available: !!available });
+};
 
 function startAvailabilityListener() {
     if (availabilityListenerStarted) return;
@@ -110,6 +114,24 @@ function startAvailabilityListener() {
         }
     );
 }
+
+document.querySelectorAll('.glass-list li a').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        const rx = ((y / r.height) - 0.5) * -10;
+        const ry = ((x / r.width) - 0.5) * 10;
+        btn.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`;
+        btn.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.38), rgba(255,255,255,0.14) 60%)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+        btn.style.background = 'rgba(255,255,255,0.18)';
+    });
+    btn.addEventListener('mousedown', () => { btn.style.transform = 'scale(0.97)'; });
+    btn.addEventListener('mouseup',   () => { btn.style.transform = ''; });
+});
 
 /* ═══════════════════════════════════════════════
    Main page scripts

@@ -12,6 +12,23 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/script.js" type="module" defer></script>
 </head>
+<svg style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true">
+    <filter id="liquidGlass">
+        <feTurbulence
+            type="turbulence"
+            baseFrequency="0.012"
+            numOctaves="2"
+            result="turbulence"
+        />
+        <feDisplacementMap
+            in="SourceGraphic"
+            in2="turbulence"
+            scale="90"
+            xChannelSelector="R"
+            yChannelSelector="G"
+        />
+    </filter>
+</svg>
 <body class="no-js">
 
 
@@ -110,7 +127,7 @@
                             <a href="#" target="_blank" rel="noopener">
                                 <i class="fa fa-file-lines"></i>
                                 <span>Resume</span>
-                                <i class="fa fa-arrow-up-right-from-square link-arrow"></i>
+                                <i class="fa fa-up-right-from-square link-arrow"></i>
                             </a>
                         </li>
                     </ul>
@@ -238,8 +255,6 @@
             const travelled = viewH - rect.top;
             const progress  = clamp(travelled / total, 0, 1);
             const slideP    = clamp(progress / 0.45, 0, 1);
-            // Measure live so late font loads don't cause stale values.
-            // Clamp endPx to 0: white title stops exactly at left edge, never past it.
             const endPx     = Math.min(-whiteEl.offsetLeft, 0);
             const startPx   = endPx + window.innerWidth * 0.70;
             return startPx + slideP * (endPx - startPx);
@@ -261,28 +276,10 @@
             scrollTrack.style.transform = `translateX(${currentX}px)`;
         }, { passive: true });
 
-        // ── Availability toggle (owner-only via console: setAvail(true/false)) ──
-        const AVAIL_KEY = 'bhav_availability';
-        const dot    = document.getElementById('availDot');
-        const status = document.getElementById('availStatus');
-
-        function setAvailability(available) {
-            localStorage.setItem(AVAIL_KEY, available ? 'true' : 'false');
-            dot.classList.remove('is-loading', 'unavailable');
-            status.classList.remove('is-loading');
-            if (available) {
-                dot.setAttribute('aria-label', 'Available');
-                status.textContent = 'Open to freelance & collab';
-            } else {
-                dot.classList.add('unavailable');
-                dot.setAttribute('aria-label', 'Unavailable');
-                status.textContent = 'Currently not available';
-            }
-        }
-
-        const saved = localStorage.getItem(AVAIL_KEY);
-        setAvailability(saved === null ? true : saved === 'true');
-        window.setAvail = (v) => setAvailability(v);
+        // NOTE: Availability is now controlled entirely by Firebase in script.js.
+        // The dot starts in "is-loading" state (grey, set in HTML) and Firebase
+        // updates it to the correct green/red once the snapshot arrives.
+        // To toggle: setAvail(true) or setAvail(false) in the browser console.
     </script>
 </body>
 </html>
