@@ -2,11 +2,11 @@
    CSS Variables
 ═══════════════════════════════════════════════ */
 :root {
-    --text-color:     #ffffff;
-    --text-secondary: #999999;
-    --text-muted:     #555555;
-    --accent-color:   #ffffff;
-    --border-color:   rgba(255,255,255,0.06);
+    --text-color:     #111111;
+    --text-secondary: #66645f;
+    --text-muted:     #aaa49b;
+    --accent-color:   #111111;
+    --border-color:   rgba(17,17,17,0.12);
     --transition:     color 0.12s ease, opacity 0.12s ease, background 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
     --mono-family:    'Cera CY Regular', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
     --page-max:       1200px;
@@ -38,7 +38,7 @@ html {
 
 body {
     font-family: var(--mono-family);
-    background-color: #0c0c0c;
+    background-color: #f7f4ef;
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
@@ -56,7 +56,7 @@ body::after {
     background-size: 260px 260px;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.22;
+    opacity: 0.10;
     contain: paint;
 }
 
@@ -103,14 +103,14 @@ a:hover { opacity: 0.7; }
     font-family: 'Oswald', sans-serif;
     font-size: 1rem;
     letter-spacing: 0.28em;
-    color: rgba(255,255,255,0.55);
+    color: rgba(17,17,17,0.48);
     writing-mode: vertical-rl;
     text-orientation: mixed;
 }
 .scroll-line {
     width: 2px;
     height: 80px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+    background: linear-gradient(to bottom, rgba(17,17,17,0.45), transparent);
     border-radius: 2px;
 }
 
@@ -160,7 +160,7 @@ a:hover { opacity: 0.7; }
     font-size: clamp(1rem, 0.8vw, 0.95rem);
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
+    color: rgba(17,17,17,0.48);
     margin: 0;
     white-space: nowrap;
 }
@@ -173,12 +173,12 @@ a:hover { opacity: 0.7; }
     letter-spacing: -0.01em;
     text-transform: uppercase;
     text-align: center;
-    color: #ffffff;
+    color: #111111;
     white-space: nowrap;
     text-shadow:
-        0 2px 0 rgba(0,0,0,0.4),
-        0 6px 20px rgba(0,0,0,0.35),
-        0 1px 0 rgba(255,255,255,0.08);
+        0 1px 0 rgba(255,255,255,0.95),
+        0 8px 24px rgba(17,17,17,0.12),
+        0 1px 0 rgba(17,17,17,0.06);
 }
 
 .hero-sub-row {
@@ -195,7 +195,7 @@ a:hover { opacity: 0.7; }
 .hero-subtitle {
     font-family: 'Oswald', sans-serif;
     font-size: clamp(1rem, 0.95vw, 1.2rem);
-    color: rgba(255,255,255,0.6);
+    color: rgba(17,17,17,0.55);
     letter-spacing: 0.22em;
     text-transform: uppercase;
     margin: 0;
@@ -213,8 +213,8 @@ a:hover { opacity: 0.7; }
 /* ── Scroll heading band ── */
 .about-title-scroll {
     overflow: hidden;
-    border-top: 3px solid rgba(255,255,255,0.08);
-    border-bottom: 2px solid rgba(255,255,255,0.08);
+    border-top: 3px solid rgba(17,17,17,0.12);
+    border-bottom: 2px solid rgba(17,17,17,0.12);
     padding: 1rem 0;
     width: 100%;
     margin-left: 0;
@@ -238,7 +238,7 @@ a:hover { opacity: 0.7; }
     line-height: 1;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    color: #ffffff;
+    color: #111111;
     flex-shrink: 0;
 }
 
@@ -249,7 +249,7 @@ a:hover { opacity: 0.7; }
     line-height: 1;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    color: #ffffff;
+    color: #111111;
     opacity: 0.12;
     white-space: nowrap;
     flex-shrink: 0;
@@ -265,7 +265,7 @@ a:hover { opacity: 0.7; }
     border-bottom: 1px solid var(--border-color);
     padding: 0.75rem 0;
     margin-bottom: 1rem;
-    background-color: rgba(255,255,255,0.02);
+    background-color: rgba(255,255,255,0.55);
 }
 .marquee-track {
     display: flex;
@@ -320,7 +320,7 @@ a:hover { opacity: 0.7; }
     font-family: 'Oswald', sans-serif;
     font-size: clamp(1.12rem, 1.45vw, 1.45rem);
     line-height: 1.65;
-    color: rgba(255,255,255,0.82);
+    color: rgba(17,17,17,0.78);
     margin-bottom: 1.75rem;
 }
 .about-text p:last-child { margin-bottom: 0; }
@@ -328,13 +328,14 @@ a:hover { opacity: 0.7; }
 /* ── Right card ── */
 /* TASK 3: Remove sticky so the card stays visually stable while scrolling */
 .about-card {
-    background: rgba(255,255,255,0.03);
-    border: 3px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.68);
+    border: 3px solid rgba(17,17,17,0.10);
     border-radius: 16px;
     padding: 2rem 1.75rem;
     position: static;
     margin-left: 1.5rem;
     margin-top: 3rem;
+    box-shadow: 0 18px 48px rgba(17,17,17,0.08);
 }
 
 .about-card-label {
@@ -364,46 +365,46 @@ a:hover { opacity: 0.7; }
     gap: 0.85rem;
     padding: 0.75rem 1rem;
     border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.14);
+    border: 1px solid rgba(17,17,17,0.10);
     background: linear-gradient(
         135deg,
-        rgba(255,255,255,0.10) 0%,
-        rgba(255,255,255,0.04) 50%,
-        rgba(255,255,255,0.07) 100%
+        rgba(255,255,255,0.95) 0%,
+        rgba(255,255,255,0.62) 50%,
+        rgba(255,255,255,0.82) 100%
     );
     backdrop-filter: blur(8px) saturate(1.2);
     -webkit-backdrop-filter: blur(8px) saturate(1.2);
-    color: rgba(255,255,255,0.85);
+    color: rgba(17,17,17,0.80);
     font-family: 'Oswald', sans-serif;
     font-size: 0.95rem;
     letter-spacing: 0.05em;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.14);
+    border-bottom: 1px solid rgba(17,17,17,0.10);
     position: relative;
     overflow: hidden;
     transition: background 0.25s ease, border-color 0.25s ease, color 0.2s ease, box-shadow 0.25s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+    box-shadow: 0 2px 8px rgba(17,17,17,0.08), inset 0 1px 0 rgba(255,255,255,0.85);
 }
 .glass-list li a::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 40%;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.09), transparent);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.70), transparent);
     border-radius: 14px 14px 0 0;
     pointer-events: none;
 }
 .glass-list li a:hover {
     background: linear-gradient(
         135deg,
-        rgba(255,255,255,0.16) 0%,
-        rgba(255,255,255,0.07) 50%,
-        rgba(255,255,255,0.12) 100%
+        rgba(255,255,255,1) 0%,
+        rgba(255,255,255,0.74) 50%,
+        rgba(255,255,255,0.90) 100%
     );
-    border-color: rgba(255,255,255,0.28);
-    color: #fff;
+    border-color: rgba(17,17,17,0.22);
+    color: #111;
     opacity: 1;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1), inset 0 1px 0 rgba(255,255,255,0.22);
+    box-shadow: 0 8px 24px rgba(17,17,17,0.12), 0 0 0 1px rgba(17,17,17,0.06), inset 0 1px 0 rgba(255,255,255,0.95);
 }
 .find-me-list li a i:first-child {
     font-size: 1rem;
@@ -414,24 +415,24 @@ a:hover { opacity: 0.7; }
 .find-me-list li a span { flex: 1; }
 .link-arrow {
     font-size: 0.7rem !important;
-    color: rgba(255,255,255,0.25) !important;
+    color: rgba(17,17,17,0.32) !important;
     transition: transform 0.2s ease, color 0.2s ease;
 }
 .find-me-list li a:hover .link-arrow {
     transform: translateX(3px);
-    color: rgba(255,255,255,0.6) !important;
+    color: rgba(17,17,17,0.62) !important;
 }
 
 .about-card-divider {
     height: 3px;
-    background: rgba(255,255,255,0.07);
+    background: rgba(17,17,17,0.10);
     margin: 1.5rem 0;
 }
 
 .about-card-status {
     font-family: 'Oswald', sans-serif;
     font-size: 0.9rem;
-    color: rgba(255,255,255,0.6);
+    color: rgba(17,17,17,0.55);
     margin-bottom: 0;
     line-height: 1.5;
 }
@@ -454,13 +455,13 @@ a:hover { opacity: 0.7; }
 }
 /* TASK 2: Grey/neutral loading state — no colour, no pulse */
 .live-dot.is-loading {
-    background: rgba(255,255,255,0.25);
+    background: rgba(17,17,17,0.25);
     box-shadow: none;
     animation: none;
 }
 
 .about-card-status.is-loading {
-    color: rgba(255,255,255,0.35);
+    color: rgba(17,17,17,0.35);
 }
 
 @keyframes live-pulse {
@@ -505,16 +506,16 @@ a:hover { opacity: 0.7; }
 
 .work-nav {
     width: 44px; height: 44px;
-    border: 1px solid rgba(255,255,255,0.12);
+    border: 1px solid rgba(17,17,17,0.14);
     border-radius: 999px;
-    background: rgba(255,255,255,0.04);
-    color: #fff;
+    background: rgba(255,255,255,0.72);
+    color: #111;
     display: inline-flex; align-items: center; justify-content: center;
     font-size: 1.5rem; cursor: pointer;
     transition: background 0.18s ease, transform 0.18s ease;
     flex-shrink: 0;
 }
-.work-nav:hover { background: rgba(255,255,255,0.09); transform: scale(1.05); }
+.work-nav:hover { background: rgba(255,255,255,0.95); transform: scale(1.05); }
 
 .work-item {
     flex: 0 0 clamp(260px, 28vw, 360px);
@@ -522,7 +523,7 @@ a:hover { opacity: 0.7; }
     scroll-snap-align: start;
     border: 1px solid var(--border-color);
     padding: clamp(1.25rem, 2vw, 2rem);
-    background: rgba(255,255,255,0.03);
+    background: rgba(255,255,255,0.68);
     border-radius: 18px;
     min-height: 300px;
     display: flex;
@@ -530,21 +531,22 @@ a:hover { opacity: 0.7; }
     justify-content: space-between;
     transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
     contain: content;
+    box-shadow: 0 10px 28px rgba(17,17,17,0.07);
 }
 .work-item:hover {
-    border-color: rgba(255,255,255,0.35);
-    background: rgba(255,255,255,0.06);
+    border-color: rgba(17,17,17,0.35);
+    background: rgba(255,255,255,0.90);
     transform: translateY(-5px);
     box-shadow:
-        0 12px 32px rgba(0,0,0,0.4),
-        0 0 0 1px rgba(255,255,255,0.12),
-        0 0 18px rgba(255,255,255,0.08),
-        0 0 40px rgba(255,255,255,0.04);
+        0 12px 32px rgba(17,17,17,0.14),
+        0 0 0 1px rgba(17,17,17,0.08),
+        0 0 18px rgba(17,17,17,0.05),
+        0 0 40px rgba(17,17,17,0.03);
 }
 
 .work-image-placeholder {
     width: 100%; height: clamp(140px, 15vw, 200px);
-    background: rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.72);
     display: flex; align-items: center; justify-content: center;
     font-size: 2.5rem; font-weight: 700;
     margin-bottom: 1.5rem;
