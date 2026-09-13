@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Bhavana — Computer Science student portfolio with an interactive GPU fluid background."
+    />
+    <title>Bhavana — Portfolio</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "/node_modules/three/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index-D9Waj9Z0.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DNrshm-u.css">
+  </head>
+  <body>
+    <canvas id="fluid-canvas" aria-hidden="true"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+
+    <div class="corner-frame" aria-hidden="true">
+      <span class="corner corner-tl"></span>
+      <span class="corner corner-tr"></span>
+      <span class="corner corner-bl"></span>
+      <span class="corner corner-br"></span>
+    </div>
+
+    <header class="site-header">
+      <div class="header-eyebrow">
+        <span id="clock">22:29</span>
+        <span class="divider vertical"></span>
+        <span>EN / DE</span>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="active" href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-meta">
+        <span class="moon" aria-hidden="true">◒</span>
+        <span class="divider"></span>
+        <span class="weather-dot"></span>
+        <span>Clear night 28°C</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero panel" id="home">
+        <div class="availability">
+          <span class="status-dot"></span>
+          Available
+        </div>
+
+        <div class="hero-copy">
+          <h1>Hi, <em>I’m Bhavana</em></h1>
+          <p class="hero-subtitle">I am a Computer Science student</p>
+        </div>
+
+        <a class="scroll-cue" href="#about">
+          <span class="scroll-icon">↕</span>
+          <span>Scroll down</span>
+        </a>
+      </section>
+
+      <section class="panel section" id="about">
+        <div class="section-heading">
+          <span class="section-index">02.</span>
+          <h2>About the <em>Dev</em></h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              I like building interfaces that feel alive — combining front-end
+              engineering, visual systems, and interactive computing.
+            </p>
+            <p>
+              My current focus is web development, AR/VR, and machine learning,
+              with a strong interest in graphics and real-time interaction.
+            </p>
+          </div>
+
+          <div class="trait-grid">
+            <article class="trait"><span>◉</span><strong>Creative</strong></article>
+            <article class="trait"><span>Py</span><strong>Python</strong></article>
+            <article class="trait"><span>◌</span><strong>Problem Solver</strong></article>
+            <article class="trait"><span>♙</span><strong>Team Player</strong></article>
+            <article class="trait"><span>✦</span><strong>Curious</strong></article>
+            <article class="trait"><span>↗</span><strong>Always Learning</strong></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel section" id="work">
+        <div class="section-heading">
+          <span class="section-index">03.</span>
+          <h2>What <em>I Do</em></h2>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <span class="number">1.</span>
+            <h3>Web Development</h3>
+            <p>Responsive interfaces, interaction design, and polished web experiences.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="number">2.</span>
+            <h3>AR / VR</h3>
+            <p>Immersive ideas, spatial interfaces, and experimental interaction.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="number">3.</span>
+            <h3>AI &amp; Machine Learning</h3>
+            <p>Computer vision, intelligent systems, and practical ML experiments.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel section contact" id="contact">
+        <div>
+          <span class="section-index">04.</span>
+          <h2>Get <em>in touch</em></h2>
+
+          <form
+            class="email-form"
+            onsubmit="window.location.href='mailto:hello@example.com?subject=Portfolio%20contact&body='+encodeURIComponent(this.email.value); return false;"
+          >
+            <span>✉</span>
+            <input
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="Enter your email"
+              aria-label="Your email address"
+              required
+            />
+            <button type="submit" aria-label="Send email">→</button>
+          </form>
+        </div>
+
+        <div class="elsewhere">
+          <h3>Elsewhere</h3>
+          <div class="socials">
+            <a href="#" aria-label="Email">✉</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="GitHub">gh</a>
+            <a href="#" aria-label="Instagram">◎</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+  </body>
+</html>

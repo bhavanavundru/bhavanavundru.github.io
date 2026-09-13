@@ -1,285 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bhavcodes</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://db.onlinewebfonts.com/c/a1ab9bebae84d82fbcfe930c4643de7a?family=Cera+CY+Regular" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/script.js" type="module" defer></script>
-</head>
-<svg style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true">
-    <filter id="liquidGlass">
-        <feTurbulence
-            type="turbulence"
-            baseFrequency="0.012"
-            numOctaves="2"
-            result="turbulence"
-        />
-        <feDisplacementMap
-            in="SourceGraphic"
-            in2="turbulence"
-            scale="90"
-            xChannelSelector="R"
-            yChannelSelector="G"
-        />
-    </filter>
-</svg>
-<body class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Bhavana — Computer Science student portfolio with an interactive GPU fluid background."
+    />
+    <title>Bhavana — Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <canvas id="fluid-canvas" aria-hidden="true"></canvas>
+    <div class="noise" aria-hidden="true"></div>
 
-
-
-    <!-- ── Right-side SCROLL indicator ── -->
-    <div class="scroll-indicator">
-        <span class="scroll-label">SCROLL</span>
-        <div class="scroll-line"></div>
+    <div class="corner-frame" aria-hidden="true">
+      <span class="corner corner-tl"></span>
+      <span class="corner corner-tr"></span>
+      <span class="corner corner-bl"></span>
+      <span class="corner corner-br"></span>
     </div>
 
-    <main class="main">
+    <header class="site-header">
+      <div class="header-eyebrow">
+        <span id="clock">22:29</span>
+        <span class="divider vertical"></span>
+        <span>EN / DE</span>
+      </div>
 
-        <!-- ═══════════════════════════════════════
-             HERO SECTION
-        ═══════════════════════════════════════ -->
-        <section id="intro" class="section centered-intro">
-            <div class="intro-content">
-                <div class="intro-text">
-                    <div class="hero-title-wrap">
-                        <p class="hero-eyebrow">I AM</p>
-                        <h1 class="hero-title">BHAVANA</h1>
-                        <div class="hero-sub-row">
-                            <p class="hero-subtitle">A Software Engineer</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <nav class="nav" aria-label="Primary">
+        <a class="active" href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-        <!-- ═══════════════════════════════════════
-             ABOUT SECTION
-        ═══════════════════════════════════════ -->
-        <section id="about" class="section about-section">
+      <div class="header-meta">
+        <span class="moon" aria-hidden="true">◒</span>
+        <span class="divider"></span>
+        <span class="weather-dot"></span>
+        <span>Clear night 28°C</span>
+      </div>
+    </header>
 
-            <!-- scroll-animated heading band -->
-            <div class="about-title-scroll" id="aboutTitleScroll">
-                <div class="about-scroll-track" id="aboutScrollTrack">
-                    <span class="about-scroll-side" aria-hidden="true">ABOUT THE DEV</span>
-                    <span class="about-scroll-side" aria-hidden="true">ABOUT THE DEV</span>
-                    <span class="about-scroll-side" aria-hidden="true">ABOUT THE DEV</span>
-                    <h1 class="about-scroll-text" id="aboutScrollText">ABOUT THE DEV</h1>
-                    <span class="about-scroll-side" aria-hidden="true">ABOUT THE DEV</span>
-                    <span class="about-scroll-side" aria-hidden="true">ABOUT THE DEV</span>
-                </div>
-            </div>
+    <main>
+      <section class="hero panel" id="home">
+        <div class="availability">
+          <span class="status-dot"></span>
+          Available
+        </div>
 
-            <div class="marquee-container" aria-hidden="true">
-                <div class="marquee-track">
-                    <div class="marquee-inner">
-                        <span>BUILD · SHIP · ITERATE · ✦ · <i class='fa fa-location-dot marquee-icon'></i> HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                        <span>BUILD · SHIP · ITERATE · ✦ · <i class='fa fa-location-dot marquee-icon'></i> HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                        <span>BUILD · SHIP · ITERATE · ✦ · <i class='fa fa-location-dot marquee-icon'></i> HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                        <span>BUILD · SHIP · ITERATE · ✦ · <i class='fa fa-location-dot marquee-icon'></i> HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                    </div>
-                    <div class="marquee-inner" aria-hidden="true">
-                        <span>BUILD · SHIP · ITERATE · ✦ · <i class='fa fa-location-dot marquee-icon'></i> HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                        <span>BUILD · SHIP · ITERATE · ✦ · <i class='fa fa-location-dot marquee-icon'></i> HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                        <span>BUILD · SHIP · ITERATE · ✦ · <i class='fa fa-location-dot marquee-icon'></i> HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                        <span>BUILD · SHIP · ITERATE · ✦ · <i class='fa fa-location-dot marquee-icon'></i> HYDERABAD · ✦ · I JUST KNOW I'M GONNA BE HOMELESS IN FUTURE · ✦ ·&nbsp;</span>
-                    </div>
-                </div>
-            </div>
+        <div class="hero-copy">
+          <h1>Hi, <em>I’m Bhavana</em></h1>
+          <p class="hero-subtitle">I am a Computer Science student</p>
+        </div>
 
-            <div class="about-body">
-                <div class="about-text">
-                    <p>Hi, I'm Bhavana Vundru, or Bhav for short. I'm a student &amp;&amp; aspiring Software Engineer currently based in Hyderabad. I'm really into building apps that feel more like places and deleting code.</p>
-                    <p>I create mobile apps, design systems, and interactive digital experiences; I'm still figuring things out, but I like turning ideas into functional projects that help me understand engineering better.</p>
-                    <p>This is my corner of the internet: part portfolio, part scratchpad; a place where projects, prototypes, technical notes, and unfinished ideas live alongside the work I'm proud of.</p>
-                </div>
+        <a class="scroll-cue" href="#about">
+          <span class="scroll-icon">↕</span>
+          <span>Scroll down</span>
+        </a>
+      </section>
 
-                <div class="about-card">
-                    <p class="about-card-label">Elsewhere</p>
-                    <ul class="find-me-list glass-list">
-                        <li>
-                            <a href="https://github.com/bhavanavundru" target="_blank" rel="noopener">
-                                <i class="fab fa-github"></i>
-                                <span>GitHub</span>
-                                <i class="fa fa-arrow-right link-arrow"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/in/bhavana-vundru-241b35316/" target="_blank" rel="noopener">
-                                <i class="fab fa-linkedin-in"></i>
-                                <span>LinkedIn</span>
-                                <i class="fa fa-arrow-right link-arrow"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:vundrubhavana@gmail.com">
-                                <i class="fa fa-envelope"></i>
-                                <span>Email</span>
-                                <i class="fa fa-arrow-right link-arrow"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" rel="noopener">
-                                <i class="fa fa-file-lines"></i>
-                                <span>Resume</span>
-                                <i class="fa fa-up-right-from-square link-arrow"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="about-card-divider"></div>
-                    <p class="about-card-label">
-                        Availability
-                        <span class="live-dot is-loading" id="availDot" aria-label="Checking availability"></span>
-                    </p>
-                    <p class="about-card-status is-loading" id="availStatus">Checking availability...</p>
-                </div>
-            </div>
+      <section class="panel section" id="about">
+        <div class="section-heading">
+          <span class="section-index">02.</span>
+          <h2>About the <em>Dev</em></h2>
+        </div>
 
-        </section>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              I like building interfaces that feel alive — combining front-end
+              engineering, visual systems, and interactive computing.
+            </p>
+            <p>
+              My current focus is web development, AR/VR, and machine learning,
+              with a strong interest in graphics and real-time interaction.
+            </p>
+          </div>
 
-        <!-- ═══════════════════════════════════════
-             WORKS SECTION
-        ═══════════════════════════════════════ -->
-        <section id="works" class="section animate-on-scroll">
-            <h2>My work / Future Projects</h2>
-            <div class="works-carousel">
-                <button class="work-nav work-prev" aria-label="Previous project">&#8249;</button>
-                <div class="works-scroll-track" id="worksTrack">
-                    <div class="work-item">
-                        <div class="work-image-placeholder">01</div>
-                        <h3>Project One</h3>
-                        <p>A stunning interactive experience for a major brand.</p>
-                    </div>
-                    <div class="work-item">
-                        <div class="work-image-placeholder">02</div>
-                        <h3>Project Two</h3>
-                        <p>Cutting-edge design system with accessible components.</p>
-                    </div>
-                    <div class="work-item">
-                        <div class="work-image-placeholder">03</div>
-                        <h3>Project Three</h3>
-                        <p>Innovative animation framework for web applications.</p>
-                    </div>
-                    <div class="work-item">
-                        <div class="work-image-placeholder">04</div>
-                        <h3>Project Four</h3>
-                        <p>A responsive commerce prototype that blends motion and utility.</p>
-                    </div>
-                    <div class="work-item">
-                        <div class="work-image-placeholder">05</div>
-                        <h3>Project Five</h3>
-                        <p>A polished onboarding flow built for mobile-first habits.</p>
-                    </div>
-                    <div class="work-item">
-                        <div class="work-image-placeholder">06</div>
-                        <h3>Project Six</h3>
-                        <p>A brand activation experience built around storytelling and performance.</p>
-                    </div>
-                </div>
-                <button class="work-nav work-next" aria-label="Next project">&#8250;</button>
-            </div>
-        </section>
+          <div class="trait-grid">
+            <article class="trait"><span>◉</span><strong>Creative</strong></article>
+            <article class="trait"><span>Py</span><strong>Python</strong></article>
+            <article class="trait"><span>◌</span><strong>Problem Solver</strong></article>
+            <article class="trait"><span>♙</span><strong>Team Player</strong></article>
+            <article class="trait"><span>✦</span><strong>Curious</strong></article>
+            <article class="trait"><span>↗</span><strong>Always Learning</strong></article>
+          </div>
+        </div>
+      </section>
 
+      <section class="panel section" id="work">
+        <div class="section-heading">
+          <span class="section-index">03.</span>
+          <h2>What <em>I Do</em></h2>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <span class="number">1.</span>
+            <h3>Web Development</h3>
+            <p>Responsive interfaces, interaction design, and polished web experiences.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="number">2.</span>
+            <h3>AR / VR</h3>
+            <p>Immersive ideas, spatial interfaces, and experimental interaction.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="number">3.</span>
+            <h3>AI &amp; Machine Learning</h3>
+            <p>Computer vision, intelligent systems, and practical ML experiments.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel section contact" id="contact">
+        <div>
+          <span class="section-index">04.</span>
+          <h2>Get <em>in touch</em></h2>
+
+          <form
+            class="email-form"
+            onsubmit="window.location.href='mailto:hello@example.com?subject=Portfolio%20contact&body='+encodeURIComponent(this.email.value); return false;"
+          >
+            <span>✉</span>
+            <input
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="Enter your email"
+              aria-label="Your email address"
+              required
+            />
+            <button type="submit" aria-label="Send email">→</button>
+          </form>
+        </div>
+
+        <div class="elsewhere">
+          <h3>Elsewhere</h3>
+          <div class="socials">
+            <a href="#" aria-label="Email">✉</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="GitHub">gh</a>
+            <a href="#" aria-label="Instagram">◎</a>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer">
-        <p>© <span id="year"></span> made with love in Hyderabad</p>
-    </footer>
-
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-        document.body.classList.remove('no-js');
-
-        // Scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate-in'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-
-        // About heading slide
-        const aboutObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.15 });
-        const aboutSection = document.querySelector('.about-section');
-        if (aboutSection) aboutObserver.observe(aboutSection);
-
-        // Works drag-to-scroll
-        const track = document.getElementById('worksTrack');
-        const cardWidth = () => track.querySelector('.work-item').offsetWidth + 24;
-
-        document.querySelector('.work-prev').addEventListener('click', () => {
-            track.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
-        });
-        document.querySelector('.work-next').addEventListener('click', () => {
-            track.scrollBy({ left: cardWidth(), behavior: 'smooth' });
-        });
-
-        // Mouse drag
-        let isDown = false, startX, scrollLeft;
-        track.addEventListener('mousedown', e => {
-            isDown = true; track.style.cursor = 'grabbing';
-            startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
-        });
-        track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
-        track.addEventListener('mouseup',    () => { isDown = false; track.style.cursor = 'grab'; });
-        track.addEventListener('mousemove',  e => {
-            if (!isDown) return; e.preventDefault();
-            track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX) * 1.4;
-        });
-        track.addEventListener('wheel', e => {
-            e.preventDefault();
-            track.scrollBy({ left: e.deltaY * 2, behavior: 'smooth' });
-        }, { passive: false });
-
-        // ── About scroll-text: slide in from right, section-scoped, with lerp glide ──
-        const scrollTrack = document.getElementById("aboutScrollTrack");
-        const aboutSec    = document.getElementById("about");
-        const whiteEl     = document.getElementById("aboutScrollText");
-
-        function clamp(val, min, max) { return Math.min(Math.max(val, min), max); }
-        function lerp(a, b, t) { return a + (b - a) * t; }
-
-        let currentX = window.innerWidth * 0.70;
-        let targetX  = window.innerWidth * 0.70;
-
-        function getTargetX() {
-            const rect      = aboutSec.getBoundingClientRect();
-            const viewH     = window.innerHeight;
-            const secH      = aboutSec.offsetHeight;
-            const total     = viewH + secH;
-            const travelled = viewH - rect.top;
-            const progress  = clamp(travelled / total, 0, 1);
-            const slideP    = clamp(progress / 0.45, 0, 1);
-            const endPx     = Math.min(-whiteEl.offsetLeft, 0);
-            const startPx   = endPx + window.innerWidth * 0.70;
-            return startPx + slideP * (endPx - startPx);
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "/node_modules/three/build/three.module.js"
         }
-
-        function animateText() {
-            targetX  = getTargetX();
-            currentX = lerp(currentX, targetX, 0.08);
-            if (Math.abs(currentX - targetX) < 0.5) currentX = targetX;
-            scrollTrack.style.transform = `translateX(${currentX}px)`;
-            requestAnimationFrame(animateText);
-        }
-
-        animateText();
-
-        window.addEventListener("resize", () => {
-            currentX = getTargetX();
-            targetX  = currentX;
-            scrollTrack.style.transform = `translateX(${currentX}px)`;
-        }, { passive: true });
-
-        // NOTE: Availability is now controlled entirely by Firebase in script.js.
-        // The dot starts in "is-loading" state (grey, set in HTML) and Firebase
-        // updates it to the correct green/red once the snapshot arrives.
-        // To toggle: setAvail(true) or setAvail(false) in the browser console.
+      }
     </script>
-</body>
+    <script type="module" src="js/main.js"></script>
+  </body>
 </html>
