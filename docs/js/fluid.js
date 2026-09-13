@@ -107,7 +107,7 @@ export class FluidBackground {
     this.velocityDissipation = 0.982;
     this.dyeDissipation = 0.989;
     this.velocitySmoothing = this.mobile ? 0.12 : 0.10;
-    this.dyeSmoothing = this.mobile ? 0.11 : 0.085;
+    this.dyeSmoothing = this.mobile ? 0.08 : 0.06;
 
     this.splatRadius = this.mobile ? 0.0032 : 0.0042;
 
@@ -469,30 +469,25 @@ export class FluidBackground {
   }
 
   buildAmbientSeeds() {
-    const count = this.mobile ? 3 : 5;
-    const seeds = [];
-
-    for (let i = 0; i < count; i++) {
-      seeds.push({
-        baseX: 0.18 + Math.random() * 0.64,
-        baseY: 0.18 + Math.random() * 0.64,
-        orbitX: 0.16 + Math.random() * 0.2,
-        orbitY: 0.16 + Math.random() * 0.2,
-        freqX: 0.035 + Math.random() * 0.045,
-        freqY: 0.035 + Math.random() * 0.045,
-        driftFreqX: 0.006 + Math.random() * 0.01,
-        driftFreqY: 0.006 + Math.random() * 0.01,
-        phaseX: Math.random() * Math.PI * 2,
-        phaseY: Math.random() * Math.PI * 2,
-        spin: Math.random() < 0.5 ? -1 : 1,
-        colorPhase: Math.random() * 12,
-        dyeScale: 7 + Math.random() * 5,
+    return [
+      {
+        baseX: 0.5,
+        baseY: 0.5,
+        orbitX: this.mobile ? 0.25 : 0.30,
+        orbitY: this.mobile ? 0.20 : 0.25,
+        freqX: 0.30,
+        freqY: 0.36,
+        driftFreqX: 0.035,
+        driftFreqY: 0.028,
+        phaseX: 0.4,
+        phaseY: 2.1,
+        spin: 1,
+        colorPhase: 1.8,
+        dyeScale: 8,
         lastX: null,
         lastY: null,
-      });
-    }
-
-    return seeds;
+      },
+    ];
   }
 
   ambientSplat(time) {
@@ -503,8 +498,8 @@ export class FluidBackground {
     if (idleMix <= 0) return;
 
     for (const seed of this.ambientSeeds) {
-      const driftX = Math.sin(time * seed.driftFreqX) * 0.14;
-      const driftY = Math.cos(time * seed.driftFreqY) * 0.14;
+      const driftX = Math.sin(time * seed.driftFreqX) * 0.10;
+      const driftY = Math.cos(time * seed.driftFreqY) * 0.10;
 
       const wx = time * seed.freqX + seed.phaseX;
       const wy = time * seed.freqY + seed.phaseY;
@@ -512,8 +507,8 @@ export class FluidBackground {
       const x = seed.baseX + driftX + Math.sin(wx) * seed.orbitX;
       const y = seed.baseY + driftY + Math.cos(wy) * seed.orbitY;
 
-      const vx = Math.cos(wx) * seed.freqX * seed.orbitX * seed.spin * 180;
-      const vy = -Math.sin(wy) * seed.freqY * seed.orbitY * seed.spin * 180;
+      const vx = Math.cos(wx) * seed.freqX * seed.orbitX * seed.spin * 680;
+      const vy = -Math.sin(wy) * seed.freqY * seed.orbitY * seed.spin * 680;
 
       const fromX = seed.lastX ?? x;
       const fromY = seed.lastY ?? y;
@@ -523,13 +518,13 @@ export class FluidBackground {
         x,
         y,
         new THREE.Vector3(vx, vy, 0),
-        this.splatRadius * 1.5,
+        this.splatRadius * 2.0,
         fromX,
         fromY
       );
 
       const color = this.palette(time * 0.55 + seed.colorPhase).multiplyScalar(
-        0.10 * idleMix
+        0.13 * idleMix
       );
 
       this.splat(
@@ -550,13 +545,7 @@ export class FluidBackground {
   seed() {
     if (this.disabled || !this.dye || !this.velocity) return;
 
-    const seeds = [
-      [0.30, 0.62, 5.0, -2.2, 0.0],
-      [0.68, 0.42, -4.5, 3.5, 1.6],
-      [0.55, 0.70, 2.2, 4.0, 3.1],
-      [0.22, 0.30, 3.8, 1.6, 4.4],
-      [0.80, 0.68, -3.0, -2.0, 6.0],
-    ];
+    const seeds = [[0.5, 0.5, 8.0, -5.0, 1.8]];
 
     for (const [x, y, vx, vy, phase] of seeds) {
       this.splat(
@@ -573,7 +562,7 @@ export class FluidBackground {
         x,
         y,
         new THREE.Vector3(color.r, color.g, color.b),
-        this.splatRadius * 12.0
+        this.splatRadius * 8.0
       );
     }
   }
