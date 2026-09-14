@@ -70,6 +70,10 @@ export class FluidBackground {
 
     this.disabled = false;
     this.clock = new THREE.Clock();
+    this.flowTime = 0;
+    this.currentSpeed = 1;
+    this.colorTime = 0;
+    this.speedPhase = Math.random() * Math.PI * 2;
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
@@ -413,6 +417,17 @@ export class FluidBackground {
     targetDouble.swap();
   }
 
+  getSpeedMultiplier(time) {
+    const primary = 0.5 + 0.5 * Math.sin(time * 0.25 + this.speedPhase);
+    const secondary = 0.5 + 0.5 * Math.sin(time * 0.53 + this.speedPhase * 1.7);
+    return 0.42 + primary * 0.82 + secondary * 0.22;
+  }
+
+  getDynamicRadius(time) {
+    const breathing = 0.5 + 0.5 * Math.sin(time * 0.42 + 0.7);
+    return 0.72 + breathing * 0.28;
+  }
+
   pointerSplat(time) {
     if (!this.pointer.initialized || !this.pointer.moved) return;
 
@@ -447,18 +462,18 @@ export class FluidBackground {
       toX,
       toY,
       force,
-      this.splatRadius * 1.15,
+      this.splatRadius * 1.05,
       fromX,
       fromY
     );
 
-    const color = this.palette(time).multiplyScalar(1.45);
+    const color = this.palette(this.colorTime).multiplyScalar(1.45);
     this.splat(
       this.dye,
       toX,
       toY,
       new THREE.Vector3(color.r, color.g, color.b),
-      this.splatRadius * 4.6,
+      this.splatRadius * 3.1,
       fromX,
       fromY
     );
@@ -469,103 +484,313 @@ export class FluidBackground {
   }
 
   buildAmbientSeeds() {
-    return [
-      {
-        baseX: 0.5,
-        baseY: 0.5,
-        orbitX: this.mobile ? 0.25 : 0.30,
-        orbitY: this.mobile ? 0.20 : 0.25,
-        freqX: 0.30,
-        freqY: 0.36,
-        driftFreqX: 0.035,
-        driftFreqY: 0.028,
-        phaseX: 0.4,
-        phaseY: 2.1,
-        spin: 1,
-        colorPhase: 1.8,
-        dyeScale: 8,
-        lastX: null,
-        lastY: null,
-      },
-    ];
-  }
+  return [
+    {
+      baseX: 0.5,
+      baseY: 0.49,
+
+      /*
+        Wider horizontally,
+        tighter vertically.
+
+        This makes the path feel ribbon-like
+        rather than like a round cloud orbit.
+      */
+      orbitX:
+        this.mobile ? 0.28 : 0.36,
+
+      orbitY:
+        this.mobile ? 0.15 : 0.19,
+
+      freqX: 0.24,
+      freqY: 0.33,
+
+      driftFreqX: 0.031,
+      driftFreqY: 0.025,
+
+      phaseX: 0.4,
+      phaseY: 2.1,
+
+      spin: 1,
+
+      colorPhase: 1.8,
+
+      /*
+        Was 8.
+        This was one of the biggest causes
+        of the oversized cloud.
+      */
+      dyeScale: 3.2,
+
+      lastX: null,
+      lastY: null,
+    },
+  ];
+}
 
   ambientSplat(time) {
-    if (!this.ambientSeeds) return;
+  if (!this.ambientSeeds) return;
 
-    const idleFor = performance.now() - this.pointer.lastMove;
-    const idleMix = Math.max(0, Math.min(1, (idleFor - 300) / 900));
-    if (idleMix <= 0) return;
 
-    for (const seed of this.ambientSeeds) {
-      const driftX = Math.sin(time * seed.driftFreqX) * 0.10;
-      const driftY = Math.cos(time * seed.driftFreqY) * 0.10;
+  const idleFor =
+    performance.now() -
+    this.pointer.lastMove;
 
-      const wx = time * seed.freqX + seed.phaseX;
-      const wy = time * seed.freqY + seed.phaseY;
 
-      const x = seed.baseX + driftX + Math.sin(wx) * seed.orbitX;
-      const y = seed.baseY + driftY + Math.cos(wy) * seed.orbitY;
+  const idleMix =
+    Math.max(
+      0,
+      Math.min(
+        1,
+        (idleFor - 300) / 900
+      )
+    );
 
-      const vx = Math.cos(wx) * seed.freqX * seed.orbitX * seed.spin * 680;
-      const vy = -Math.sin(wy) * seed.freqY * seed.orbitY * seed.spin * 680;
 
-      const fromX = seed.lastX ?? x;
-      const fromY = seed.lastY ?? y;
+  if (idleMix <= 0) return;
 
-      this.splat(
-        this.velocity,
-        x,
-        y,
-        new THREE.Vector3(vx, vy, 0),
-        this.splatRadius * 2.0,
-        fromX,
-        fromY
+
+  const flowTime =
+    this.flowTime;
+
+
+  const speed =
+    this.currentSpeed;
+
+
+  const radiusScale =
+    this.getDynamicRadius(time);
+
+
+  for (
+    const seed
+    of this.ambientSeeds
+  ) {
+
+    const driftX =
+      Math.sin(
+        flowTime *
+        seed.driftFreqX
+      ) *
+      0.07;
+
+
+    const driftY =
+      Math.cos(
+        flowTime *
+        seed.driftFreqY
+      ) *
+      0.06;
+
+
+    const wx =
+      flowTime *
+      seed.freqX +
+      seed.phaseX;
+
+
+    const wy =
+      flowTime *
+      seed.freqY +
+      seed.phaseY;
+
+
+    const x =
+      seed.baseX +
+      driftX +
+      Math.sin(wx) *
+      seed.orbitX;
+
+
+    const y =
+      seed.baseY +
+      driftY +
+      Math.cos(wy) *
+      seed.orbitY;
+
+
+    /*
+      Velocity follows the same speed modulation
+      as the path itself.
+    */
+    const rawVx =
+      Math.cos(wx) *
+      seed.freqX *
+      seed.orbitX *
+      seed.spin *
+      620 *
+      speed;
+
+
+    const rawVy =
+      -Math.sin(wy) *
+      seed.freqY *
+      seed.orbitY *
+      seed.spin *
+      620 *
+      speed;
+
+
+    /*
+      Prevent extremely fast phases from making
+      the pressure simulation unstable.
+    */
+    const vx =
+      THREE.MathUtils.clamp(
+        rawVx,
+        -130,
+        130
       );
 
-      const color = this.palette(time * 0.55 + seed.colorPhase).multiplyScalar(
-        0.13 * idleMix
+
+    const vy =
+      THREE.MathUtils.clamp(
+        rawVy,
+        -130,
+        130
       );
 
-      this.splat(
-        this.dye,
-        x,
-        y,
-        new THREE.Vector3(color.r, color.g, color.b),
-        this.splatRadius * seed.dyeScale,
-        fromX,
-        fromY
+
+    const fromX =
+      seed.lastX ?? x;
+
+
+    const fromY =
+      seed.lastY ?? y;
+
+
+    /*
+      Narrow velocity ribbon.
+    */
+    this.splat(
+      this.velocity,
+
+      x,
+      y,
+
+      new THREE.Vector3(
+        vx,
+        vy,
+        0
+      ),
+
+      this.splatRadius *
+      1.25 *
+      radiusScale,
+
+      fromX,
+      fromY
+    );
+
+
+    const color =
+      this.palette(this.colorTime + seed.colorPhase)
+      .multiplyScalar(
+        0.15 *
+        idleMix
       );
 
-      seed.lastX = x;
-      seed.lastY = y;
-    }
+
+    /*
+      Much thinner dye than the old ×8 value.
+    */
+    this.splat(
+      this.dye,
+
+      x,
+      y,
+
+      new THREE.Vector3(
+        color.r,
+        color.g,
+        color.b
+      ),
+
+      this.splatRadius *
+      seed.dyeScale *
+      radiusScale,
+
+      fromX,
+      fromY
+    );
+
+
+    seed.lastX = x;
+    seed.lastY = y;
   }
+}
 
   seed() {
-    if (this.disabled || !this.dye || !this.velocity) return;
-
-    const seeds = [[0.5, 0.5, 8.0, -5.0, 1.8]];
-
-    for (const [x, y, vx, vy, phase] of seeds) {
-      this.splat(
-        this.velocity,
-        x,
-        y,
-        new THREE.Vector3(vx, vy, 0),
-        this.splatRadius * 1.6
-      );
-
-      const color = this.palette(phase).multiplyScalar(0.78);
-      this.splat(
-        this.dye,
-        x,
-        y,
-        new THREE.Vector3(color.r, color.g, color.b),
-        this.splatRadius * 8.0
-      );
-    }
+  if (
+    this.disabled ||
+    !this.dye ||
+    !this.velocity
+  ) {
+    return;
   }
+
+
+  /*
+    Instead of spawning one circular blob,
+    initialise a short diagonal ribbon.
+  */
+
+  const fromX = 0.44;
+  const fromY = 0.515;
+
+  const toX = 0.56;
+  const toY = 0.485;
+
+
+  const velocity =
+    new THREE.Vector3(
+      18,
+      -5,
+      0
+    );
+
+
+  this.splat(
+    this.velocity,
+
+    toX,
+    toY,
+
+    velocity,
+
+    this.splatRadius * 1.05,
+
+    fromX,
+    fromY
+  );
+
+
+  const color =
+    this.palette(1.8)
+      .multiplyScalar(0.72);
+
+
+  this.splat(
+    this.dye,
+
+    toX,
+    toY,
+
+    new THREE.Vector3(
+      color.r,
+      color.g,
+      color.b
+    ),
+
+    /*
+      Small enough to begin narrow.
+    */
+    this.splatRadius * 1.55,
+
+    fromX,
+    fromY
+  );
+}
 
   step(dt, time) {
     // 1) Advect velocity along itself.
@@ -644,20 +869,80 @@ export class FluidBackground {
   }
 
   animate() {
-    if (this.disabled) return;
+  if (this.disabled) return;
 
-    const rawDt = this.clock.getDelta();
-    const dt = Math.min(rawDt, 1 / 30);
-    const time = this.clock.elapsedTime;
 
-    this.step(dt, time);
+  const rawDt =
+    this.clock.getDelta();
 
-    this.displayMaterial.uniforms.uDye.value = this.dye.read.texture;
-    this.displayMaterial.uniforms.uTime.value = time;
-    this.render(this.displayMaterial, null);
 
-    this.raf = requestAnimationFrame(this.animate);
-  }
+  const dt =
+    Math.min(
+      rawDt,
+      1 / 30
+    );
+
+
+  const time =
+    this.clock.elapsedTime;
+
+  const idleFor = performance.now() - this.pointer.lastMove;
+  const colorRate = idleFor < 450 ? 0.72 : 0.16;
+  this.colorTime += dt * colorRate;
+
+
+  /*
+    Smoothly alternate between calm
+    and very energetic movement.
+  */
+  const speed =
+    this.getSpeedMultiplier(time);
+
+
+  this.currentSpeed =
+    speed;
+
+
+  /*
+    Autonomous trajectory advances faster
+    during surge periods and slower during
+    calm periods.
+  */
+  this.flowTime +=
+    dt * speed;
+
+
+  this.step(
+    dt,
+    time
+  );
+
+
+  this.displayMaterial
+    .uniforms
+    .uDye
+    .value =
+      this.dye.read.texture;
+
+
+  this.displayMaterial
+    .uniforms
+    .uTime
+    .value =
+      time;
+
+
+  this.render(
+    this.displayMaterial,
+    null
+  );
+
+
+  this.raf =
+    requestAnimationFrame(
+      this.animate
+    );
+}
 
   destroy() {
     if (this.disabled) return;
