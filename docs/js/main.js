@@ -641,7 +641,7 @@ function clamp(
 
 const aboutStage =
   document.querySelector(
-    ".about-stage"
+    ".home-takeover"
   );
 
 let aboutAnimationFrame =
@@ -662,15 +662,12 @@ function updateAboutExpansion() {
     window.innerHeight;
 
 
-  const stageStart =
-    rect.top + window.scrollY;
-
   const animationDistance =
-    Math.max(stageStart, 1);
+    Math.max(viewportHeight, 1);
 
 
   let progress =
-    window.scrollY /
+    -rect.top /
     animationDistance;
 
 
@@ -700,7 +697,6 @@ function updateAboutExpansion() {
     "--about-progress",
     progress.toFixed(4)
   );
-
 
   /*
     Once basically finished, force the About panel
@@ -948,6 +944,23 @@ document
           }
 
           event.preventDefault();
+
+          if (href === "#about" && aboutStage) {
+            const takeoverTop =
+              aboutStage.getBoundingClientRect().top +
+              window.scrollY;
+
+            window.scrollTo({
+              top:
+                takeoverTop +
+                window.innerHeight,
+
+              behavior:
+                "smooth",
+            });
+
+            return;
+          }
 
           target.scrollIntoView({
             behavior:

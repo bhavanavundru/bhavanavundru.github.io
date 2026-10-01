@@ -382,6 +382,86 @@ body.is-scrolled .nav sup {
 
 
 /* =========================================================
+   PINNED HOME / ABOUT TAKEOVER
+========================================================= */
+
+.home-takeover {
+  position: relative;
+  z-index: 1;
+  height: 210svh;
+  --about-progress: 0;
+}
+
+.takeover-viewport {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--home-bg);
+}
+
+.home-takeover > .takeover-viewport > .hero {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100svh;
+}
+
+.hero-content {
+  transform: translateY(calc(-45dvh * var(--about-progress)));
+  will-change: transform;
+}
+
+.about-panel {
+  position: absolute;
+  z-index: 30;
+  top: 0;
+  left: 50%;
+  width: calc(100% - (112px * (1 - var(--about-progress))));
+  height: calc(82dvh + (18dvh * var(--about-progress)));
+  max-height: 100dvh;
+  margin: 0;
+  border-radius: calc(32px * (1 - var(--about-progress)));
+  transform: translate(-50%, calc(100dvh * (1 - var(--about-progress))));
+  will-change: width, height, border-radius, transform;
+}
+
+.home-takeover.is-full .takeover-viewport {
+  background: var(--section-bg);
+}
+
+.home-takeover.is-full .about-panel {
+  width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  border-radius: 0;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 768px) {
+  .home-takeover {
+    height: 210svh;
+  }
+
+  .about-panel {
+    width: calc(100% - (28px * (1 - var(--about-progress))));
+    height: calc(86dvh + (14dvh * var(--about-progress)));
+    max-height: 100dvh;
+    border-radius: calc(24px * (1 - var(--about-progress)));
+  }
+
+  .hero-content {
+    transform: translateY(calc(-40dvh * var(--about-progress)));
+  }
+}
+
+
+/* =========================================================
    MAIN
 ========================================================= */
 
@@ -413,6 +493,18 @@ main {
   text-align: center;
 
   background: #f3f1ed;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.94' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
 }
 
 .hero-corners {
@@ -479,6 +571,16 @@ main {
   position: relative;
 
   z-index: 10;
+
+  transform:
+    translateY(
+      calc(
+        -9dvh *
+        var(--about-progress, 0)
+      )
+    );
+
+  will-change: transform;
 
   width: 100%;
 
@@ -1923,7 +2025,13 @@ h2 {
   font-size: 0.72em;
   font-weight: 700;
   line-height: 1;
-  transform: translateY(-0.5em);
+  transform: translateY(-0.4em);
+}
+
+.about-inner h2 em,
+.work-section h2 em,
+.contact-main h2 em {
+  color: #ffffff;
 }
 
 
@@ -1972,6 +2080,8 @@ h2 {
 
 .about-stage {
   height: 130svh;
+  margin-top: 0;
+  background: transparent;
 }
 
 .about-inner {
@@ -2000,7 +2110,8 @@ h2 {
 
   .about-stage {
     height: 130svh;
-    margin-top: -1svh;
+    margin-top: 0;
+    background: transparent;
   }
 
   .work-section > .section-inner {
@@ -2025,4 +2136,54 @@ h2 {
     animation: none;
   }
 
+}
+
+
+/* =========================================================
+   FINAL SCRUBBED HOME TAKEOVER OVERRIDES
+========================================================= */
+
+.home-takeover > .takeover-viewport > .hero > .hero-content {
+  transform: translateY(calc(-45dvh * var(--about-progress)));
+  will-change: transform;
+}
+
+.home-takeover > .takeover-viewport > .about-panel {
+  position: absolute;
+  z-index: 30;
+  top: 0;
+  left: 50%;
+  width: calc(100% - (112px * (1 - var(--about-progress))));
+  height: calc(82dvh + (18dvh * var(--about-progress)));
+  max-height: 100dvh;
+  margin: 0;
+  transform: translate(-50%, calc(100dvh * (1 - var(--about-progress))));
+  border-radius: calc(32px * (1 - var(--about-progress)));
+  will-change: width, height, border-radius, transform;
+}
+
+.home-takeover.is-full > .takeover-viewport {
+  background: var(--section-bg);
+}
+
+.home-takeover.is-full > .takeover-viewport > .about-panel {
+  width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  border-radius: 0;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 768px) {
+  .home-takeover > .takeover-viewport > .about-panel {
+    width: calc(100% - (28px * (1 - var(--about-progress))));
+    height: calc(86dvh + (14dvh * var(--about-progress)));
+    max-height: 100dvh;
+    border-radius: calc(24px * (1 - var(--about-progress)));
+  }
+
+  .home-takeover > .takeover-viewport > .hero > .hero-content {
+    transform: translateY(calc(-40dvh * var(--about-progress)));
+  }
 }
