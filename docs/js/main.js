@@ -1,167 +1,346 @@
-import { FluidBackground } from "./fluid.js";
-
-
 /* =========================================================
-   FLUID
+   CLOCK
 ========================================================= */
 
-const canvas = document.querySelector("#fluid-canvas");
-
-const fluid = canvas
-  ? new FluidBackground(canvas)
-  : null;
-
-
-/* =========================================================
-   HYDERABAD CLOCK
-========================================================= */
-
-const clockEl = document.querySelector("#clock");
-
+const clockEl =
+  document.querySelector("#clock");
 
 function updateClock() {
-  if (!clockEl) return;
+  if (!clockEl) {
+    return;
+  }
 
-  const now = new Date();
+  const now =
+    new Date();
 
   clockEl.textContent =
-    new Intl.DateTimeFormat("en-GB", {
-      timeZone: "Asia/Kolkata",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    }).format(now);
-}
+    new Intl.DateTimeFormat(
+      "en-GB",
+      {
+        timeZone:
+          "Asia/Kolkata",
 
+        hour:
+          "2-digit",
+
+        minute:
+          "2-digit",
+
+        hour12:
+          false,
+      }
+    ).format(now);
+}
 
 updateClock();
-setInterval(updateClock, 1000);
+
+setInterval(
+  updateClock,
+  1000
+);
 
 
 /* =========================================================
-   ACTIVE NAVIGATION
+   TRANSLATIONS
 ========================================================= */
 
-const navLinks = [
-  ...document.querySelectorAll(".nav a")
-];
+const translations = {
+  en: {
+    navHome:
+      "Home",
 
-const sections = [
-  ...document.querySelectorAll("main section[id]")
-];
+    navAbout:
+      "About",
+
+    navWork:
+      "Work",
+
+    navContact:
+      "Contact",
+
+    heroHello:
+      "Hi,",
+
+    heroName:
+      "I’m Bhavana",
+
+    heroSubtitle:
+      "I am a Computer Science student",
+
+    scrollDown:
+      "Scroll down",
+
+    aboutTitleOne:
+      "About the",
+
+    aboutTitleTwo:
+      "Dev",
+
+    aboutParagraphOne:
+      "I like building interfaces that feel alive — combining front-end engineering, visual systems, and interactive computing.",
+
+    aboutParagraphTwo:
+      "My current focus is web development, AR/VR, and machine learning, with a strong interest in graphics and real-time interaction.",
+
+    skillCreative:
+      "Creative",
+
+    skillProblemSolver:
+      "Problem Solver",
+
+    skillTeamPlayer:
+      "Team Player",
+
+    skillCurious:
+      "Curious",
+
+    skillLearning:
+      "Always Learning",
+
+    workTitleOne:
+      "What",
+
+    workTitleTwo:
+      "I Do",
+
+    webTitle:
+      "Web Development",
+
+    webDescription:
+      "Responsive interfaces, interaction design, and polished web experiences.",
+
+    arDescription:
+      "Immersive ideas, spatial interfaces, and experimental interaction.",
+
+    aiTitle:
+      "AI & Machine Learning",
+
+    aiDescription:
+      "Computer vision, intelligent systems, and practical ML experiments.",
+
+    contactTitleOne:
+      "Get",
+
+    contactTitleTwo:
+      "in touch",
+
+    emailPlaceholder:
+      "Enter your email",
+
+    elsewhere:
+      "Elsewhere",
+
+    weatherDay:
+      "Daylight 28°C",
+
+    weatherNight:
+      "Clear night 20°C",
+
+    hello:
+      "Hello",
+
+    welcome:
+      "Welcome",
+
+    emailSubject:
+      "Portfolio contact",
+  },
 
 
-const sectionObserver =
-  new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort(
-          (a, b) =>
-            b.intersectionRatio -
-            a.intersectionRatio
-        )[0];
+  de: {
+    navHome:
+      "Start",
 
-      if (!visible) return;
+    navAbout:
+      "Über mich",
 
-      navLinks.forEach((link) => {
-        const isActive =
-          link.getAttribute("href") ===
-          `#${visible.target.id}`;
+    navWork:
+      "Arbeit",
 
-        link.classList.toggle(
-          "active",
-          isActive
-        );
-      });
-    },
-    {
-      rootMargin: "-30% 0px -55% 0px",
-      threshold: [0.01, 0.2, 0.5],
-    }
-  );
+    navContact:
+      "Kontakt",
 
+    heroHello:
+      "Hallo,",
 
-sections.forEach((section) => {
-  sectionObserver.observe(section);
-});
+    heroName:
+      "ich bin Bhavana",
+
+    heroSubtitle:
+      "Ich bin Informatikstudentin",
+
+    scrollDown:
+      "Nach unten scrollen",
+
+    aboutTitleOne:
+      "Über die",
+
+    aboutTitleTwo:
+      "Entwicklerin",
+
+    aboutParagraphOne:
+      "Ich entwickle gerne Benutzeroberflächen, die lebendig wirken — eine Verbindung aus Frontend-Entwicklung, visuellen Systemen und interaktiver Informatik.",
+
+    aboutParagraphTwo:
+      "Mein aktueller Schwerpunkt liegt auf Webentwicklung, AR/VR und maschinellem Lernen, mit besonderem Interesse an Grafik und Echtzeit-Interaktionen.",
+
+    skillCreative:
+      "Kreativ",
+
+    skillProblemSolver:
+      "Problemlöserin",
+
+    skillTeamPlayer:
+      "Teamplayerin",
+
+    skillCurious:
+      "Neugierig",
+
+    skillLearning:
+      "Immer lernbereit",
+
+    workTitleOne:
+      "Was",
+
+    workTitleTwo:
+      "ich mache",
+
+    webTitle:
+      "Webentwicklung",
+
+    webDescription:
+      "Responsive Benutzeroberflächen, Interaktionsdesign und hochwertige Web-Erlebnisse.",
+
+    arDescription:
+      "Immersive Ideen, räumliche Benutzeroberflächen und experimentelle Interaktionen.",
+
+    aiTitle:
+      "KI & Maschinelles Lernen",
+
+    aiDescription:
+      "Computer Vision, intelligente Systeme und praktische Experimente mit maschinellem Lernen.",
+
+    contactTitleOne:
+      "Melde",
+
+    contactTitleTwo:
+      "dich",
+
+    emailPlaceholder:
+      "E-Mail-Adresse eingeben",
+
+    elsewhere:
+      "Anderswo",
+
+    weatherDay:
+      "Tageslicht 28°C",
+
+    weatherNight:
+      "Klare Nacht 20°C",
+
+    hello:
+      "Hallo",
+
+    welcome:
+      "Willkommen",
+
+    emailSubject:
+      "Portfolio-Kontakt",
+  },
+};
 
 
 /* =========================================================
-   DYNAMIC WORK COUNT
+   LANGUAGE
 ========================================================= */
 
-const workCountEl =
-  document.querySelector("#work-count");
+const languageButtons = [
+  ...document.querySelectorAll(
+    ".language-button"
+  ),
+];
 
+let currentLanguage =
+  localStorage.getItem(
+    "bhavana-language"
+  ) || "en";
 
-function updateWorkCount() {
-  if (!workCountEl) return;
-
-  const workItems =
-    document.querySelectorAll(
-      "#work .service-card"
-    );
-
-  workCountEl.textContent =
-    workItems.length;
+if (
+  !translations[
+    currentLanguage
+  ]
+) {
+  currentLanguage =
+    "en";
 }
 
 
-updateWorkCount();
-
-
 /* =========================================================
-   HYDERABAD DAY / NIGHT
+   HYDERABAD TIME
 ========================================================= */
 
 function getHyderabadHour() {
   const parts =
-    new Intl.DateTimeFormat("en-GB", {
-      timeZone: "Asia/Kolkata",
-      hour: "2-digit",
-      hourCycle: "h23",
-    }).formatToParts(new Date());
+    new Intl.DateTimeFormat(
+      "en-GB",
+      {
+        timeZone:
+          "Asia/Kolkata",
+
+        hour:
+          "2-digit",
+
+        hourCycle:
+          "h23",
+      }
+    ).formatToParts(
+      new Date()
+    );
 
   const hourPart =
     parts.find(
-      (part) => part.type === "hour"
+      (part) =>
+        part.type ===
+        "hour"
     );
 
-  return Number(hourPart?.value ?? 12);
-}
-
-
-function getWeatherMessage() {
-  const hour = getHyderabadHour();
-
-  /*
-    06:00 → 17:59 = daytime
-    18:00 → 05:59 = night
-  */
-  const isDaytime =
-    hour >= 6 && hour < 18;
-
-  return isDaytime
-    ? "Daylight 28°C"
-    : "Clear night 20°C";
+  return Number(
+    hourPart?.value ??
+    12
+  );
 }
 
 
 /* =========================================================
-   HEADER MESSAGE ROTATION
+   WEATHER TEXT
+========================================================= */
+
+function getLocalizedWeatherMessage() {
+  const hour =
+    getHyderabadHour();
+
+  const daytime =
+    hour >= 6 &&
+    hour < 18;
+
+  return daytime
+    ? translations[
+        currentLanguage
+      ].weatherDay
+    : translations[
+        currentLanguage
+      ].weatherNight;
+}
+
+
+/* =========================================================
+   HEADER MESSAGE
 ========================================================= */
 
 const headerMessage =
-  document.querySelector("#header-message");
-
-const languageButtons = [
-  ...document.querySelectorAll(".language-button"),
-];
-
-let currentLanguage =
-  localStorage.getItem("bhavana-language") || "en";
-
+  document.querySelector(
+    "#header-message"
+  );
 
 const messageTypes = [
   "weather",
@@ -169,95 +348,115 @@ const messageTypes = [
   "welcome",
 ];
 
+let messageIndex =
+  1;
 
-let messageIndex = 0;
+let currentMessageType =
+  "weather";
 
-
-function getMessage(type) {
-  if (type === "weather") {
+function getMessage(
+  type
+) {
+  if (
+    type ===
+    "weather"
+  ) {
     return getLocalizedWeatherMessage();
   }
 
-  if (type === "hello") {
-    return currentLanguage === "de" ? "Hallo" : "Hello";
+  if (
+    type ===
+    "hello"
+  ) {
+    return translations[
+      currentLanguage
+    ].hello;
   }
 
-  return currentLanguage === "de" ? "Willkommen" : "Welcome";
+  return translations[
+    currentLanguage
+  ].welcome;
 }
 
 
-function getLocalizedWeatherMessage() {
-  const hour = getHyderabadHour();
-  const isDaytime = hour >= 6 && hour < 18;
-  return currentLanguage === "de"
-    ? isDaytime ? "Tageslicht 28°C" : "Klare Nacht 20°C"
-    : isDaytime ? "Daylight 28°C" : "Clear night 20°C";
-}
+/* =========================================================
+   HEADER MESSAGE ANIMATION
+========================================================= */
 
-
-function applyLanguage(language) {
-  currentLanguage = language;
-  document.documentElement.lang = language;
-  localStorage.setItem("bhavana-language", language);
-
-  languageButtons.forEach((button) => {
-    const isActive = button.dataset.language === language;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
-
-  if (headerMessage) {
-    headerMessage.textContent = getLocalizedWeatherMessage();
+function setHeaderMessage(
+  text,
+  animate = true
+) {
+  if (!headerMessage) {
+    return;
   }
-}
 
+  if (!animate) {
+    headerMessage.textContent =
+      text;
 
-function showHeaderMessage() {
-  if (!headerMessage) return;
-
-  const type =
-    messageTypes[messageIndex];
+    return;
+  }
 
   headerMessage.classList.add(
     "message-out"
   );
 
+  window.setTimeout(
+    () => {
+      headerMessage.textContent =
+        text;
 
-  setTimeout(() => {
-    headerMessage.classList.remove(
-      "message-out",
-      "weather-enter",
-      "hello-enter",
-      "welcome-enter"
-    );
+      headerMessage.classList.remove(
+        "message-out",
+        "message-enter"
+      );
 
-    headerMessage.textContent =
-      getMessage(type);
+      void headerMessage.offsetWidth;
 
-    /*
-      Force browser reflow so the animation
-      restarts every time.
-    */
-    void headerMessage.offsetWidth;
-
-    headerMessage.classList.add(
-      `${type}-enter`
-    );
-
-    messageIndex =
-      (messageIndex + 1) %
-      messageTypes.length;
-
-  }, 220);
+      headerMessage.classList.add(
+        "message-enter"
+      );
+    },
+    190
+  );
 }
 
+
+/* =========================================================
+   HEADER MESSAGE ROTATION
+========================================================= */
+
+function showHeaderMessage() {
+  const type =
+    messageTypes[
+      messageIndex
+    ];
+
+  currentMessageType =
+    type;
+
+  setHeaderMessage(
+    getMessage(
+      type
+    ),
+    true
+  );
+
+  messageIndex =
+    (
+      messageIndex +
+      1
+    ) %
+    messageTypes.length;
+}
 
 if (headerMessage) {
   headerMessage.textContent =
     getLocalizedWeatherMessage();
 
   headerMessage.classList.add(
-    "weather-enter"
+    "message-enter"
   );
 
   setInterval(
@@ -267,21 +466,559 @@ if (headerMessage) {
 }
 
 
-languageButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    applyLanguage(button.dataset.language);
-  });
-});
+/* =========================================================
+   LANGUAGE APPLICATION
+========================================================= */
 
-applyLanguage(currentLanguage);
+function applyLanguage(
+  language
+) {
+  if (
+    !translations[
+      language
+    ]
+  ) {
+    language =
+      "en";
+  }
+
+  currentLanguage =
+    language;
+
+  document.documentElement.lang =
+    language;
+
+  localStorage.setItem(
+    "bhavana-language",
+    language
+  );
+
+
+  document
+    .querySelectorAll(
+      "[data-i18n]"
+    )
+    .forEach(
+      (element) => {
+        const key =
+          element.dataset.i18n;
+
+        const value =
+          translations[
+            language
+          ][key];
+
+        if (
+          value !==
+          undefined
+        ) {
+          element.textContent =
+            value;
+        }
+      }
+    );
+
+
+  document
+    .querySelectorAll(
+      "[data-i18n-placeholder]"
+    )
+    .forEach(
+      (element) => {
+        const key =
+          element.dataset
+            .i18nPlaceholder;
+
+        const value =
+          translations[
+            language
+          ][key];
+
+        if (
+          value !==
+          undefined
+        ) {
+          element.placeholder =
+            value;
+        }
+      }
+    );
+
+
+  languageButtons.forEach(
+    (button) => {
+      const active =
+        button.dataset.language ===
+        language;
+
+      button.classList.toggle(
+        "is-active",
+        active
+      );
+
+      button.setAttribute(
+        "aria-pressed",
+        String(active)
+      );
+    }
+  );
+
+
+  if (headerMessage) {
+    headerMessage.textContent =
+      getMessage(
+        currentMessageType
+      );
+  }
+}
+
+languageButtons.forEach(
+  (button) => {
+    button.addEventListener(
+      "click",
+      () => {
+        applyLanguage(
+          button.dataset.language
+        );
+      }
+    );
+  }
+);
+
+applyLanguage(
+  currentLanguage
+);
 
 
 /* =========================================================
-   HMR CLEANUP
+   WORK COUNT
 ========================================================= */
 
-if (import.meta.hot) {
-  import.meta.hot.dispose(() => {
-    fluid?.destroy();
-  });
+const workCountEl =
+  document.querySelector(
+    "#work-count"
+  );
+
+function updateWorkCount() {
+  if (!workCountEl) {
+    return;
+  }
+
+  const cards =
+    document.querySelectorAll(
+      "#work .service-card"
+    );
+
+  workCountEl.textContent =
+    cards.length;
+}
+
+updateWorkCount();
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function clamp(
+  value,
+  minimum,
+  maximum
+) {
+  return Math.min(
+    Math.max(
+      value,
+      minimum
+    ),
+    maximum
+  );
+}
+
+
+/* =========================================================
+   ABOUT TAKEOVER
+========================================================= */
+
+const aboutStage =
+  document.querySelector(
+    ".about-stage"
+  );
+
+let aboutAnimationFrame =
+  null;
+
+function updateAboutExpansion() {
+  aboutAnimationFrame =
+    null;
+
+  if (!aboutStage) {
+    return;
+  }
+
+  const rect =
+    aboutStage.getBoundingClientRect();
+
+  const viewportHeight =
+    window.innerHeight;
+
+
+  const stageStart =
+    rect.top + window.scrollY;
+
+  const animationDistance =
+    Math.max(stageStart, 1);
+
+
+  let progress =
+    window.scrollY /
+    animationDistance;
+
+
+  progress =
+    clamp(
+      progress,
+      0,
+      1
+    );
+
+
+  /*
+    Smoothstep:
+    makes the beginning and end smoother.
+  */
+
+  progress =
+    progress *
+    progress *
+    (
+      3 -
+      2 * progress
+    );
+
+
+  aboutStage.style.setProperty(
+    "--about-progress",
+    progress.toFixed(4)
+  );
+
+
+  /*
+    Once basically finished, force the About panel
+    to EXACTLY fill the viewport.
+
+    This removes the light/white strips at the
+    top and bottom.
+  */
+
+  aboutStage.classList.toggle(
+    "is-full",
+    progress >= 0.995
+  );
+}
+
+function requestAboutUpdate() {
+  if (
+    aboutAnimationFrame !==
+    null
+  ) {
+    return;
+  }
+
+  aboutAnimationFrame =
+    requestAnimationFrame(
+      updateAboutExpansion
+    );
+}
+
+
+/* =========================================================
+   FLOATING NAV
+========================================================= */
+
+function updateFloatingNavigation() {
+  const shouldFloat =
+    window.scrollY >
+    110;
+
+  document.body.classList.toggle(
+    "is-scrolled",
+    shouldFloat
+  );
+}
+
+
+/* =========================================================
+   SCROLL UPDATE
+========================================================= */
+
+function updateScrollEffects() {
+  requestAboutUpdate();
+
+  updateFloatingNavigation();
+}
+
+window.addEventListener(
+  "scroll",
+  updateScrollEffects,
+  {
+    passive: true,
+  }
+);
+
+window.addEventListener(
+  "resize",
+  updateScrollEffects,
+  {
+    passive: true,
+  }
+);
+
+updateScrollEffects();
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const navLinks = [
+  ...document.querySelectorAll(
+    ".nav a"
+  ),
+];
+
+const sections = [
+  ...document.querySelectorAll(
+    "main section[id]"
+  ),
+];
+
+const sectionObserver =
+  new IntersectionObserver(
+    (entries) => {
+      const visible =
+        entries
+          .filter(
+            (entry) =>
+              entry.isIntersecting
+          )
+          .sort(
+            (a, b) =>
+              b.intersectionRatio -
+              a.intersectionRatio
+          )[0];
+
+      if (!visible) {
+        return;
+      }
+
+      navLinks.forEach(
+        (link) => {
+          const active =
+            link.getAttribute(
+              "href"
+            ) ===
+            `#${visible.target.id}`;
+
+          link.classList.toggle(
+            "active",
+            active
+          );
+        }
+      );
+    },
+    {
+      rootMargin:
+        "-22% 0px -58% 0px",
+
+      threshold: [
+        0.01,
+        0.12,
+        0.3,
+      ],
+    }
+  );
+
+sections.forEach(
+  (section) => {
+    sectionObserver.observe(
+      section
+    );
+  }
+);
+
+
+/* =========================================================
+   SERVICE CARD ANIMATION
+========================================================= */
+
+const serviceCards = [
+  ...document.querySelectorAll(
+    ".service-card"
+  ),
+];
+
+serviceCards.forEach(
+  (
+    card,
+    index
+  ) => {
+    card.style.setProperty(
+      "--card-delay",
+      `${index * 120}ms`
+    );
+  }
+);
+
+const cardObserver =
+  new IntersectionObserver(
+    (
+      entries,
+      observer
+    ) => {
+      entries.forEach(
+        (entry) => {
+          if (
+            !entry.isIntersecting
+          ) {
+            return;
+          }
+
+          entry.target.classList.add(
+            "is-visible"
+          );
+
+          observer.unobserve(
+            entry.target
+          );
+        }
+      );
+    },
+    {
+      threshold:
+        0.14,
+
+      rootMargin:
+        "0px 0px -40px 0px",
+    }
+  );
+
+serviceCards.forEach(
+  (card) => {
+    cardObserver.observe(
+      card
+    );
+  }
+);
+
+
+/* =========================================================
+   NAV SMOOTH SCROLL
+========================================================= */
+
+document
+  .querySelectorAll(
+    '.nav a[href^="#"]'
+  )
+  .forEach(
+    (anchor) => {
+      anchor.addEventListener(
+        "click",
+        function (
+          event
+        ) {
+          const href =
+            this.getAttribute(
+              "href"
+            );
+
+          if (
+            !href ||
+            href === "#"
+          ) {
+            return;
+          }
+
+          const target =
+            document.querySelector(
+              href
+            );
+
+          if (!target) {
+            return;
+          }
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior:
+              "smooth",
+
+            block:
+              "start",
+          });
+        }
+      );
+    }
+  );
+
+
+/* =========================================================
+   EMAIL
+========================================================= */
+
+const emailForm =
+  document.querySelector(
+    "#email-form"
+  );
+
+if (emailForm) {
+  emailForm.addEventListener(
+    "submit",
+    (
+      event
+    ) => {
+      event.preventDefault();
+
+      const input =
+        emailForm.querySelector(
+          'input[name="email"]'
+        );
+
+      if (!input) {
+        return;
+      }
+
+      const email =
+        input.value.trim();
+
+      if (!email) {
+        return;
+      }
+
+      const subject =
+        translations[
+          currentLanguage
+        ].emailSubject;
+
+      window.location.href =
+        `mailto:hello@example.com?subject=${encodeURIComponent(
+          subject
+        )}&body=${encodeURIComponent(
+          email
+        )}`;
+    }
+  );
+}
+
+
+/* =========================================================
+   SCROLL RESTORATION
+========================================================= */
+
+if (
+  "scrollRestoration"
+  in history
+) {
+  history.scrollRestoration =
+    "manual";
 }

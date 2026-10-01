@@ -1,340 +1,507 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+<head>
+  <meta charset="UTF-8">
 
-    <meta
-      name="description"
-      content="Bhavana — Computer Science student portfolio with an interactive GPU fluid background."
-    />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <title>Bhavana — Portfolio</title>
+  <meta
+    name="description"
+    content="Bhavana — Computer Science student portfolio."
+  >
 
-    <link
-      rel="stylesheet"
-      href="css/styles.css"
-    />
-  </head>
+  <title>Bhavana — Portfolio</title>
 
-  <body>
+  <link
+    rel="stylesheet"
+    href="css/styles.css"
+  >
+</head>
 
-    <!-- Fluid background -->
-    <canvas
-      id="fluid-canvas"
-      aria-hidden="true"
-    ></canvas>
+<body>
 
-    <div
-      class="noise"
-      aria-hidden="true"
-    ></div>
+  <header class="site-header">
 
+    <div class="header-eyebrow">
 
-    <!-- Fixed corner frame -->
-    <div
-      class="corner-frame"
-      aria-hidden="true"
-    >
-      <span class="corner corner-tl"></span>
-      <span class="corner corner-tr"></span>
-      <span class="corner corner-bl"></span>
-      <span class="corner corner-br"></span>
+      <span id="clock">
+        --:--
+      </span>
+
+      <span
+        class="divider vertical"
+        aria-hidden="true"
+      ></span>
+
+      <span
+        class="language-switch"
+        aria-label="Language"
+      >
+
+        <button
+          class="language-button is-active"
+          type="button"
+          data-language="en"
+          aria-pressed="true"
+        >
+          EN
+        </button>
+
+        <span aria-hidden="true">
+          |
+        </span>
+
+        <button
+          class="language-button"
+          type="button"
+          data-language="de"
+          aria-pressed="false"
+        >
+          DE
+        </button>
+
+      </span>
+
     </div>
 
 
-    <!-- Fixed header -->
-    <header class="site-header">
+    <nav
+      class="nav"
+      aria-label="Primary navigation"
+    >
 
-      <!-- Hyderabad time -->
-      <div class="header-eyebrow">
-        <span id="clock">--:--</span>
+      <a
+        class="active"
+        href="#home"
+        data-i18n="navHome"
+      >
+        Home
+      </a>
 
-        <span class="divider vertical"></span>
+      <a
+        href="#about"
+        data-i18n="navAbout"
+      >
+        About
+      </a>
 
-        <span class="language-switch" aria-label="Language">
-          <button class="language-button is-active" type="button" data-language="en" aria-pressed="true">EN</button>
-          <span aria-hidden="true">|</span>
-          <button class="language-button" type="button" data-language="de" aria-pressed="false">DE</button>
+      <a
+        class="work-nav-link"
+        href="#work"
+      >
+        <span data-i18n="navWork">
+          Work
         </span>
+
+        <sup id="work-count"></sup>
+      </a>
+
+      <a
+        href="#contact"
+        data-i18n="navContact"
+      >
+        Contact
+      </a>
+
+    </nav>
+
+
+    <div class="header-meta">
+
+      <span
+        class="divider"
+        aria-hidden="true"
+      ></span>
+
+      <span
+        class="weather-dot"
+        aria-hidden="true"
+      ></span>
+
+      <span
+        id="header-message"
+        aria-live="polite"
+      >
+        Daylight 28°C
+      </span>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- HOME -->
+    <section
+      class="hero"
+      id="home"
+    >
+
+      <div
+        class="hero-corners"
+        aria-hidden="true"
+      >
+        <span class="corner corner-tl"></span>
+        <span class="corner corner-tr"></span>
+        <span class="corner corner-bl"></span>
+        <span class="corner corner-br"></span>
       </div>
 
 
-      <!-- Navigation -->
-      <nav
-        class="nav"
-        aria-label="Primary"
-      >
-        <a
-          class="active"
-          href="#home"
-        >
-          Home
-        </a>
+      <div class="hero-content">
 
-        <a href="#about">
-          About
-        </a>
+        <div class="hero-copy">
 
-        <a href="#work">
-          Work<sup id="work-count"></sup>
-        </a>
+          <h1>
 
-        <a href="#contact">
-          Contact
-        </a>
-      </nav>
+            <span data-i18n="heroHello">
+              Hi,
+            </span>
 
+            <em data-i18n="heroName">
+              I’m Bhavana
+            </em>
 
-      <!-- Top-right information -->
-      <div class="header-meta">
+          </h1>
 
-        <span class="divider"></span>
-
-        <span
-          class="weather-dot"
-          aria-hidden="true"
-        ></span>
-
-        <span id="header-message">
-          Clear night 28°C
-        </span>
-
-      </div>
-    </header>
-
-
-    <main>
-
-      <!-- HOME -->
-      <section
-        class="hero panel"
-        id="home"
-      >
-
-        <div class="hero-content">
-
-          <div class="hero-copy">
-            <h1>
-              Hi, <em>I’m Bhavana</em>
-            </h1>
-
-            <p class="hero-subtitle">
-              I am a Computer Science student
-            </p>
-          </div>
-
-
-          <!-- Scroll indicator -->
-          <a
-            class="scroll-cue"
-            href="#about"
+          <p
+            class="hero-subtitle"
+            data-i18n="heroSubtitle"
           >
+            I am a Computer Science student
+          </p>
+
+        </div>
+
+
+        <div
+          class="scroll-cue"
+          aria-hidden="true"
+        >
+
+          <span class="scroll-dots">
 
             <span
-              class="scroll-dots"
-              aria-hidden="true"
-            >
-              <span
-                class="scroll-dot scroll-dot-moving"
-              ></span>
+              class="scroll-dot scroll-dot-moving"
+            ></span>
 
-              <span
-                class="scroll-dot scroll-dot-fixed"
-              ></span>
-            </span>
+            <span
+              class="scroll-dot scroll-dot-fixed"
+            ></span>
 
-            <span>
-              Scroll down
-            </span>
-
-          </a>
-
-        </div>
-
-      </section>
-
-
-      <!-- ABOUT -->
-      <section
-        class="panel section"
-        id="about"
-      >
-
-        <div class="section-heading">
-          <span class="section-index">
-            02.
           </span>
 
-          <h2>
-            About the <em>Dev</em>
-          </h2>
-        </div>
-
-
-        <div class="about-grid">
-
-          <div class="about-copy">
-            <p>
-              I like building interfaces that feel alive —
-              combining front-end engineering, visual systems,
-              and interactive computing.
-            </p>
-
-            <p>
-              My current focus is web development, AR/VR,
-              and machine learning, with a strong interest
-              in graphics and real-time interaction.
-            </p>
-          </div>
-
-
-          <div class="trait-grid">
-
-            <article class="trait">
-              <span>◉</span>
-              <strong>Creative</strong>
-            </article>
-
-            <article class="trait">
-              <span>Py</span>
-              <strong>Python</strong>
-            </article>
-
-            <article class="trait">
-              <span>◌</span>
-              <strong>Problem Solver</strong>
-            </article>
-
-            <article class="trait">
-              <span>♙</span>
-              <strong>Team Player</strong>
-            </article>
-
-            <article class="trait">
-              <span>✦</span>
-              <strong>Curious</strong>
-            </article>
-
-            <article class="trait">
-              <span>↗</span>
-              <strong>Always Learning</strong>
-            </article>
-
-          </div>
+          <span data-i18n="scrollDown">
+            Scroll down
+          </span>
 
         </div>
 
-      </section>
+      </div>
+
+    </section>
 
 
-      <!-- WORK -->
-      <section
-        class="panel section"
-        id="work"
-      >
+    <!-- ABOUT -->
+    <section
+      class="about-stage"
+      id="about"
+    >
+
+      <div class="about-sticky">
+
+        <div class="about-panel">
+
+          <div class="section-inner about-inner">
+
+            <div class="section-heading">
+
+              <span class="section-index">
+                02.
+              </span>
+
+              <h2>
+
+                <span data-i18n="aboutTitleOne">
+                  About the
+                </span>
+
+                <em data-i18n="aboutTitleTwo">
+                  Dev
+                </em>
+
+              </h2>
+
+            </div>
+
+
+            <div class="about-grid">
+
+              <div class="about-copy">
+
+                <p data-i18n="aboutParagraphOne">
+                  I like building interfaces that feel alive —
+                  combining front-end engineering, visual systems,
+                  and interactive computing.
+                </p>
+
+                <p data-i18n="aboutParagraphTwo">
+                  My current focus is web development, AR/VR,
+                  and machine learning, with a strong interest
+                  in graphics and real-time interaction.
+                </p>
+
+              </div>
+
+
+              <div class="trait-grid">
+
+                <article class="trait">
+                  <span class="trait-icon">◉</span>
+                  <strong data-i18n="skillCreative">
+                    Creative
+                  </strong>
+                </article>
+
+                <article class="trait">
+                  <span class="trait-icon">Py</span>
+                  <strong>
+                    Python
+                  </strong>
+                </article>
+
+                <article class="trait">
+                  <span class="trait-icon">◌</span>
+                  <strong data-i18n="skillProblemSolver">
+                    Problem Solver
+                  </strong>
+                </article>
+
+                <article class="trait">
+                  <span class="trait-icon">♙</span>
+                  <strong data-i18n="skillTeamPlayer">
+                    Team Player
+                  </strong>
+                </article>
+
+                <article class="trait">
+                  <span class="trait-icon">✦</span>
+                  <strong data-i18n="skillCurious">
+                    Curious
+                  </strong>
+                </article>
+
+                <article class="trait">
+                  <span class="trait-icon">↗</span>
+                  <strong data-i18n="skillLearning">
+                    Always Learning
+                  </strong>
+                </article>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- WORK -->
+    <section
+      class="section work-section"
+      id="work"
+    >
+
+      <div class="section-inner">
 
         <div class="section-heading">
+
           <span class="section-index">
             03.
           </span>
 
           <h2>
-            What <em>I Do</em>
+
+            <span data-i18n="workTitleOne">
+              What
+            </span>
+
+            <em data-i18n="workTitleTwo">
+              I Do
+            </em>
+
           </h2>
+
         </div>
 
 
         <div class="service-grid">
 
           <article class="service-card">
-            <span class="number">
-              1.
-            </span>
 
-            <h3>
-              Web Development
-            </h3>
+            <div class="service-media" aria-hidden="true">
+              <div class="media-waves">
+                <span class="media-wave"></span>
+                <span class="media-wave"></span>
+                <span class="media-wave"></span>
+              </div>
+              <span class="football"></span>
+            </div>
 
-            <p>
-              Responsive interfaces, interaction design,
-              and polished web experiences.
-            </p>
+            <div class="service-content">
+
+              <span class="number">
+                1.
+              </span>
+
+              <h3 data-i18n="webTitle">
+                Web Development
+              </h3>
+
+              <p data-i18n="webDescription">
+                Responsive interfaces, interaction design,
+                and polished web experiences.
+              </p>
+
+            </div>
+
           </article>
 
 
           <article class="service-card">
-            <span class="number">
-              2.
-            </span>
 
-            <h3>
-              AR / VR
-            </h3>
+            <div class="service-media" aria-hidden="true">
+              <span class="spatial-orbit"></span>
+              <span class="spatial-ball"></span>
+              <span class="spatial-ball"></span>
+              <span class="spatial-ball"></span>
+              <span class="spatial-ball"></span>
+              <span class="spatial-ball"></span>
+            </div>
 
-            <p>
-              Immersive ideas, spatial interfaces,
-              and experimental interaction.
-            </p>
+            <div class="service-content">
+
+              <span class="number">
+                2.
+              </span>
+
+              <h3>
+                AR / VR
+              </h3>
+
+              <p data-i18n="arDescription">
+                Immersive ideas, spatial interfaces,
+                and experimental interaction.
+              </p>
+
+            </div>
+
           </article>
 
 
           <article class="service-card">
-            <span class="number">
-              3.
-            </span>
 
-            <h3>
-              AI &amp; Machine Learning
-            </h3>
+            <div class="service-media" aria-hidden="true">
+              <svg class="network-art" viewBox="0 0 320 180" focusable="false">
+                <g class="network-link">
+                  <path d="M30 42 102 76 166 30 228 78 292 38" />
+                  <path d="M30 42 58 132 102 76 138 148 166 30 202 132 228 78 270 142 292 38" />
+                  <path d="M58 132 138 148 202 132 270 142" />
+                </g>
+                <g>
+                  <circle class="network-node" cx="30" cy="42" r="4" />
+                  <circle class="network-node" cx="58" cy="132" r="3" />
+                  <circle class="network-node" cx="102" cy="76" r="5" />
+                  <circle class="network-node" cx="138" cy="148" r="4" />
+                  <circle class="network-node" cx="166" cy="30" r="4" />
+                  <circle class="network-node" cx="202" cy="132" r="5" />
+                  <circle class="network-node" cx="228" cy="78" r="4" />
+                  <circle class="network-node" cx="270" cy="142" r="3" />
+                  <circle class="network-node" cx="292" cy="38" r="5" />
+                </g>
+              </svg>
+            </div>
 
-            <p>
-              Computer vision, intelligent systems,
-              and practical ML experiments.
-            </p>
+            <div class="service-content">
+
+              <span class="number">
+                3.
+              </span>
+
+              <h3 data-i18n="aiTitle">
+                AI &amp; Machine Learning
+              </h3>
+
+              <p data-i18n="aiDescription">
+                Computer vision, intelligent systems,
+                and practical ML experiments.
+              </p>
+
+            </div>
+
           </article>
 
         </div>
 
-      </section>
+      </div>
+
+    </section>
 
 
-      <!-- CONTACT -->
-      <section
-        class="panel section contact"
-        id="contact"
-      >
+    <!-- CONTACT -->
+    <section
+      class="section contact-section"
+      id="contact"
+    >
 
-        <div>
+      <div class="section-inner contact-grid">
+
+        <div class="contact-main">
 
           <span class="section-index">
             04.
           </span>
 
           <h2>
-            Get <em>in touch</em>
+
+            <span data-i18n="contactTitleOne">
+              Get
+            </span>
+
+            <em data-i18n="contactTitleTwo">
+              in touch
+            </em>
+
           </h2>
 
 
           <form
+            id="email-form"
             class="email-form"
-            onsubmit="window.location.href='mailto:hello@example.com?subject=Portfolio%20contact&body=' + encodeURIComponent(this.email.value); return false;"
           >
 
-            <span>✉</span>
+            <span aria-hidden="true">
+              ✉
+            </span>
 
             <input
               name="email"
               type="email"
               autocomplete="email"
               placeholder="Enter your email"
-              aria-label="Your email address"
+              data-i18n-placeholder="emailPlaceholder"
               required
-            />
+            >
 
             <button
               type="submit"
@@ -350,9 +517,9 @@
 
         <div class="elsewhere">
 
-          <h3>
+          <h2 data-i18n="elsewhere">
             Elsewhere
-          </h3>
+          </h2>
 
           <div class="socials">
 
@@ -388,15 +555,18 @@
 
         </div>
 
-      </section>
+      </div>
 
-    </main>
+    </section>
+
+  </main>
 
 
-    <script
-      type="module"
-      src="js/main.js"
-    ></script>
+  <script
+    type="module"
+    src="js/main.js"
+  ></script>
 
-  </body>
+</body>
+
 </html>
