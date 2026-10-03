@@ -1,564 +1,204 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="Bhavana — Computer Science student portfolio."
-  >
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bhavana — Portfolio</title>
-
-  <script type="module" crossorigin src="/assets/index-CE0mHdZ4.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-IDE0Q6iq.css">
+  <meta name="description" content="Bhavana — computer science student building digital experiences that work smoothly and have major impact.">
+  <meta name="theme-color" content="#05010b">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" crossorigin href="/assets/index-CoNd2Z5O.css">
 </head>
-
 <body>
 
-  <header class="site-header">
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a class="logo" href="#top" aria-label="Home">Bhavcodes</a>
 
-    <div class="header-eyebrow">
-
-      <span id="clock">
-        --:--
+    <nav class="nav-links" aria-label="Main">
+      <span class="nav-link nav-time" title="Hyderabad, India">
+        <span data-i18n="nav.time">Time</span> <time id="clock">--:--</time>
       </span>
 
-      <span
-        class="divider vertical"
-        aria-hidden="true"
-      ></span>
+      <a class="nav-link" href="work.html"><span data-i18n="nav.work">Work</span><sup id="workCount">3</sup></a>
 
-      <span
-        class="language-switch"
-        aria-label="Language"
-      >
+      <button class="btn" type="button" data-open="project" data-i18n="nav.project">Start a project</button>
+      <button class="btn" type="button" data-open="contact" data-i18n="nav.contact">Contact</button>
 
-        <button
-          class="language-button is-active"
-          type="button"
-          data-language="en"
-          aria-pressed="true"
-        >
-          EN
-        </button>
-
-        <span aria-hidden="true">
-          |
-        </span>
-
-        <button
-          class="language-button"
-          type="button"
-          data-language="de"
-          aria-pressed="false"
-        >
-          DE
-        </button>
-
-      </span>
-
-    </div>
-
-
-    <nav
-      class="nav"
-      aria-label="Primary navigation"
-    >
-
-      <a
-        class="active"
-        href="#home"
-        data-i18n="navHome"
-      >
-        Home
-      </a>
-
-      <a
-        href="#about"
-        data-i18n="navAbout"
-      >
-        About
-      </a>
-
-      <a
-        class="work-nav-link"
-        href="#work"
-      >
-        <span data-i18n="navWork">
-          Work
-        </span>
-
-        <sup id="work-count"></sup>
-      </a>
-
-      <a
-        href="#contact"
-        data-i18n="navContact"
-      >
-        Contact
-      </a>
-
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">english</button>
+        <span aria-hidden="true">|</span>
+        <button type="button" data-lang="de" aria-pressed="false">deutsch</button>
+      </div>
     </nav>
-
-
-    <div class="header-meta">
-
-      <span
-        class="divider"
-        aria-hidden="true"
-      ></span>
-
-      <span
-        class="weather-dot"
-        aria-hidden="true"
-      ></span>
-
-      <span
-        id="header-message"
-        aria-live="polite"
-      >
-        Daylight 28°C
-      </span>
-
-    </div>
-
   </header>
 
+  <main id="top">
+    <div class="stage" id="stage">
 
-  <main>
+      <!-- ============ HERO (sticky, stays pinned while About rises over it) ============ -->
+      <section class="hero" aria-label="Home">
+        <canvas id="wave" aria-hidden="true"></canvas>
+        <div class="hero-mesh" aria-hidden="true"></div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-dim" aria-hidden="true"></div>
 
-    <div class="home-takeover">
-      <div class="takeover-viewport">
-
-        <!-- HOME -->
-        <section
-          class="hero"
-          id="home"
-        >
-
-      <div
-        class="hero-corners"
-        aria-hidden="true"
-      >
-        <span class="corner corner-tl"></span>
-        <span class="corner corner-tr"></span>
-        <span class="corner corner-bl"></span>
-        <span class="corner corner-br"></span>
-      </div>
-
-
-      <div class="hero-content">
-
-        <div class="hero-copy">
-
-          <h1>
-
-            <span data-i18n="heroHello">
-              Hi,
-            </span>
-
-            <em data-i18n="heroName">
-              I’m Bhavana
-            </em>
-
+        <div class="hero-content">
+          <h1 class="tagline">
+            <span data-i18n="hero.l1">Precision like Clockwork.</span>
+            <span data-i18n="hero.l2">Ambition like an Empire</span>
           </h1>
 
-          <p
-            class="hero-subtitle"
-            data-i18n="heroSubtitle"
-          >
-            I am a Computer Science student
-          </p>
-
+          <a class="scroll-cue" href="#about" aria-label="Scroll down">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
         </div>
+      </section>
 
+      <!-- ============ ABOUT THE DEV (scroll-scrubbed takeover) ============ -->
+      <section class="about" id="about" aria-labelledby="about-title">
+        <span class="about-peek" aria-hidden="true" data-i18n="about.title">About the dev</span>
 
-        <div
-          class="scroll-cue"
-          aria-hidden="true"
-        >
+        <div class="about-inner" id="aboutInner">
+          <h2 class="about-title" id="about-title" data-i18n="about.title">About the dev</h2>
 
-          <span class="scroll-dots">
+          <p class="about-text" id="aboutText" data-i18n="about.text">I'm Bhavana, a computer science student. I make digital experiences that work smoothly and have major impact. Get to know me more <a class="link-underline" data-link="resume" href="resume.pdf" target="_blank" rel="noopener">resume</a> or take a look at <a class="pill-link" href="work.html">my work</a></p>
 
-            <span
-              class="scroll-dot scroll-dot-moving"
-            ></span>
-
-            <span
-              class="scroll-dot scroll-dot-fixed"
-            ></span>
-
-          </span>
-
-          <span data-i18n="scrollDown">
-            Scroll down
-          </span>
-
-        </div>
-
-      </div>
-
-        </section>
-
-
-        <!-- ABOUT -->
-        <section
-          class="about-panel"
-          id="about"
-        >
-
-          <div class="section-inner about-inner">
-
-            <div class="section-heading">
-
-              <span class="section-index">
-                02.
-              </span>
-
-              <h2>
-
-                <span data-i18n="aboutTitleOne">
-                  About the
-                </span>
-
-                <em data-i18n="aboutTitleTwo">
-                  Dev
-                </em>
-
-              </h2>
-
+          <div class="stats">
+            <div class="stat reveal">
+              <div class="stat-num" data-count="24">0</div>
+              <p class="stat-label" data-i18n="stat.lc"><a data-link="leetcode" href="https://leetcode.com/" target="_blank" rel="noopener">Leetcode</a> questions solved</p>
             </div>
-
-
-            <div class="about-grid">
-
-              <div class="about-copy">
-
-                <p data-i18n="aboutParagraphOne">
-                  I like building interfaces that feel alive —
-                  combining front-end engineering, visual systems,
-                  and interactive computing.
-                </p>
-
-                <p data-i18n="aboutParagraphTwo">
-                  My current focus is web development, AR/VR,
-                  and machine learning, with a strong interest
-                  in graphics and real-time interaction.
-                </p>
-
-              </div>
-
-
-              <div class="trait-grid">
-
-                <article class="trait">
-                  <span class="trait-icon">◉</span>
-                  <strong data-i18n="skillCreative">
-                    Creative
-                  </strong>
-                </article>
-
-                <article class="trait">
-                  <span class="trait-icon">Py</span>
-                  <strong>
-                    Python
-                  </strong>
-                </article>
-
-                <article class="trait">
-                  <span class="trait-icon">◌</span>
-                  <strong data-i18n="skillProblemSolver">
-                    Problem Solver
-                  </strong>
-                </article>
-
-                <article class="trait">
-                  <span class="trait-icon">♙</span>
-                  <strong data-i18n="skillTeamPlayer">
-                    Team Player
-                  </strong>
-                </article>
-
-                <article class="trait">
-                  <span class="trait-icon">✦</span>
-                  <strong data-i18n="skillCurious">
-                    Curious
-                  </strong>
-                </article>
-
-                <article class="trait">
-                  <span class="trait-icon">↗</span>
-                  <strong data-i18n="skillLearning">
-                    Always Learning
-                  </strong>
-                </article>
-
-              </div>
-
+            <div class="stat reveal" style="--d:.15s">
+              <div class="stat-num" data-count="5">0</div>
+              <p class="stat-label" data-i18n="stat.gh"><a data-link="github" href="https://github.com/" target="_blank" rel="noopener">GitHub</a> projects pushed</p>
             </div>
-
           </div>
 
-        </section>
+          <!-- Infinite marquee: intentionally empty for now (hidden until you add items).
+               When you have certificates, drop them in like this and the loop starts by itself:
+               <span class="marquee-item">Google Certificate</span>
+               <span class="marquee-item">Accenture Certificate</span> -->
+          <div class="marquee" id="marquee" aria-label="Certificates">
+            <div class="marquee-track" id="marqueeTrack"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
 
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="footer">
+    <p class="footer-end reveal" data-i18n="footer.end">This is the end of my portfolio website.</p>
+
+    <div class="footer-grid">
+      <div class="reveal" style="--d:.1s">
+        <h3 data-i18n="footer.elsewhere">Elsewhere</h3>
+        <ul class="social">
+          <li>
+            <a data-link="github" href="https://github.com/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a data-link="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.2v.01M12 17v-3.8a2.2 2.2 0 014.4 0V17M12 10.5V17"/></svg>
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a data-link="codepen" href="https://codepen.io/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l10 6.5v7L12 22 2 15.5v-7z"/><path d="M12 22v-6.5M22 8.5l-10 7-10-7M2 15.5l10-7 10 7M12 2v6.5"/></svg>
+              Codepen
+            </a>
+          </li>
+          <li>
+            <a data-link="resume" href="resume.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>
+              <span data-i18n="footer.resume">Resume</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-contact reveal" style="--d:.2s">
+        <button class="big-link" type="button" data-open="contact">
+          <span data-i18n="nav.contact">Contact</span> <span class="arrow" aria-hidden="true">↗</span>
+        </button>
+        <a class="email-link" id="emailLink" href="https://mail.google.com/mail/?view=cm&fs=1&to=vundrubhavana%40gmail.com" target="_blank" rel="noopener">vundrubhavana@gmail.com</a>
       </div>
     </div>
 
+    <p class="footer-bottom made" data-i18n="footer.made">Made with <span class="heart">♡</span> in Hyderabad</p>
+  </footer>
 
-    <!-- WORK -->
-    <section
-      class="section work-section"
-      id="work"
-    >
+  <!-- ============ SLIDE-IN PANELS ============ -->
+  <div class="backdrop" id="backdrop"></div>
 
-      <div class="section-inner">
+  <!-- Start a project -->
+  <aside class="panel" id="panel-project" role="dialog" aria-modal="true" aria-labelledby="project-title" aria-hidden="true">
+    <button class="panel-close" type="button" data-close aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
 
-        <div class="section-heading">
+    <h2 id="project-title" data-i18n="project.title">Start a project</h2>
 
-          <span class="section-index">
-            03.
-          </span>
+    <form class="form" id="projectForm">
+      <div class="field">
+        <label for="p-name" data-i18n="project.name">Name of project</label>
+        <input id="p-name" name="project" type="text" required autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="p-email" data-i18n="field.email">Email</label>
+        <input id="p-email" name="email" type="email" required autocomplete="email">
+      </div>
+      <button class="btn" type="submit" data-i18n="btn.send">Send</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </aside>
 
-          <h2>
+  <!-- Contact -->
+  <aside class="panel" id="panel-contact" role="dialog" aria-modal="true" aria-labelledby="contact-title" aria-hidden="true">
+    <button class="panel-close" type="button" data-close aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
 
-            <span data-i18n="workTitleOne">
-              What
-            </span>
+    <h2 id="contact-title" data-i18n="contact.title">Don't hesitate to contact us.</h2>
 
-            <em data-i18n="workTitleTwo">
-              I Do
-            </em>
+    <form class="form" id="contactForm">
+      <fieldset class="field radios">
+        <legend class="legend" data-i18n="contact.purpose">Purpose of the request</legend>
+        <label class="radio"><input type="radio" name="purpose" value="Project" checked><span data-i18n="contact.p1">Project</span></label>
+        <label class="radio"><input type="radio" name="purpose" value="Reach out / Communication"><span data-i18n="contact.p2">Reach out / Communication</span></label>
+      </fieldset>
 
-          </h2>
-
-        </div>
-
-
-        <div class="service-grid">
-
-          <article class="service-card">
-
-            <div class="service-media" aria-hidden="true">
-              <div class="media-waves">
-                <span class="media-wave"></span>
-                <span class="media-wave"></span>
-                <span class="media-wave"></span>
-              </div>
-              <span class="football"></span>
-            </div>
-
-            <div class="service-content">
-
-              <span class="number">
-                1.
-              </span>
-
-              <h3 data-i18n="webTitle">
-                Web Development
-              </h3>
-
-              <p data-i18n="webDescription">
-                Responsive interfaces, interaction design,
-                and polished web experiences.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <article class="service-card">
-
-            <div class="service-media" aria-hidden="true">
-              <span class="spatial-orbit"></span>
-              <span class="spatial-ball"></span>
-              <span class="spatial-ball"></span>
-              <span class="spatial-ball"></span>
-              <span class="spatial-ball"></span>
-              <span class="spatial-ball"></span>
-            </div>
-
-            <div class="service-content">
-
-              <span class="number">
-                2.
-              </span>
-
-              <h3>
-                AR / VR
-              </h3>
-
-              <p data-i18n="arDescription">
-                Immersive ideas, spatial interfaces,
-                and experimental interaction.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <article class="service-card">
-
-            <div class="service-media" aria-hidden="true">
-              <svg class="network-art" viewBox="0 0 320 180" focusable="false">
-                <g class="network-link">
-                  <path d="M30 42 102 76 166 30 228 78 292 38" />
-                  <path d="M30 42 58 132 102 76 138 148 166 30 202 132 228 78 270 142 292 38" />
-                  <path d="M58 132 138 148 202 132 270 142" />
-                </g>
-                <g>
-                  <circle class="network-node" cx="30" cy="42" r="4" />
-                  <circle class="network-node" cx="58" cy="132" r="3" />
-                  <circle class="network-node" cx="102" cy="76" r="5" />
-                  <circle class="network-node" cx="138" cy="148" r="4" />
-                  <circle class="network-node" cx="166" cy="30" r="4" />
-                  <circle class="network-node" cx="202" cy="132" r="5" />
-                  <circle class="network-node" cx="228" cy="78" r="4" />
-                  <circle class="network-node" cx="270" cy="142" r="3" />
-                  <circle class="network-node" cx="292" cy="38" r="5" />
-                </g>
-              </svg>
-            </div>
-
-            <div class="service-content">
-
-              <span class="number">
-                3.
-              </span>
-
-              <h3 data-i18n="aiTitle">
-                AI &amp; Machine Learning
-              </h3>
-
-              <p data-i18n="aiDescription">
-                Computer vision, intelligent systems,
-                and practical ML experiments.
-              </p>
-
-            </div>
-
-          </article>
-
-        </div>
-
+      <div class="field required">
+        <label for="c-first" data-i18n="contact.first">First name</label>
+        <input id="c-first" name="first" type="text" required autocomplete="given-name">
+      </div>
+      <div class="field required">
+        <label for="c-last" data-i18n="contact.last">Last name</label>
+        <input id="c-last" name="last" type="text" required autocomplete="family-name">
+      </div>
+      <div class="field required">
+        <label for="c-email" data-i18n="field.email">Email</label>
+        <input id="c-email" name="email" type="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="c-msg" data-i18n="contact.message">Message</label>
+        <textarea id="c-msg" name="message" rows="5"></textarea>
       </div>
 
-    </section>
+      <button class="btn" type="submit" data-i18n="btn.send">Send</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </aside>
 
-
-    <!-- CONTACT -->
-    <section
-      class="section contact-section"
-      id="contact"
-    >
-
-      <div class="section-inner contact-grid">
-
-        <div class="contact-main">
-
-          <span class="section-index">
-            04.
-          </span>
-
-          <h2>
-
-            <span data-i18n="contactTitleOne">
-              Get
-            </span>
-
-            <em data-i18n="contactTitleTwo">
-              in touch
-            </em>
-
-          </h2>
-
-
-          <form
-            id="email-form"
-            class="email-form"
-          >
-
-            <span aria-hidden="true">
-              ✉
-            </span>
-
-            <input
-              name="email"
-              type="email"
-              autocomplete="email"
-              placeholder="Enter your email"
-              data-i18n-placeholder="emailPlaceholder"
-              required
-            >
-
-            <button
-              type="submit"
-              aria-label="Send email"
-            >
-              →
-            </button>
-
-          </form>
-
-        </div>
-
-
-        <div class="elsewhere">
-
-          <h2 data-i18n="elsewhere">
-            Elsewhere
-          </h2>
-
-          <div class="socials">
-
-            <a
-              href="#"
-              aria-label="Email"
-            >
-              ✉
-            </a>
-
-            <a
-              href="#"
-              aria-label="LinkedIn"
-            >
-              in
-            </a>
-
-            <a
-              href="#"
-              aria-label="GitHub"
-            >
-              gh
-            </a>
-
-            <a
-              href="#"
-              aria-label="Instagram"
-            >
-              ◎
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-
+  <script src="js/wave.js" defer></script>
+  <script src="js/script.js" defer></script>
 </body>
-
 </html>
