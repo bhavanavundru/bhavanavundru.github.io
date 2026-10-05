@@ -1,204 +1,1109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bhavana — Portfolio</title>
-  <meta name="description" content="Bhavana — computer science student building digital experiences that work smoothly and have major impact.">
-  <meta name="theme-color" content="#05010b">
-  <script>document.documentElement.classList.add('js');</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title data-i18n="page.title">Bhavana — Portfolio</title>
+
+  <meta
+    name="description"
+    content="Bhavana — computer science student building digital experiences that work smoothly and have major impact."
+  >
+
+  <meta
+    name="theme-color"
+    content="#05010b"
+  >
+
+  <script>
+    document.documentElement.classList.add("js");
+  </script>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/styles.css"
+  >
 </head>
+
 <body>
 
-  <!-- ============ NAV ============ -->
-  <header class="nav" id="nav">
-    <a class="logo" href="#top" aria-label="Home">Bhavcodes</a>
+  <!-- ======================================================
+       NAVIGATION
+  ======================================================= -->
 
-    <nav class="nav-links" aria-label="Main">
-      <span class="nav-link nav-time" title="Hyderabad, India">
-        <span data-i18n="nav.time">Time</span> <time id="clock">--:--</time>
+  <header
+    class="nav"
+    id="nav"
+  >
+
+    <a
+      class="logo"
+      href="#top"
+      aria-label="Home"
+    >
+      Bhavcodes
+    </a>
+
+    <nav
+      class="nav-links"
+      aria-label="Main navigation"
+      data-i18n-aria-label="aria.main"
+    >
+
+      <!-- WORK MEGA MENU -->
+
+      <div
+        class="work-menu-wrap"
+        id="workMenuWrap"
+      >
+
+        <button
+          class="nav-link work-link"
+          type="button"
+          id="workMenuTrigger"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-label="Work, selected projects"
+          data-i18n-aria-label="aria.work"
+        >
+          <span data-i18n="nav.work">
+            Work
+          </span>
+
+          <sup>
+            3
+          </sup>
+        </button>
+
+        <div
+          class="mega-menu"
+          id="workMegaMenu"
+          aria-label="Selected projects"
+          data-i18n-aria-label="aria.menu"
+        >
+
+          <a
+            class="mega-project"
+            href="project.html?project=football-analyser"
+          >
+
+            <span class="mega-index">
+              01
+            </span>
+
+            <span class="mega-project-name">
+              <span data-i18n="project.football">Football Analyser</span>
+            </span>
+
+            <span
+              class="mega-arrow"
+              aria-hidden="true"
+            >
+              ↗
+            </span>
+
+          </a>
+
+          <a
+            class="mega-project"
+            href="project.html?project=medical-training-simulator"
+          >
+
+            <span class="mega-index">
+              02
+            </span>
+
+            <span class="mega-project-name">
+              <span data-i18n="project.medical">Medical Training Simulator</span>
+            </span>
+
+            <span
+              class="mega-arrow"
+              aria-hidden="true"
+            >
+              ↗
+            </span>
+
+          </a>
+
+          <a
+            class="mega-project"
+            href="project.html?project=virtual-card-holder"
+          >
+
+            <span class="mega-index">
+              03
+            </span>
+
+            <span class="mega-project-name">
+              <span data-i18n="project.card">Virtual Card Holder</span>
+            </span>
+
+            <span
+              class="mega-arrow"
+              aria-hidden="true"
+            >
+              ↗
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- START PROJECT -->
+
+      <button
+        class="btn"
+        type="button"
+        data-open="project"
+        data-i18n="nav.project"
+      >
+        Start a project
+      </button>
+
+      <!-- CONTACT -->
+
+      <button
+        class="btn"
+        type="button"
+        data-open="contact"
+        data-i18n="nav.contact"
+      >
+        Contact
+      </button>
+
+      <!-- TIME -->
+
+      <span
+        class="nav-link nav-time"
+        title="Hyderabad, India"
+      >
+
+        <time id="clock">
+          --:--
+        </time>
+
       </span>
 
-      <a class="nav-link" href="work.html"><span data-i18n="nav.work">Work</span><sup id="workCount">3</sup></a>
+      <!-- LANGUAGE -->
 
-      <button class="btn" type="button" data-open="project" data-i18n="nav.project">Start a project</button>
-      <button class="btn" type="button" data-open="contact" data-i18n="nav.contact">Contact</button>
+      <div
+        class="lang"
+        role="group"
+        aria-label="Language"
+        data-i18n-aria-label="aria.language"
+      >
 
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true">english</button>
-        <span aria-hidden="true">|</span>
-        <button type="button" data-lang="de" aria-pressed="false">deutsch</button>
+        <button
+          type="button"
+          data-lang="en"
+          aria-pressed="true"
+        >
+          EN
+        </button>
+
+        <span aria-hidden="true">
+          |
+        </span>
+
+        <button
+          type="button"
+          data-lang="de"
+          aria-pressed="false"
+        >
+          DE
+        </button>
+
       </div>
+
     </nav>
+
   </header>
 
-  <main id="top">
-    <div class="stage" id="stage">
 
-      <!-- ============ HERO (sticky, stays pinned while About rises over it) ============ -->
-      <section class="hero" aria-label="Home">
-        <canvas id="wave" aria-hidden="true"></canvas>
-        <div class="hero-mesh" aria-hidden="true"></div>
-        <div class="hero-shade" aria-hidden="true"></div>
-        <div class="hero-dim" aria-hidden="true"></div>
+  <!-- ======================================================
+       MAIN
+  ======================================================= -->
+
+  <main id="top">
+
+    <div
+      class="stage"
+      id="stage"
+    >
+
+      <!-- ==================================================
+           HERO
+      =================================================== -->
+
+      <section
+        class="hero"
+        aria-label="Home"
+      >
+
+        <canvas
+          id="wave"
+          aria-hidden="true"
+        ></canvas>
+
+        <div
+          class="hero-mesh"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="hero-shade"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="hero-dim"
+          aria-hidden="true"
+        ></div>
+
 
         <div class="hero-content">
+
           <h1 class="tagline">
-            <span data-i18n="hero.l1">Precision like Clockwork.</span>
-            <span data-i18n="hero.l2">Ambition like an Empire</span>
+
+            <span data-i18n="hero.l1">
+              Precision like Clockwork
+            </span>
+
+            <span data-i18n="hero.l2">
+              Ambition like an Empire
+            </span>
+
           </h1>
 
-          <a class="scroll-cue" href="#about" aria-label="Scroll down">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+
+          <a
+            class="scroll-cue"
+            href="#about"
+            aria-label="Scroll down"
+            data-i18n-aria-label="a11y.scroll"
+          >
+
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+
           </a>
+
         </div>
+
       </section>
 
-      <!-- ============ ABOUT THE DEV (scroll-scrubbed takeover) ============ -->
-      <section class="about" id="about" aria-labelledby="about-title">
-        <span class="about-peek" aria-hidden="true" data-i18n="about.title">About the dev</span>
 
-        <div class="about-inner" id="aboutInner">
-          <h2 class="about-title" id="about-title" data-i18n="about.title">About the dev</h2>
+      <!-- ==================================================
+           ABOUT
+      =================================================== -->
 
-          <p class="about-text" id="aboutText" data-i18n="about.text">I'm Bhavana, a computer science student. I make digital experiences that work smoothly and have major impact. Get to know me more <a class="link-underline" data-link="resume" href="resume.pdf" target="_blank" rel="noopener">resume</a> or take a look at <a class="pill-link" href="work.html">my work</a></p>
+      <section
+        class="about"
+        id="about"
+        aria-labelledby="about-title"
+      >
 
-          <div class="stats">
-            <div class="stat reveal">
-              <div class="stat-num" data-count="24">0</div>
-              <p class="stat-label" data-i18n="stat.lc"><a data-link="leetcode" href="https://leetcode.com/" target="_blank" rel="noopener">Leetcode</a> questions solved</p>
+        <span
+          class="about-peek"
+          aria-hidden="true"
+          data-i18n="about.title"
+        >
+          About the dev
+        </span>
+
+
+        <div class="about-inner">
+
+
+          <h2
+            class="about-title"
+            id="about-title"
+            data-i18n="about.title"
+          >
+            About the dev
+          </h2>
+
+
+          <!-- ABOUT TEXT + ANIMATION -->
+
+          <div class="about-intro">
+
+
+            <!-- LEFT SIDE -->
+
+            <div class="about-copy">
+
+              <p class="about-text" id="aboutText" data-i18n="about.intro">
+
+                I'm Bhavana, a computer science student.
+                I make digital experiences that work
+                smoothly and have major impact.
+
+              </p>
+
+
+              <p class="about-cta-line" data-i18n="about.resume">
+
+                Get to know me more —
+
+                <a
+                  class="link-underline"
+                  data-link="resume"
+                  href="resume.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Resume
+                </a>
+
+              </p>
+
+
+              <p class="about-cta-line" data-i18n="about.work">
+
+                or look at
+
+                <a
+                  class="pill-link"
+                  href="#projects"
+                >
+                  <span data-i18n="nav.myWork">My Work</span>
+                </a>
+
+              </p>
+
             </div>
-            <div class="stat reveal" style="--d:.15s">
-              <div class="stat-num" data-count="5">0</div>
-              <p class="stat-label" data-i18n="stat.gh"><a data-link="github" href="https://github.com/" target="_blank" rel="noopener">GitHub</a> projects pushed</p>
+
+
+            <!-- RIGHT SIDE ANIMATION -->
+
+            <div
+              class="motion-scene"
+              aria-hidden="true"
+            >
+
+              <div class="motion-grid"></div>
+
+              <div class="orbit orbit-a"></div>
+
+              <div class="orbit orbit-b"></div>
+
+              <div class="motion-core">
+
+                <span>
+                  &lt;/&gt;
+                </span>
+
+              </div>
+
+              <span class="motion-dot dot-a"></span>
+
+              <span class="motion-dot dot-b"></span>
+
+              <span class="motion-dot dot-c"></span>
+
             </div>
+
+
           </div>
 
-          <!-- Infinite marquee: intentionally empty for now (hidden until you add items).
-               When you have certificates, drop them in like this and the loop starts by itself:
-               <span class="marquee-item">Google Certificate</span>
-               <span class="marquee-item">Accenture Certificate</span> -->
-          <div class="marquee" id="marquee" aria-label="Certificates">
-            <div class="marquee-track" id="marqueeTrack"></div>
+
+          <!-- ==================================================
+               STATS
+          =================================================== -->
+
+          <div class="about-metrics">
+
+            <div class="stats">
+
+
+              <div class="stat reveal">
+
+                <div
+                  class="stat-num"
+                  data-count="24"
+                >
+                  0
+                </div>
+
+                <p class="stat-label" data-i18n="stat.lc">
+
+                  <a
+                    data-link="leetcode"
+                    href="https://leetcode.com/"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Leetcode
+                  </a>
+
+                  questions solved
+
+                </p>
+
+              </div>
+
+
+              <div
+                class="stat reveal"
+                style="--d: .15s"
+              >
+
+                <div
+                  class="stat-num"
+                  data-count="5"
+                >
+                  0
+                </div>
+
+                <p class="stat-label" data-i18n="stat.gh">
+
+                  <a
+                    data-link="github"
+                    href="https://github.com/"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    GitHub
+                  </a>
+
+                  projects pushed
+
+                </p>
+
+              </div>
+
+
+            </div>
+
           </div>
+
+
+          <!-- ==================================================
+               PROJECT PREVIEW
+          =================================================== -->
+
+          <section
+            class="projects-preview"
+            id="projects"
+          >
+
+            <div class="projects-heading">
+
+              <p data-i18n="projects.eyebrow">
+                Selected work
+              </p>
+
+              <h3 data-i18n="projects.title">
+                Things I've built.
+              </h3>
+
+            </div>
+
+
+            <div class="project-list">
+
+
+              <a
+                class="project-row"
+                href="project.html?project=football-analyser"
+              >
+
+                <span class="project-row-number">
+                  01
+                </span>
+
+                <span class="project-row-title" data-i18n="project.football">
+                  Football Analyser
+                </span>
+
+                <span class="project-row-type" data-i18n="project.typeFootball">
+                  Data · Analysis
+                </span>
+
+                <span class="project-row-arrow">
+                  ↗
+                </span>
+
+              </a>
+
+
+              <a
+                class="project-row"
+                href="project.html?project=medical-training-simulator"
+              >
+
+                <span class="project-row-number">
+                  02
+                </span>
+
+                <span class="project-row-title" data-i18n="project.medical">
+                  Medical Training Simulator
+                </span>
+
+                <span class="project-row-type" data-i18n="project.typeMedical">
+                  Simulation · Interactive
+                </span>
+
+                <span class="project-row-arrow">
+                  ↗
+                </span>
+
+              </a>
+
+
+              <a
+                class="project-row"
+                href="project.html?project=virtual-card-holder"
+              >
+
+                <span class="project-row-number">
+                  03
+                </span>
+
+                <span class="project-row-title" data-i18n="project.card">
+                  Virtual Card Holder
+                </span>
+
+                <span class="project-row-type" data-i18n="project.typeCard">
+                  Web · Product
+                </span>
+
+                <span class="project-row-arrow">
+                  ↗
+                </span>
+
+              </a>
+
+
+            </div>
+
+          </section>
+
+
         </div>
+
       </section>
+
     </div>
+
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer" id="footer">
-    <p class="footer-end reveal" data-i18n="footer.end">This is the end of my portfolio website.</p>
 
-    <div class="footer-grid">
-      <div class="reveal" style="--d:.1s">
-        <h3 data-i18n="footer.elsewhere">Elsewhere</h3>
-        <ul class="social">
-          <li>
-            <a data-link="github" href="https://github.com/" target="_blank" rel="noopener">
-              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a data-link="linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.2v.01M12 17v-3.8a2.2 2.2 0 014.4 0V17M12 10.5V17"/></svg>
-              LinkedIn
-            </a>
-          </li>
-          <li>
-            <a data-link="codepen" href="https://codepen.io/" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l10 6.5v7L12 22 2 15.5v-7z"/><path d="M12 22v-6.5M22 8.5l-10 7-10-7M2 15.5l10-7 10 7M12 2v6.5"/></svg>
-              Codepen
-            </a>
-          </li>
-          <li>
-            <a data-link="resume" href="resume.pdf" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>
-              <span data-i18n="footer.resume">Resume</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+  <!-- ======================================================
+       FOOTER
+  ======================================================= -->
 
-      <div class="footer-contact reveal" style="--d:.2s">
-        <button class="big-link" type="button" data-open="contact">
-          <span data-i18n="nav.contact">Contact</span> <span class="arrow" aria-hidden="true">↗</span>
-        </button>
-        <a class="email-link" id="emailLink" href="https://mail.google.com/mail/?view=cm&fs=1&to=vundrubhavana%40gmail.com" target="_blank" rel="noopener">vundrubhavana@gmail.com</a>
-      </div>
+  <footer
+    class="footer"
+    id="footer"
+  >
+
+
+    <div class="footer-kicker reveal" data-i18n="footer.kicker">
+
+      Open to ideas,
+      collaborations
+      and interesting
+      builds.
+
     </div>
 
-    <p class="footer-bottom made" data-i18n="footer.made">Made with <span class="heart">♡</span> in Hyderabad</p>
+
+    <div class="footer-grid">
+
+
+      <!-- SOCIAL -->
+
+      <div
+        class="reveal"
+        style="--d: .1s"
+      >
+
+        <h3 data-i18n="footer.elsewhere">
+          Elsewhere
+        </h3>
+
+        <ul class="social">
+
+
+          <li>
+
+            <a
+              data-link="github"
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener"
+            >
+
+              <span class="social-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.08c-3.1.67-3.76-1.32-3.76-1.32-.5-1.29-1.23-1.63-1.23-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 .1.76 2.08 3.29 1.58.1-.72.39-1.21.7-1.49-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.21 1.15-2.99-.12-.28-.5-1.42.11-2.95 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.12-1.44 3.05-1.14 3.05-1.14.61 1.53.23 2.67.12 2.95.71.78 1.14 1.77 1.14 2.99 0 4.29-2.61 5.23-5.1 5.51.4.35.75 1.03.75 2.08V22c0 .29.2.64.77.53A11.1 11.1 0 0 0 12 .9Z"/></svg>
+              </span>
+
+              <span data-i18n="social.github">GitHub</span>
+
+            </a>
+
+          </li>
+
+
+          <li>
+
+            <a
+              data-link="linkedin"
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener"
+            >
+
+              <span class="social-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.2 7.9H1.7V22h3.5V7.9ZM3.45 2a2.04 2.04 0 1 0 0 4.08 2.04 2.04 0 0 0 0-4.08ZM22 13.9c0-4.24-2.26-6.22-5.28-6.22a4.56 4.56 0 0 0-4.11 2.26V7.9H9.1V22h3.51v-7c0-1.85.35-3.64 2.64-3.64 2.25 0 2.28 2.11 2.28 3.76V22H22v-8.1Z"/></svg>
+              </span>
+
+              <span data-i18n="social.linkedin">LinkedIn</span>
+
+            </a>
+
+          </li>
+
+
+          <li>
+
+            <a
+              data-link="codepen"
+              href="https://codepen.io/"
+              target="_blank"
+              rel="noopener"
+            >
+
+              <span class="social-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="m12 2 10 6.5v7L12 22 2 15.5v-7L12 2Z"/><path d="M12 8.5v7m10-7-10 7-10-7m0 7 10-7 10 7"/></svg>
+              </span>
+
+              <span data-i18n="social.codepen">CodePen</span>
+
+            </a>
+
+          </li>
+
+
+          <li>
+
+            <a
+              href="resume.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+
+              <span class="social-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>
+              </span>
+
+              <span data-i18n="footer.resume">Resume</span>
+
+            </a>
+
+          </li>
+
+
+        </ul>
+
+      </div>
+
+
+      <!-- CONTACT CTA -->
+
+      <div
+        class="footer-contact reveal"
+        style="--d: .2s"
+      >
+
+        <p class="footer-small" data-i18n="footer.idea">
+          Have an idea?
+        </p>
+
+
+        <button
+          class="footer-cta"
+          type="button"
+          data-open="contact"
+        >
+
+          <span data-i18n="footer.cta">
+            Let's make it real
+          </span>
+
+          <span aria-hidden="true">
+            ↗
+          </span>
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+    <p class="footer-bottom made" data-i18n="footer.made">
+
+      Made with
+
+      <span class="heart">
+        ♡
+      </span>
+
+      in Hyderabad
+
+    </p>
+
   </footer>
 
-  <!-- ============ SLIDE-IN PANELS ============ -->
-  <div class="backdrop" id="backdrop"></div>
 
-  <!-- Start a project -->
-  <aside class="panel" id="panel-project" role="dialog" aria-modal="true" aria-labelledby="project-title" aria-hidden="true">
-    <button class="panel-close" type="button" data-close aria-label="Close">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  <!-- ======================================================
+       BACKDROP
+  ======================================================= -->
+
+  <div
+    class="backdrop"
+    id="backdrop"
+  ></div>
+
+
+  <!-- ======================================================
+       START PROJECT PANEL
+  ======================================================= -->
+
+  <aside
+    class="panel"
+    id="panel-project"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="project-title"
+    aria-hidden="true"
+  >
+
+    <button
+      class="panel-close"
+      type="button"
+      data-close
+      aria-label="Close"
+      data-i18n-aria-label="a11y.close"
+    >
+
+      <svg
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M6 6l12 12M18 6L6 18"/>
+      </svg>
+
     </button>
 
-    <h2 id="project-title" data-i18n="project.title">Start a project</h2>
 
-    <form class="form" id="projectForm">
+    <h2 id="project-title" data-i18n="project.title">
+      Start a project
+    </h2>
+
+
+    <form
+      class="form"
+      id="projectForm"
+    >
+
+
       <div class="field">
-        <label for="p-name" data-i18n="project.name">Name of project</label>
-        <input id="p-name" name="project" type="text" required autocomplete="off">
+
+        <label for="p-name" data-i18n="project.name">
+          Name of project
+        </label>
+
+        <input
+          id="p-name"
+          name="project"
+          type="text"
+          required
+          autocomplete="off"
+        >
+
       </div>
+
+
       <div class="field">
-        <label for="p-email" data-i18n="field.email">Email</label>
-        <input id="p-email" name="email" type="email" required autocomplete="email">
+
+        <label for="p-email" data-i18n="field.email">
+          Email
+        </label>
+
+        <input
+          id="p-email"
+          name="email"
+          type="email"
+          required
+          autocomplete="email"
+        >
+
       </div>
-      <button class="btn" type="submit" data-i18n="btn.send">Send</button>
-      <p class="form-status" role="status" aria-live="polite"></p>
+
+
+      <button
+        class="btn"
+        type="submit"
+      >
+        <span data-i18n="btn.send">Send</span>
+      </button>
+
+
+      <p
+        class="form-status"
+        role="status"
+        aria-live="polite"
+      ></p>
+
+
     </form>
+
   </aside>
 
-  <!-- Contact -->
-  <aside class="panel" id="panel-contact" role="dialog" aria-modal="true" aria-labelledby="contact-title" aria-hidden="true">
-    <button class="panel-close" type="button" data-close aria-label="Close">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+
+  <!-- ======================================================
+       CONTACT PANEL
+  ======================================================= -->
+
+  <aside
+    class="panel"
+    id="panel-contact"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="contact-title"
+    aria-hidden="true"
+  >
+
+    <button
+      class="panel-close"
+      type="button"
+      data-close
+      aria-label="Close"
+      data-i18n-aria-label="a11y.close"
+    >
+
+      <svg
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+
+        <path d="M6 6l12 12M18 6L6 18"/>
+
+      </svg>
+
     </button>
 
-    <h2 id="contact-title" data-i18n="contact.title">Don't hesitate to contact us.</h2>
 
-    <form class="form" id="contactForm">
+    <h2 id="contact-title" data-i18n="contact.title">
+      Don't hesitate to contact me.
+    </h2>
+
+
+    <form
+      class="form"
+      id="contactForm"
+    >
+
+
       <fieldset class="field radios">
-        <legend class="legend" data-i18n="contact.purpose">Purpose of the request</legend>
-        <label class="radio"><input type="radio" name="purpose" value="Project" checked><span data-i18n="contact.p1">Project</span></label>
-        <label class="radio"><input type="radio" name="purpose" value="Reach out / Communication"><span data-i18n="contact.p2">Reach out / Communication</span></label>
+
+        <legend class="legend" data-i18n="contact.purpose">
+          Purpose of the request
+        </legend>
+
+
+        <label class="radio">
+
+          <input
+            type="radio"
+            name="purpose"
+            value="Project"
+            checked
+          >
+
+          <span data-i18n="contact.p1">
+            Project
+          </span>
+
+        </label>
+
+
+        <label class="radio">
+
+          <input
+            type="radio"
+            name="purpose"
+            value="Reach out / Communication"
+          >
+
+          <span data-i18n="contact.p2">
+            Reach out / Communication
+          </span>
+
+        </label>
+
       </fieldset>
 
+
       <div class="field required">
-        <label for="c-first" data-i18n="contact.first">First name</label>
-        <input id="c-first" name="first" type="text" required autocomplete="given-name">
-      </div>
-      <div class="field required">
-        <label for="c-last" data-i18n="contact.last">Last name</label>
-        <input id="c-last" name="last" type="text" required autocomplete="family-name">
-      </div>
-      <div class="field required">
-        <label for="c-email" data-i18n="field.email">Email</label>
-        <input id="c-email" name="email" type="email" required autocomplete="email">
-      </div>
-      <div class="field">
-        <label for="c-msg" data-i18n="contact.message">Message</label>
-        <textarea id="c-msg" name="message" rows="5"></textarea>
+
+        <label for="c-first" data-i18n="contact.first">
+          First name
+        </label>
+
+        <input
+          id="c-first"
+          name="first"
+          type="text"
+          required
+          autocomplete="given-name"
+        >
+
       </div>
 
-      <button class="btn" type="submit" data-i18n="btn.send">Send</button>
-      <p class="form-status" role="status" aria-live="polite"></p>
+
+      <div class="field required">
+
+        <label for="c-last" data-i18n="contact.last">
+          Last name
+        </label>
+
+        <input
+          id="c-last"
+          name="last"
+          type="text"
+          required
+          autocomplete="family-name"
+        >
+
+      </div>
+
+
+      <div class="field required">
+
+        <label for="c-email" data-i18n="field.email">
+          Email
+        </label>
+
+        <input
+          id="c-email"
+          name="email"
+          type="email"
+          required
+          autocomplete="email"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="c-msg" data-i18n="contact.message">
+          Message
+        </label>
+
+        <textarea
+          id="c-msg"
+          name="message"
+          rows="5"
+        ></textarea>
+
+      </div>
+
+
+      <input
+        type="text"
+        name="_honey"
+        tabindex="-1"
+        autocomplete="off"
+        hidden
+      >
+
+
+      <button
+        class="btn"
+        type="submit"
+      >
+        <span data-i18n="btn.send">Send</span>
+      </button>
+
+
+      <p
+        class="form-status"
+        role="status"
+        aria-live="polite"
+      ></p>
+
+
     </form>
+
   </aside>
 
-  <script src="js/wave.js" defer></script>
-  <script src="js/script.js" defer></script>
+
+  <script
+    src="js/wave.js"
+    defer
+  ></script>
+
+  <script
+    src="js/script.js"
+    defer
+  ></script>
+
 </body>
+
 </html>
