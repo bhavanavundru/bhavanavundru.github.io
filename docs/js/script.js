@@ -7,6 +7,12 @@
   'use strict';
 
 
+  console.log(
+    '%cAh, Yes.\nWelcome behind the pixels.\nThere are no fancy animations here.\nNo polished UI.\nJust code, secrets,\nand several decisions I refuse to explain.\nYou are now part of a very exclusive club\nconsisting entirely of people who press F12.\nMembership benefits:\n• absolutely nothing\n• mild developer superiority\n• permission to judge my variable names\n\nEnjoy your stay.',
+    'color:#c8adff;background:#10091d;padding:12px 16px;border-left:3px solid #b794ff;font:500 13px/1.6 monospace;border-radius:4px'
+  );
+
+
   /* =========================================================
      CONFIG
      Edit these values when needed
@@ -85,6 +91,15 @@
 
       'a11y.close':
         'Close',
+
+      'skills.open':
+        'Open skills panel',
+
+      'skills.close':
+        'Close skills panel',
+
+      'skills.title':
+        'Skills unlocked',
 
       'hero.l1':
         'Precision like Clockwork.',
@@ -243,6 +258,15 @@
 
       'a11y.close':
         'Schließen',
+
+      'skills.open':
+        'Technologien anzeigen',
+
+      'skills.close':
+        'Technologien schließen',
+
+      'skills.title':
+        'Freigeschaltete Skills',
 
       'hero.l1':
         'Präzision wie ein Uhrwerk.',
@@ -1085,6 +1109,102 @@
     $('.work-link');
 
 
+  const skillsToggle =
+    $('#skillsToggle');
+
+
+  const skillsPanel =
+    $('#skillsPanel');
+
+
+  const skillsClose =
+    $('#skillsClose');
+
+
+  if (skillsToggle && skillsPanel) {
+
+    const setSkillsOpen = isOpen => {
+      skillsPanel.classList.toggle('is-open', isOpen);
+      skillsPanel.setAttribute('aria-hidden', String(!isOpen));
+      skillsPanel.toggleAttribute('inert', !isOpen);
+      skillsToggle.setAttribute('aria-expanded', String(isOpen));
+      skillsToggle.setAttribute(
+        'aria-label',
+        t(isOpen ? 'skills.close' : 'skills.open')
+      );
+    };
+
+    skillsToggle.addEventListener('click', () => {
+      setSkillsOpen(true);
+    });
+
+    skillsClose.addEventListener('click', () => {
+      setSkillsOpen(false);
+      skillsToggle.focus();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && skillsPanel.classList.contains('is-open')) {
+        setSkillsOpen(false);
+        skillsToggle.focus();
+      }
+    });
+  }
+
+
+  if (
+    window.matchMedia('(pointer: fine)').matches &&
+    !reduceMotion
+  ) {
+    const customCursor = document.createElement('div');
+    customCursor.className = 'custom-cursor';
+    customCursor.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(customCursor);
+    document.body.classList.add('custom-cursor-enabled');
+
+    document.addEventListener('pointermove', event => {
+      customCursor.style.transform =
+        `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+      customCursor.classList.add('is-visible');
+    }, { passive: true });
+
+    document.addEventListener('pointerover', event => {
+      customCursor.classList.toggle(
+        'is-hovering',
+        Boolean(event.target.closest('a, button, input, textarea, select, [role="button"]'))
+      );
+    });
+
+    document.addEventListener('pointerout', event => {
+      if (!event.relatedTarget) {
+        customCursor.classList.remove('is-visible', 'is-hovering');
+      }
+    });
+
+    window.addEventListener('blur', () => {
+      customCursor.classList.remove('is-visible', 'is-hovering');
+    });
+  }
+
+
+  let workMenuCloseTimer =
+    0;
+
+
+  function scheduleWorkMenuClose() {
+
+    window.clearTimeout(
+      workMenuCloseTimer
+    );
+
+    workMenuCloseTimer = window.setTimeout(
+      () => setWorkMenuOpen(false),
+      180
+    );
+
+  }
+
+
   function setWorkMenuOpen(
     isOpen
   ) {
@@ -1098,6 +1218,11 @@
       return;
 
     }
+
+
+    window.clearTimeout(
+      workMenuCloseTimer
+    );
 
 
     workMenuWrap.classList.toggle(
@@ -1151,9 +1276,13 @@
 
     workMenuWrap.addEventListener(
 
-      'mouseenter',
+      'pointerenter',
 
       () => {
+
+        window.clearTimeout(
+          workMenuCloseTimer
+        );
 
         setWorkMenuOpen(
           true
@@ -1166,16 +1295,26 @@
 
     workMenuWrap.addEventListener(
 
-      'mouseleave',
+      'pointerleave',
 
       () => {
 
-        setWorkMenuOpen(
-          false
-        );
+        scheduleWorkMenuClose();
 
       }
 
+    );
+
+
+    $('#workMegaMenu').addEventListener(
+      'pointerenter',
+      () => window.clearTimeout(workMenuCloseTimer)
+    );
+
+
+    $('#workMegaMenu').addEventListener(
+      'pointerleave',
+      scheduleWorkMenuClose
     );
 
 
@@ -1252,15 +1391,8 @@
         event.preventDefault();
 
 
-        const currentlyOpen =
-
-          workMenuWrap.classList.contains(
-            'is-open'
-          );
-
-
         setWorkMenuOpen(
-          !currentlyOpen
+          true
         );
 
 
@@ -1810,6 +1942,18 @@
 
 
   }
+
+
+  window.addEventListener(
+    'pointermove',
+    event => {
+      if (nav && event.clientY <= 8) {
+        nav.classList.remove('nav-hidden');
+        lastScrollY = window.scrollY;
+      }
+    },
+    { passive: true }
+  );
 
 
   window.addEventListener(

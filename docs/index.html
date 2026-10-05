@@ -415,7 +415,7 @@
 
             <div
               class="motion-scene"
-              aria-hidden="true"
+              aria-label="Interactive skills scene"
             >
 
               <div class="motion-grid"></div>
@@ -424,12 +424,58 @@
 
               <div class="orbit orbit-b"></div>
 
-              <div class="motion-core">
+              <button
+                class="motion-core"
+                id="skillsToggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="skillsPanel"
+                aria-label="Open skills panel"
+                data-i18n-aria-label="skills.open"
+              >
+
+                <span class="motion-click" aria-hidden="true">CLICK</span>
 
                 <span>
                   &lt;/&gt;
                 </span>
 
+              </button>
+
+              <div
+                class="skills-panel"
+                id="skillsPanel"
+                aria-hidden="true"
+                inert
+              >
+                <button
+                  class="skills-close"
+                  id="skillsClose"
+                  type="button"
+                  aria-label="Close skills panel"
+                  data-i18n-aria-label="skills.close"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                </button>
+                <h3 data-i18n="skills.title">Skills unlocked</h3>
+                <div class="skill-list">
+                  <span>Kotlin</span>
+                  <span>Java</span>
+                  <span>Android</span>
+                  <span>Jetpack Compose</span>
+                  <span>Firebase</span>
+                  <span>REST APIs</span>
+                  <span>Git / GitHub</span>
+                  <span>SQL</span>
+                  <span>Python</span>
+                  <span>JavaScript</span>
+                  <span>TypeScript</span>
+                  <span>HTML / CSS</span>
+                  <span>React</span>
+                  <span>Node.js</span>
+                  <span>UI / UX</span>
+                  <span>Figma</span>
+                </div>
               </div>
 
               <span class="motion-dot dot-a"></span>
